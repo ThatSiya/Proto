@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+@*@using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+{
+    <div class="form-group">
+        @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Enter search keyword" })
+    </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+}*@
+
+<h2>@ViewBag.Title</h2>
+<div class="container">
+    <div class="row">
+        @Html.ActionLink("Manage Inventory", "Index", "Inventory")
+    </div>
+    <div class="row">
+        @Html.ActionLink("Manage Role", "Index", "RolesAdmin")
+    </div>
+    <div class="row">
+        @Html.ActionLink("Manage Users", "Index", "UsersAdmin")
+    </div>
+
+</div>
+

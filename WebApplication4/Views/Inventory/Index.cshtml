@@ -1,0 +1,107 @@
+﻿@*@model IEnumerable<WebApplication4.Models.Inventory>*@
+
+
+@*Modify the view to display the new filter using view model*@
+@model WebApplication4.ViewModels.InventoryIndexViewModel
+    @using PagedList.Mvc @*PageList Library*@
+@using (Html.BeginForm("Index", "Inventory", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="row">
+    <div class="col-xs-6 col-md-4">
+    <div class="input-group">
+        <span>@Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Enter search keyword or phrase" })</span>
+    <div class="input-group-btn">
+    <button class="btn btn-primary" type="submit" >
+        <span class="glyphicon glyphicon-search"></span>
+        </button>
+    </div>
+        </div>
+        </div>
+        </div>
+}
+
+
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(Model.Search)?"Showing all ":"You search for "+ Model.Search + " found ")@Model.Inventories.TotalItemCount inventory items
+</p>
+
+<p>
+    @Html.ActionLink("Add new Item", "Create")<br>
+    @Html.ActionLink("View all Inventory Types", "Index", "InventoryType")<br>
+    @*Adding the filter to the Index Page*@
+    @*Create new HTML form to submit the inventory type filter by*@
+    @using (Html.BeginForm("Index", "Inventory", FormMethod.Get))
+    {
+        <label>Filter By Type</label> @*@Html.DropDownList("InventoryType","All")*@
+        @Html.DropDownListFor(vm => vm.InventoryType, Model.InvTypeFilterItems, "All")
+        <input type="submit" value="Filter" />
+        <input type="hidden" name="Search" id="Search" value="@Model.Search">
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Inventories.First().InvDescr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inventories.First().InvQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inventories.First().InvDatePurchased)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inventories.First().InvCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inventories.First().InvSIUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inventories.First().InventoryType.InvTypeDescr)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Inventories) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvDescr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvDatePurchased)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvSIUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InventoryType.InvTypeDescr)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InventoryID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InventoryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InventoryID })
+        </td>
+    </tr>
+}
+
+</table><br>
+@*Generate paging links*@
+<div> @*wrap in div for presentation purpose*@
+    Page @(Model.Inventories.PageCount < Model.Inventories.PageNumber ? 0: @*evaluate whether or not there are any pages to display*@
+        Model.Inventories.PageNumber) of @Model.Inventories.PageCount @*Display Page x of y*@
+    @Html.PagedListPager(Model.Inventories, page => Url.Action("Index", @*Takes list of inventories and produces a hyperlink to each page*@
+    new { inventorytype = @Model.InventoryType,
+    Search = @Model.Search,
+    page}))
+</div>

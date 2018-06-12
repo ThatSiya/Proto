@@ -1,0 +1,34 @@
+﻿@model WebApplication4.Models.BiologicalDisaster
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BiologicalDisaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BioDisasterDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BioDisasterDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BioDisasterNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BioDisasterNotes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BioDisasterID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

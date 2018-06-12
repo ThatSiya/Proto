@@ -1,0 +1,111 @@
+﻿@model IEnumerable<WebApplication4.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VehYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehEngineNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehVinNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehRegNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehLicenseNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehExpDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehCurrMileage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehServiceInterval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehNextService)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Farm.FarmName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleMake.VehMakeDescr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleType.VehTypeDescr)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehEngineNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehVinNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehRegNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehLicenseNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehExpDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehCurrMileage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehServiceInterval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehNextService)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farm.FarmName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleMake.VehMakeDescr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleType.VehTypeDescr)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VehicleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VehicleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VehicleID })
+        </td>
+    </tr>
+}
+
+</table>

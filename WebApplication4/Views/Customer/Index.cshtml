@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication4.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerFName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerLName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CustomerContactNum)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.ContactPersonalEmailAddress)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CompanyPhysAddress)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.CompanyTelNum)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerFName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerLName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CustomerContactNum)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ContactPersonalEmailAddress)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CompanyPhysAddress)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CompanyTelNum)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
+        </td>
+    </tr>
+}
+
+</table>
