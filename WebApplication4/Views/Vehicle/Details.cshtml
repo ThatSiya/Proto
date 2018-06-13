@@ -1,0 +1,130 @@
+﻿@model WebApplication4.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VehYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehModel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehModel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehEngineNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehEngineNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehVinNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehVinNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehRegNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehRegNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehLicenseNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehLicenseNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehExpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehExpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehCurrMileage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehCurrMileage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehServiceInterval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehServiceInterval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehNextService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehNextService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Farm.FarmName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Farm.FarmName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleMake.VehMakeDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleMake.VehMakeDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleType.VehTypeDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleType.VehTypeDescr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
