@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<WebApplication4.Models.Customer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customers";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add new customer", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-condensed">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CustomerFName)
@@ -26,13 +26,13 @@
         <th>
             @Html.DisplayNameFor(model => model.CompanyName)
         </th>
+        <th>Actions</th>
         @*<th>
             @Html.DisplayNameFor(model => model.CompanyPhysAddress)
         </th>*@
         @*<th>
             @Html.DisplayNameFor(model => model.CompanyTelNum)
         </th>*@
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
