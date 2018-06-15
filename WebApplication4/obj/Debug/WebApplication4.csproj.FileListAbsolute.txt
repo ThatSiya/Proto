@@ -175,7 +175,6 @@ C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebAp
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.csprojResolveAssemblyReference.cache
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.Migrations.InitialCreate.resources
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.Migrations.FirstName.resources
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.Migrations.User.resources
@@ -184,3 +183,6 @@ C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebAp
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.csproj.GenerateResource.Cache
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.dll
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.pdb
+C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.csprojAssemblyReference.cache
+C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.csproj.CoreCompileInputs.cache
+C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.csproj.CopyComplete

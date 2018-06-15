@@ -3,6 +3,13 @@
 @model WebApplication4.ViewModels.FarmWorkerIndexViewModel
 @using PagedList.Mvc @*PageList Library*@
 
+
+@{
+    ViewBag.Title = "Farm Workers";
+}
+
+<h2>@ViewBag.Title</h2>
+
 @using (Html.BeginForm("Index", "FarmWorker", FormMethod.Get, new { @class = "form-inline" }))
 {
     <div class="row">
@@ -18,16 +25,6 @@
         </div>
     </div>
 }
-
-@{
-    ViewBag.Title = "Farm Workers";
-}
-
-<h2>@ViewBag.Title</h2>
-<p>
-    @*condition? first_expression : second_expression*@
-    @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You search for " + Model.Search + " found ")@Model.FarmWorkers.TotalItemCount farm workers
-</p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -48,85 +45,91 @@
             @Html.DisplayNameFor(model => model.FarmWorkers.First().FarmWorkerLName)
         </th>
         @*<th>
-        @Html.DisplayNameFor(model => model.FarmWorkers.First().FarmWorkerContactNum)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.FarmWorkers.First().FarmWorkerPhysicalAddress)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.FarmWorkers.First().ContractStartDate)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.FarmWorkers.First().ContractEndDate)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.FarmWorkers.First().FarmWorkerIDNum)
-    </th>*@
+                @Html.DisplayNameFor(model => model.FarmWorkers.First().FarmWorkerContactNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmWorkers.First().FarmWorkerPhysicalAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmWorkers.First().ContractStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmWorkers.First().ContractEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmWorkers.First().FarmWorkerIDNum)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FarmWorkers.First().FarmWorkerType.FarmWorkerTypeDescr)
         </th>
         @*<th>
-        @Html.DisplayNameFor(model => model.FarmWorkers.First().Gender.GenderDescr)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.FarmWorkers.First().Title.TitleDescr)
-    </th>*@
+                @Html.DisplayNameFor(model => model.FarmWorkers.First().Gender.GenderDescr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmWorkers.First().Title.TitleDescr)
+            </th>*@
         <th>
             @Html.DisplayName("Actions")
         </th>
     </tr>
 
-@foreach (var item in Model.FarmWorkers) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FarmWorkerFName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FarmWorkerLName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.FarmWorkerContactNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FarmWorkerPhysicalAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContractStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContractEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FarmWorkerIDNum)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.FarmWorkerType.FarmWorkerTypeDescr)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Gender.GenderDescr)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title.TitleDescr)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FarmWorkerNum }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FarmWorkerNum }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FarmWorkerNum })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.FarmWorkers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmWorkerFName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmWorkerLName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.FarmWorkerContactNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FarmWorkerPhysicalAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractEndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FarmWorkerIDNum)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmWorkerType.FarmWorkerTypeDescr)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Gender.GenderDescr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title.TitleDescr)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FarmWorkerNum }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FarmWorkerNum }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FarmWorkerNum })
+            </td>
+        </tr>
+    }
 
 </table>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You search for " + Model.Search + " found ")@Model.FarmWorkers.TotalItemCount farm workers
+</p>
+
 @*Generate paging links*@
 <div>
     @*wrap in div for presentation purpose*@
     Page @(Model.FarmWorkers.PageCount < Model.FarmWorkers.PageNumber ? 0 : @*evaluate whether or not there are any pages to display*@
-        Model.FarmWorkers.PageNumber) of @Model.FarmWorkers.PageCount @*Display Page x of y*@
-        @Html.PagedListPager(Model.FarmWorkers, page => Url.Action("Index", @*Takes list of inventories and produces a hyperlink to each page*@
+    Model.FarmWorkers.PageNumber) of @Model.FarmWorkers.PageCount @*Display Page x of y*@
+    @Html.PagedListPager(Model.FarmWorkers, page => Url.Action("Index",@*Takes list of inventories and produces a hyperlink to each page*@
     new
     {
         farmworkertype = @Model.FarmWorkerType,
         Search = @Model.Search,
         page
     }))
-    </div>
+</div>
