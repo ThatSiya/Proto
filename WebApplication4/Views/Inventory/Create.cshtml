@@ -4,15 +4,19 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Resources</a></li>
+    <li>@Html.ActionLink("Inventory", "Index", "Inventory")</li>
+    <li class="active">Create</li>
+</ol>
 
-
+<div>
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-group">
-        <h4>Inventory</h4>
+    @*<div class="form-group">*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -69,12 +73,29 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-    </div>
+    @*</div>*@
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+<div class="well">
+    <div class="row">
+    @using (Html.BeginForm("Index", "Inventory", FormMethod.Get, new { @class = "form-inline" }))
+            {
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button class="btn btn-success" type="submit">
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                    Back
+                </button>
+            </div>
+        </div>
+    }
+        </div>
+</div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

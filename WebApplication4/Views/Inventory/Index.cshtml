@@ -1,82 +1,94 @@
-﻿@*@model IEnumerable<WebApplication4.Models.Inventory>*@
-
-
-@*Modify the view to display the new filter using view model*@
-@model WebApplication4.ViewModels.InventoryIndexViewModel
+﻿@model WebApplication4.ViewModels.InventoryIndexViewModel
 @using PagedList.Mvc @*PageList Library*@
 
 @{
     ViewBag.Title = "Inventory";
 }
 
-<h2>@ViewBag.Title</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")<br />
-    @Html.ActionLink("Manage Types", "Index", "InventoryType")<br />
-</p>
-<div class="row">
-    @*<div class="col-xs-12 col-md-4">
-            @Html.ActionLink("Create New", "Create")<br />
-            @Html.ActionLink("Manage Types", "Index", "FarmWorkerType")<br />
-        </div>*@
-    <div class="col-xs-6 col-md-4">
-        @using (Html.BeginForm("Index", "Inventory", FormMethod.Get, new { @class = "form-inline" }))
-        {
-            <div class="input-group">
-                <span>@Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Enter search keyword or phrase" })</span>
-                <div class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </div>
-            </div>
-        }
-    </div>
-    @*<div class="col-xs-12 col-md-4">
-            @Html.ActionLink("Create New", "Create")<br />
-            @Html.ActionLink("Manage Types", "Index", "FarmWorkerType")<br />
-        </div>*@
-    <div class="col-xs-6 col-md-4">
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Resources</a></li>
+    <li class="active">Inventory</li>
+</ol>
 
-        @using (Html.BeginForm("Index", "Inventory", FormMethod.Get))
-        {
-            <div class="input-group">
-                <label>Filter By Type</label> @*@Html.DropDownList("InventoryType","All")*@
-                @Html.DropDownListFor(vm => vm.InventoryType, Model.InvTypeFilterItems, "All")
-                <input type="submit" value="Filter" />
-                <input type="hidden" name="Search" id="Search" value="@Model.Search">
+<p>
+</p>
+<div class="well">
+    <div class="row">
+
+        <div class="col-xs-6 col-md-4">
+            @using (Html.BeginForm("Create", "Inventory", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-success" type="submit">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Add Inventory
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-xs-6 col-md-4">
+            @using (Html.BeginForm("Index", "Inventory", FormMethod.Get))
+            {
+                    <div class="input-group">
+                        @Html.Label("Filter by type:")
+                        <span>@Html.DropDownListFor(vm => vm.InventoryType, Model.InvTypeFilterItems, "All")</span>
+                        @*<div class="input-group-btn">*@
+                            <button class="btn btn-info" type="submit">
+                                <span class="glyphicon glyphicon-filter"></span>
+                            </button>
+                            @*</div>*@
+                            @*<input type="hidden" name="Search" id="Search" value="@Model.Search">*@
+                        </div>
+                @*</div>*@
+            }
+        </div>
+            <div class="col-xs-6 col-md-4">
+                @using (Html.BeginForm("Index", "Inventory", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                    <div class="input-group">
+                        <span>@Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Enter search keyword or phrase" })</span>
+                        <div class="input-group-btn">
+                            <button class="btn btn-info" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    </div>
+                }
             </div>
-        }
+        </div>
     </div>
-</div>
-<br />
-    <table class="table table-striped table-bordered table-condensed">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Inventories.First().InvDescr)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Inventories.First().InvQty)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Inventories.First().InvDatePurchased)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Inventories.First().InvCode)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Inventories.First().InvSIUnit)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Inventories.First().InventoryType.InvTypeDescr)
-            </th>
-            <th>
-                @Html.DisplayName("Actions")
-            </th>
-        </tr>
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <span style="color:green;">@Html.DisplayNameFor(model => model.Inventories.First().InvDescr)</span>
+                </th>
+                <th>
+                    <span style="color:green;">@Html.DisplayNameFor(model => model.Inventories.First().InvQty)</span>
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Inventories.First().InvDatePurchased)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Inventories.First().InvCode)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Inventories.First().InvSIUnit)
+                    </th>*@
+                <th>
+                    <span style="color:green;">@Html.DisplayNameFor(model => model.Inventories.First().InventoryType.InvTypeDescr)</span>
+                </th>
+                <th>
+                    <span style="color:green;">@Html.DisplayName("Actions")</span>
+                </th>
+            </tr>
+        </thead>
 
         @foreach (var item in Model.Inventories)
-        {
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.InvDescr)
@@ -97,10 +109,23 @@
                     @Html.DisplayFor(modelItem => item.InventoryType.InvTypeDescr)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.InventoryID }, new { @class = "btn btn-default" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.InventoryID }, new { @class = "btn btn-default" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.InventoryID }, new { @class = "btn btn-default" })
-                </td>
+                    <!-- Split button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success">Options</button>
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink(" Edit", "Edit", new { id = item.InventoryID }, new { @class = "glyphicon glyphicon-pencil" })</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink(" Details", "Details", new { id = item.InventoryID }, new { @class = "glyphicon glyphicon-zoom-in" })</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink(" Delete", "Delete", new { id = item.InventoryID }, new { @class = "glyphicon glyphicon-trash" })</li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Place Order</a></li>
+                        </ul>
+                    </div>
             </tr>
         }
 

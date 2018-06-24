@@ -8,13 +8,20 @@
     ViewBag.Title = "Farm Workers";
 }
 
-<h2>@ViewBag.Title</h2>
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Resources</a></li>
+    <li class="active">Workers</li>
+</ol>
 
+    @using (Html.BeginForm("Create", "FarmWorker", FormMethod.Get, new { @class = "form-inline" })) {
+        <button class="btn btn-success">Add Inventory</button>
+    }
+    @*@Html.ActionLink("Create New", "Create")<br />
+    @Html.ActionLink("Manage Types", "Index", "FarmWorkerType")<br />*@
+<br />
 <div class="row">
-    @*<div class="col-xs-12 col-md-4">
-        @Html.ActionLink("Create New", "Create")<br />
-        @Html.ActionLink("Manage Types", "Index", "FarmWorkerType")<br />
-    </div>*@
+    
     <div class="col-xs-6 col-md-4">
         @using (Html.BeginForm("Index", "FarmWorker", FormMethod.Get, new { @class = "form-inline" }))
         {
@@ -119,7 +126,7 @@
                                 @Html.DisplayFor(modelItem => item.Title.TitleDescr)
                             </td>*@
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.FarmWorkerNum }, new { @class = "glyphicon glyphicon-pencil" }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.FarmWorkerNum }, new { @class = "glyphicon glyphicon-pencil"}) |
                             @Html.ActionLink("Details", "Details", new { id = item.FarmWorkerNum }, new { @class = "btn btn-default" }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.FarmWorkerNum }, new { @class = "glyphicon glyphicon-trash" })
                         </td>
