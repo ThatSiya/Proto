@@ -3,15 +3,13 @@
 @{
     ViewBag.Title = "Create";
 }
-
 <ol class="breadcrumb">
     <li><a href="#">Home</a></li>
     <li><a href="#">Resources</a></li>
     <li>@Html.ActionLink("Inventory", "Index", "Inventory")</li>
-    <li class="active">Create</li>
+    <li class="active">Add Inventory</li>
 </ol>
 
-<div>
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -19,84 +17,86 @@
     @*<div class="form-group">*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvDescr, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvDescr, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvDescr, "", new { @class = "text-danger" })
-            </div>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Inventory Details</h3>
         </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvDescr, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.InvDescr, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InvDescr, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvQty, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvQty, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvQty, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvQty, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.InvQty, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InvQty, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvDatePurchased, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvDatePurchased, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvDatePurchased, "", new { @class = "text-danger" })
-                @*<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>*@
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvDatePurchased, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.InvDatePurchased, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InvDatePurchased, "", new { @class = "text-danger" })
+                        @*<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>*@
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvCode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvCode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvCode, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.InvCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InvCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvSIUnit, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvSIUnit, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvSIUnit, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvSIUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.InvSIUnit, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InvSIUnit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvTypeID, "InvTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("InvTypeID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.InvTypeID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvTypeID, "InvTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("InvTypeID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.InvTypeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
             </div>
         </div>
-    @*</div>*@
+    </div>
 }
-</div>
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
-<div class="well">
-    <div class="row">
-    @using (Html.BeginForm("Index", "Inventory", FormMethod.Get, new { @class = "form-inline" }))
+        <div class="row">
+            @using (Html.BeginForm("Index", "Inventory", FormMethod.Get, new { @class = "form-inline" }))
             {
-        <div class="input-group">
-            <div class="input-group-btn">
-                <button class="btn btn-success" type="submit">
-                    <span class="glyphicon glyphicon-arrow-left"></span>
-                    Back
-                </button>
-            </div>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-success" type="submit">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                            Back
+                        </button>
+                    </div>
+                </div>
+            }
         </div>
-    }
-        </div>
-</div>
 
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
