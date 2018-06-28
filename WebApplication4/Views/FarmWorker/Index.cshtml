@@ -126,9 +126,18 @@
                                 @Html.DisplayFor(modelItem => item.Title.TitleDescr)
                             </td>*@
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.FarmWorkerNum }, new { @class = "glyphicon glyphicon-pencil"}) |
-                            @Html.ActionLink("Details", "Details", new { id = item.FarmWorkerNum }, new { @class = "btn btn-default" }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.FarmWorkerNum }, new { @class = "glyphicon glyphicon-trash" })
+                            <a href="@Url.Action("Edit", new { id = item.FarmWorkerNum })">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                <span class="sr-only">Edit</span>
+                            </a> 
+                            <a href="@Url.Action("Details", new { id = item.FarmWorkerNum })">
+                                <i class="glyphicon glyphicon-zoom-in"></i>
+                                <span class="sr-only">Edit</span>
+                            </a> 
+                            <a href="@Url.Action("Delete", new { id = item.FarmWorkerNum })">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                <span class="sr-only">Edit</span>
+                            </a>
                         </td>
                     </tr>
                 }

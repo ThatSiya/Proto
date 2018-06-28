@@ -10,6 +10,7 @@ namespace WebApplication4.Models
     {
 
         [Key]
+        [Display(Name ="Inventory Type")]
         public int InvTypeID { get; set; }
 
         [Required(ErrorMessage ="Inventory type cannot be blank")]

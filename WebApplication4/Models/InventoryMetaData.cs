@@ -41,6 +41,8 @@ namespace WebApplication4.Models
         [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Unit must be alphabetic")]
         public string InvSIUnit { get; set; }
-        
+
+        [Display(Name = "Inventory Type")]
+        public int InvTypeID { get; set; }
     }
 }
