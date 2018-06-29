@@ -24,7 +24,11 @@ namespace WebApplication4.Models
     
         public int SupplierID { get; set; }
         public string SupplierName { get; set; }
-        public string SupplierPhysAddress { get; set; }
+        public string Address { get; set; }
+        public string Surburb { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string Province { get; set; }
         public string SupplierEmailAddress { get; set; }
         public string SupplierPhoneNum { get; set; }
         public string SupplierCellNum { get; set; }

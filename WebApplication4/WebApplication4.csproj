@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -254,6 +255,18 @@
     <Compile Include="Migrations\201806011007543_User1.Designer.cs">
       <DependentUpon>201806011007543_User1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806291115515_UpdateModel.cs" />
+    <Compile Include="Migrations\201806291115515_UpdateModel.Designer.cs">
+      <DependentUpon>201806291115515_UpdateModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806291152195_User11.cs" />
+    <Compile Include="Migrations\201806291152195_User11.Designer.cs">
+      <DependentUpon>201806291152195_User11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806291302348_EFModelUpdate.cs" />
+    <Compile Include="Migrations\201806291302348_EFModelUpdate.Designer.cs">
+      <DependentUpon>201806291302348_EFModelUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttendanceSheetMetaData.cs" />
@@ -425,7 +438,9 @@
       <DependentUpon>FarmDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitMetaData.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\User.cs">
+      <DependentUpon>FarmDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserAccessLevel.cs">
       <DependentUpon>FarmDbModel.tt</DependentUpon>
     </Compile>
@@ -649,6 +664,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
     <EntityDeploy Include="Models\FarmDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FarmDbModel.Designer.cs</LastGenOutput>
@@ -656,8 +673,6 @@
     <Content Include="Models\FarmDbModel.edmx.diagram">
       <DependentUpon>FarmDbModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\DataTables\css\mixins.scss" />
-    <Content Include="Content\DataTables\css\common.scss" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -923,6 +938,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806011007543_User1.resx">
       <DependentUpon>201806011007543_User1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806291115515_UpdateModel.resx">
+      <DependentUpon>201806291115515_UpdateModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806291152195_User11.resx">
+      <DependentUpon>201806291152195_User11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806291302348_EFModelUpdate.resx">
+      <DependentUpon>201806291302348_EFModelUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

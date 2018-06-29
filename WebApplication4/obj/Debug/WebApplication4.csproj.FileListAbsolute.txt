@@ -186,3 +186,6 @@ C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebAp
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.csprojResolveAssemblyReference.cache
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\bin\MetaDataLib.dll
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\bin\MetaDataLib.pdb
+C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.Migrations.UpdateModel.resources
+C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.Migrations.User11.resources
+C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\obj\Debug\WebApplication4.Migrations.EFModelUpdate.resources

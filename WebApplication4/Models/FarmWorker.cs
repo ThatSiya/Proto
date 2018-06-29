@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(FarmWorkerMetaData))]
-
     public partial class FarmWorker
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,7 +26,11 @@ namespace WebApplication4.Models
         public string FarmWorkerFName { get; set; }
         public string FarmWorkerLName { get; set; }
         public string FarmWorkerContactNum { get; set; }
-        public string FarmWorkerPhysicalAddress { get; set; }
+        public string Address { get; set; }
+        public string Surburb { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string Province { get; set; }
         public System.DateTime ContractStartDate { get; set; }
         public System.DateTime ContractEndDate { get; set; }
         public string FarmWorkerIDNum { get; set; }

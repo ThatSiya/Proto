@@ -34,11 +34,31 @@ namespace WebApplication4.Models
         [RegularExpression("[0-9]+", ErrorMessage = "Contact number must be numeric")]
         public string FarmWorkerContactNum { get; set; }
 
-        [Required(ErrorMessage = "Physical Address cannot be blank")]
-        [Display(Name = "Physical Address")]
+        [Required(ErrorMessage = "Address cannot be blank")]
+        [Display(Name = "Address")]
+        [StringLength(maximumLength: 255, ErrorMessage = "Max 255 characters reached")]
+        //[DataType(DataType.MultilineText)]
+        public string Address { get; set; }
+
+        [Required(ErrorMessage = "Surburb cannot be blank")]
+        [Display(Name = "Surburb")]
         [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
-        [DataType(DataType.MultilineText)]
-        public string FarmWorkerPhysicalAddress { get; set; }
+        public string Surburb { get; set; }
+
+        [Required(ErrorMessage = "City cannot be blank")]
+        [Display(Name = "City")]
+        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "Country cannot be blank")]
+        [Display(Name = "Country")]
+        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        public string Country { get; set; }
+
+        [Required(ErrorMessage = "Province cannot be blank")]
+        [Display(Name = "Province")]
+        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        public string Province { get; set; }
 
 
         [Required(ErrorMessage = "Contract Start Date cannot be blank")]

@@ -24,6 +24,7 @@ namespace WebApplication4.Models
     
         public int VehTypeID { get; set; }
         public string VehTypeDescr { get; set; }
+        public string VehTypeImg { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vehicle> Vehicles { get; set; }

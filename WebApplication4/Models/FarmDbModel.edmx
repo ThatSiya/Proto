@@ -97,7 +97,11 @@
           <Property Name="FarmWorkerFName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FarmWorkerLName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FarmWorkerContactNum" Type="char" MaxLength="10" />
-          <Property Name="FarmWorkerPhysicalAddress" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Surburb" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Country" Type="varchar" MaxLength="100" />
+          <Property Name="Province" Type="varchar" MaxLength="100" />
           <Property Name="ContractStartDate" Type="date" Nullable="false" />
           <Property Name="ContractEndDate" Type="date" Nullable="false" />
           <Property Name="FarmWorkerIDNum" Type="char" MaxLength="13" />
@@ -111,7 +115,7 @@
           </Key>
           <Property Name="FarmWorkerTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FarmWorkerTypeDescr" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FarmWorkerTypeActiveStatus" Type="bit" Nullable="false" />
+          <Property Name="FarmWorkerTypeActiveStatus" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Field">
           <Key>
@@ -181,7 +185,7 @@
           <Property Name="InvQty" Type="int" Nullable="false" />
           <Property Name="InvDatePurchased" Type="date" Nullable="false" />
           <Property Name="InvCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="InvSIUnit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InvSIUnit" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="InvTypeID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="InventoryTreatment">
@@ -192,7 +196,7 @@
           <Property Name="TreatmentID" Type="int" Nullable="false" />
           <Property Name="InventoryID" Type="int" Nullable="false" />
           <Property Name="TreatmentQnty" Type="int" Nullable="false" />
-          <Property Name="TreatmentUnit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TreatmentUnit" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="InventoryType">
           <Key>
@@ -269,10 +273,10 @@
           <Property Name="FieldStageID" Type="int" Nullable="false" />
           <Property Name="DatePlanted" Type="date" Nullable="false" />
           <Property Name="RefugeSeedAmntUsed" Type="decimal" Precision="4" Scale="3" />
-          <Property Name="RefugeSeedUnit" Type="varchar" MaxLength="50" />
+          <Property Name="RefugeSeedUnit" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="RefugeAreaHectares" Type="decimal" Precision="4" Scale="3" />
           <Property Name="ExpectedYieldQnty" Type="decimal" Precision="4" Scale="3" Nullable="false" />
-          <Property Name="ExpectedYieldUnit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExpectedYieldUnit" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="DateHarvested" Type="date" Nullable="false" />
           <Property Name="PlantationStatus" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -311,6 +315,7 @@
           <Property Name="SiloDescr" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="SiloCapacity" Type="decimal" Precision="4" Scale="3" />
           <Property Name="SiloRentalFeePA" Type="decimal" Precision="4" Scale="3" />
+          <Property Name="SiloStatus" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="SiloHarvest">
           <Key>
@@ -339,7 +344,11 @@
           </Key>
           <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SupplierName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SupplierPhysAddress" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Surburb" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Country" Type="varchar" MaxLength="100" />
+          <Property Name="Province" Type="varchar" MaxLength="100" />
           <Property Name="SupplierEmailAddress" Type="varchar" MaxLength="255" />
           <Property Name="SupplierPhoneNum" Type="char" MaxLength="10" />
           <Property Name="SupplierCellNum" Type="char" MaxLength="10" />
@@ -391,6 +400,7 @@
             <PropertyRef Name="VehicleID" />
           </Key>
           <Property Name="VehicleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehName" Type="varchar" MaxLength="30" />
           <Property Name="VehYear" Type="varchar" MaxLength="10" />
           <Property Name="VehModel" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="VehEngineNum" Type="varchar" MaxLength="50" Nullable="false" />
@@ -400,6 +410,7 @@
           <Property Name="VehExpDate" Type="date" />
           <Property Name="VehCurrMileage" Type="int" Nullable="false" />
           <Property Name="VehServiceInterval" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehServiceIntervalUnit" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="VehNextService" Type="date" Nullable="false" />
           <Property Name="FarmID" Type="int" Nullable="false" />
           <Property Name="VehTypeID" Type="int" Nullable="false" />
@@ -428,6 +439,7 @@
           </Key>
           <Property Name="VehTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VehTypeDescr" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="VehTypeImg" Type="varchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK__Attendenc__FarmW__46E78A0C">
           <End Role="FarmWorker" Type="Self.FarmWorker" Multiplicity="1" />
@@ -1274,7 +1286,11 @@
           <Property Name="FarmWorkerFName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FarmWorkerLName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FarmWorkerContactNum" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="FarmWorkerPhysicalAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surburb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ContractStartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ContractEndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="FarmWorkerIDNum" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
@@ -1292,7 +1308,7 @@
           </Key>
           <Property Name="FarmWorkerTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FarmWorkerTypeDescr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FarmWorkerTypeActiveStatus" Type="Boolean" Nullable="false" />
+          <Property Name="FarmWorkerTypeActiveStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="FarmWorkers" Relationship="Self.FK__FarmWorke__FarmW__36B12243" FromRole="FarmWorkerType" ToRole="FarmWorker" />
         </EntityType>
         <EntityType Name="Field">
@@ -1378,7 +1394,7 @@
           <Property Name="InvQty" Type="Int32" Nullable="false" />
           <Property Name="InvDatePurchased" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="InvCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="InvSIUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InvSIUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="InvTypeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="InventoryTreatments" Relationship="Self.FK__Inventory__Inven__6754599E" FromRole="Inventory" ToRole="InventoryTreatment" />
           <NavigationProperty Name="InventoryType" Relationship="Self.FK__Inventory__InvTy__619B8048" FromRole="Inventory" ToRole="InventoryType" />
@@ -1392,7 +1408,7 @@
           <Property Name="TreatmentID" Type="Int32" Nullable="false" />
           <Property Name="InventoryID" Type="Int32" Nullable="false" />
           <Property Name="TreatmentQnty" Type="Int32" Nullable="false" />
-          <Property Name="TreatmentUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TreatmentUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Inventory" Relationship="Self.FK__Inventory__Inven__6754599E" FromRole="InventoryTreatment" ToRole="Inventory" />
           <NavigationProperty Name="Treatment" Relationship="Self.FK__Inventory__Treat__66603565" FromRole="InventoryTreatment" ToRole="Treatment" />
         </EntityType>
@@ -1485,10 +1501,10 @@
           <Property Name="FieldStageID" Type="Int32" Nullable="false" />
           <Property Name="DatePlanted" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="RefugeSeedAmntUsed" Type="Decimal" Precision="4" Scale="3" />
-          <Property Name="RefugeSeedUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefugeSeedUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RefugeAreaHectares" Type="Decimal" Precision="4" Scale="3" />
           <Property Name="ExpectedYieldQnty" Type="Decimal" Precision="4" Scale="3" Nullable="false" />
-          <Property Name="ExpectedYieldUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpectedYieldUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateHarvested" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PlantationStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CropCycle" Relationship="Self.FK__Plantatio__CropC__797309D9" FromRole="Plantation" ToRole="CropCycle" />
@@ -1537,6 +1553,7 @@
           <Property Name="SiloDescr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SiloCapacity" Type="Decimal" Precision="4" Scale="3" />
           <Property Name="SiloRentalFeePA" Type="Decimal" Precision="4" Scale="3" />
+          <Property Name="SiloStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SiloHarvests" Relationship="Self.FK__SiloHarve__SiloI__7F2BE32F" FromRole="Silo" ToRole="SiloHarvest" />
         </EntityType>
         <EntityType Name="SiloHarvest">
@@ -1571,7 +1588,11 @@
           </Key>
           <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SupplierPhysAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surburb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SupplierEmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="SupplierPhoneNum" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="SupplierCellNum" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
@@ -1633,6 +1654,7 @@
             <PropertyRef Name="VehicleID" />
           </Key>
           <Property Name="VehicleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="VehYear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="VehModel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="VehEngineNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -1642,6 +1664,7 @@
           <Property Name="VehExpDate" Type="DateTime" Precision="0" />
           <Property Name="VehCurrMileage" Type="Int32" Nullable="false" />
           <Property Name="VehServiceInterval" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VehServiceIntervalUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="VehNextService" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="FarmID" Type="Int32" Nullable="false" />
           <Property Name="VehTypeID" Type="Int32" Nullable="false" />
@@ -1676,6 +1699,7 @@
           </Key>
           <Property Name="VehTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VehTypeDescr" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VehTypeImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__VehType__4F7CD00D" FromRole="VehicleType" ToRole="Vehicle" />
         </EntityType>
         <Association Name="FK__Attendenc__FarmW__46E78A0C">
@@ -2518,7 +2542,11 @@
                 <ScalarProperty Name="FarmWorkerFName" ColumnName="FarmWorkerFName" />
                 <ScalarProperty Name="FarmWorkerLName" ColumnName="FarmWorkerLName" />
                 <ScalarProperty Name="FarmWorkerContactNum" ColumnName="FarmWorkerContactNum" />
-                <ScalarProperty Name="FarmWorkerPhysicalAddress" ColumnName="FarmWorkerPhysicalAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Surburb" ColumnName="Surburb" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
                 <ScalarProperty Name="ContractStartDate" ColumnName="ContractStartDate" />
                 <ScalarProperty Name="ContractEndDate" ColumnName="ContractEndDate" />
                 <ScalarProperty Name="FarmWorkerIDNum" ColumnName="FarmWorkerIDNum" />
@@ -2749,6 +2777,7 @@
                 <ScalarProperty Name="SiloDescr" ColumnName="SiloDescr" />
                 <ScalarProperty Name="SiloCapacity" ColumnName="SiloCapacity" />
                 <ScalarProperty Name="SiloRentalFeePA" ColumnName="SiloRentalFeePA" />
+                <ScalarProperty Name="SiloStatus" ColumnName="SiloStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2779,7 +2808,11 @@
               <MappingFragment StoreEntitySet="Supplier">
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="SupplierPhysAddress" ColumnName="SupplierPhysAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Surburb" ColumnName="Surburb" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
                 <ScalarProperty Name="SupplierEmailAddress" ColumnName="SupplierEmailAddress" />
                 <ScalarProperty Name="SupplierPhoneNum" ColumnName="SupplierPhoneNum" />
                 <ScalarProperty Name="SupplierCellNum" ColumnName="SupplierCellNum" />
@@ -2837,6 +2870,7 @@
             <EntityTypeMapping TypeName="FarmDbModel.Vehicle">
               <MappingFragment StoreEntitySet="Vehicle">
                 <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="VehName" ColumnName="VehName" />
                 <ScalarProperty Name="VehYear" ColumnName="VehYear" />
                 <ScalarProperty Name="VehModel" ColumnName="VehModel" />
                 <ScalarProperty Name="VehEngineNum" ColumnName="VehEngineNum" />
@@ -2846,6 +2880,7 @@
                 <ScalarProperty Name="VehExpDate" ColumnName="VehExpDate" />
                 <ScalarProperty Name="VehCurrMileage" ColumnName="VehCurrMileage" />
                 <ScalarProperty Name="VehServiceInterval" ColumnName="VehServiceInterval" />
+                <ScalarProperty Name="VehServiceIntervalUnit" ColumnName="VehServiceIntervalUnit" />
                 <ScalarProperty Name="VehNextService" ColumnName="VehNextService" />
                 <ScalarProperty Name="FarmID" ColumnName="FarmID" />
                 <ScalarProperty Name="VehTypeID" ColumnName="VehTypeID" />
@@ -2877,6 +2912,7 @@
               <MappingFragment StoreEntitySet="VehicleType">
                 <ScalarProperty Name="VehTypeID" ColumnName="VehTypeID" />
                 <ScalarProperty Name="VehTypeDescr" ColumnName="VehTypeDescr" />
+                <ScalarProperty Name="VehTypeImg" ColumnName="VehTypeImg" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

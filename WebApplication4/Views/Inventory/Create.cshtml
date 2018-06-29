@@ -104,6 +104,17 @@
             </div>
         </div>
     </div>
+
+    <div class="col-xs-6 col-md-4">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button class="btn btn-success" type="submit">
+                    <span class="glyphicon glyphicon-bookmark"></span>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
 }
 <div class="row">
 
@@ -121,7 +132,7 @@
                 </div>
             </div>
         }
-        @using (Html.BeginForm())
+        @*@using (Html.BeginForm("Create", "Inventory", FormMethod.Post, new { @class = "form-inline"}))
         {
             @Html.AntiForgeryToken()
 
@@ -135,7 +146,7 @@
                     </div>
                 </div>
             </div>
-        }
+        }*@
     </div>
 </div>
 

@@ -24,6 +24,12 @@ namespace WebApplication4.Models
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Model must be made up of letters and numbers only")]
         public string VehModel { get; set; }
 
+        [Required(ErrorMessage = "Vehicle name cannot be blank")]
+        [Display(Name = "Vehicle Name")]
+        [StringLength(maximumLength: 30, ErrorMessage = "Max 30 characters reached")]
+        [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Model must be made up of letters and numbers only")]
+        public string VehName { get; set; }
+
         [Required(ErrorMessage = "Engine Number cannot be blank")]
         [Display(Name = "Engine Number")]
         [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]

@@ -19,11 +19,31 @@ namespace WebApplication4.Models
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Name must be alphabetic")]
         public string SupplierName { get; set; }
 
-        [Required(ErrorMessage = "Physical Address cannot be blank")]
-        [Display(Name = "Physical Address")]
-        [StringLength(maximumLength: 10, ErrorMessage = "Max 50 characters reached")]
+        [Required(ErrorMessage = "Address cannot be blank")]
+        [Display(Name = "Address")]
+        [StringLength(maximumLength: 255, ErrorMessage = "Max 255 characters reached")]
         [DataType(DataType.MultilineText)]
-        public string SupplierPhysAddress { get; set; }
+        public string Address { get; set; }
+
+        [Required(ErrorMessage = "Surburb cannot be blank")]
+        [Display(Name = "Physical Address")]
+        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        public string Surburb { get; set; }
+
+        [Required(ErrorMessage = "City cannot be blank")]
+        [Display(Name = "City")]
+        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "Country cannot be blank")]
+        [Display(Name = "Country")]
+        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        public string Country { get; set; }
+
+        [Required(ErrorMessage = "Province cannot be blank")]
+        [Display(Name = "Province")]
+        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        public string Province { get; set; }
 
         [Required(ErrorMessage = "Email cannot be blank")]
         [Display(Name = "Email")]

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\WebApplication4\Models\FarmDbModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\Models\FarmDbModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

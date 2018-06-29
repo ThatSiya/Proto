@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(FarmWorkerTypeMetaData))]
-
     public partial class FarmWorkerType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +24,7 @@ namespace WebApplication4.Models
     
         public int FarmWorkerTypeID { get; set; }
         public string FarmWorkerTypeDescr { get; set; }
-        public bool FarmWorkerTypeActiveStatus { get; set; }
+        public string FarmWorkerTypeActiveStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FarmWorker> FarmWorkers { get; set; }

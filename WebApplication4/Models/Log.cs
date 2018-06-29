@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(LogMetaData))]
-
     public partial class Log
     {
         public int LogID { get; set; }

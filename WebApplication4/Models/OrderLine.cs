@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(OrderLineMetaData))]
-
     public partial class OrderLine
     {
         public int OrderNum { get; set; }
