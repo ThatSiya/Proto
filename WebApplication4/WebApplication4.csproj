@@ -467,6 +467,7 @@
     <Compile Include="ViewModels\FarmWorkerIndexViewModel.cs" />
     <Compile Include="ViewModels\InventoryIndexViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewModels\VehicleIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -869,11 +870,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Vehicle\Create.cshtml" />
-    <Content Include="Views\Vehicle\Delete.cshtml" />
-    <Content Include="Views\Vehicle\Details.cshtml" />
-    <Content Include="Views\Vehicle\Edit.cshtml" />
-    <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Inventory\Create.cshtml" />
     <Content Include="Views\Inventory\Delete.cshtml" />
     <Content Include="Views\Inventory\Details.cshtml" />
@@ -912,6 +908,12 @@
     <Content Include="Views\FarmWorkerType\Details.cshtml" />
     <Content Include="Views\FarmWorkerType\Edit.cshtml" />
     <Content Include="Views\FarmWorkerType\Index.cshtml" />
+    <Content Include="Views\Inventory\ActionPage.cshtml" />
+    <Content Include="Views\Vehicle\Create.cshtml" />
+    <Content Include="Views\Vehicle\Delete.cshtml" />
+    <Content Include="Views\Vehicle\Details.cshtml" />
+    <Content Include="Views\Vehicle\Edit.cshtml" />
+    <Content Include="Views\Vehicle\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

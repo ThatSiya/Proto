@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
+using WebApplication4.ViewModels;
+using PagedList;
 
 namespace WebApplication4.Controllers
 {
@@ -15,10 +17,46 @@ namespace WebApplication4.Controllers
         private FarmDbContext db = new FarmDbContext();
 
         // GET: Vehicle
-        public ActionResult Index()
+        public ActionResult Index(string vehicletype,string search, int? page)
         {
-            var vehicles = db.Vehicles.Include(v => v.Farm).Include(v => v.VehicleMake).Include(v => v.VehicleType);
-            return View(vehicles.ToList());
+            VehicleIndexViewModel viewModel = new VehicleIndexViewModel();
+            var vehicles = db.Vehicles.Include(v => v.VehicleType);
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                vehicles = vehicles.Where(v => v.VehName.Contains(search) ||
+                v.VehicleType.VehTypeDescr.Contains(search));
+                ViewBag.Search = search;
+            }
+            viewModel.VehTypesWithCount = from matchingVehicles in vehicles
+                                          where
+                                          matchingVehicles.VehTypeID != null
+                                          group matchingVehicles by
+                                          matchingVehicles.VehicleType.VehTypeDescr into
+                                          VehTypeGroup
+                                          select new VehicleTypesWithCount()
+                                          {
+                                              VehTypeDescr = VehTypeGroup.Key,
+                                              VehicleCount = VehTypeGroup.Count()
+                                          };
+
+            if (!String.IsNullOrEmpty(vehicletype))
+            {
+                vehicles = vehicles.Where(i => i.VehicleType.VehTypeDescr == vehicletype);
+                viewModel.VehicleType = vehicletype;
+            }
+            //ViewBag.InventoryType = new SelectList(inventorytypes);
+            //Search is stored in the ViewBag to allow it to be reused when a user clicks on the: inventory type filter
+
+            //viewModel.Inventories = inventories.OrderBy(c => c.InvDescr);
+
+            //sort results
+            vehicles = vehicles.OrderBy(i => i.VehName);
+            //Paging:
+            const int PageItems = 5;
+            int currentPage = (page ?? 1);
+            viewModel.Vehicles = vehicles.ToPagedList(currentPage, PageItems);
+            return View(viewModel);
         }
 
         // GET: Vehicle/Details/5
@@ -50,7 +88,7 @@ namespace WebApplication4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VehicleID,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,RegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "VehicleID,VehName,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehServiceIntervalUnit,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +126,7 @@ namespace WebApplication4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VehicleID,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,RegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "VehicleID,VehName,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehServiceIntervalUnit,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {

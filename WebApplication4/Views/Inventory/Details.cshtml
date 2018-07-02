@@ -4,14 +4,35 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Resources</a></li>
+    <li>@Html.ActionLink("Inventory", "Index", "Inventory")</li>
+    <li class="active">Inventory Details</li>
+</ol>
 
-<div>
-    <h4>Inventory</h4>
-    <hr />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-6 col-md-4">
+                <div class="input-group"> 
+                <div class="col-xs-6 col-md-6">
+                    <h3 class="panel-title" style="color:black;"><b>Inventory Details </b> </h3>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <a href="@Url.Action("Edit", new { id = Model.InventoryID})">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <span class="sr-only">Edit</span>
+                    </a>
+                </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.InvDescr)
+            @Html.DisplayNameFor(model => model.InvDescr) |
         </dt>
 
         <dd>
@@ -19,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InvQty)
+            @Html.DisplayNameFor(model => model.InvQty) |
         </dt>
 
         <dd>
@@ -27,7 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InvDatePurchased)
+            @Html.DisplayNameFor(model => model.InvDatePurchased) |
         </dt>
 
         <dd>
@@ -35,7 +56,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InvCode)
+            @Html.DisplayNameFor(model => model.InvCode) |
         </dt>
 
         <dd>
@@ -43,7 +64,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InvSIUnit)
+            @Html.DisplayNameFor(model => model.InvSIUnit) |
         </dt>
 
         <dd>
@@ -51,7 +72,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InventoryType.InvTypeDescr)
+            @Html.DisplayNameFor(model => model.InventoryType.InvTypeDescr) |
         </dt>
 
         <dd>
@@ -60,7 +81,19 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.InventoryID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+            @using (Html.BeginForm("Index", "Inventory", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="col-xs-6 col-md-5">
+                    <div class=input-group>
+                        <div class="input-group-btn">
+                            <button class="btn btn-success" type="submit">
+                                <span class="glyphicon glyphicon-arrow-left"></span>
+                                Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+</div>

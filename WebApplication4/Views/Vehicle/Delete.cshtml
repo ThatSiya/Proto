@@ -12,6 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.VehName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.VehYear)
         </dt>
 
@@ -52,14 +60,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RegNum)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RegNum)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.VehLicenseNum)
         </dt>
 
@@ -89,6 +89,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.VehServiceInterval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehServiceIntervalUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehServiceIntervalUnit)
         </dd>
 
         <dt>
