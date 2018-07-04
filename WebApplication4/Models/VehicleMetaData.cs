@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using PagedList;
 
 namespace WebApplication4.Models
 {
@@ -11,7 +12,6 @@ namespace WebApplication4.Models
 
         [Key]
         public int VehicleID { get; set; }
-
 
         [Required(ErrorMessage = "Year cannot be blank")]
         [Display(Name = "Year")]

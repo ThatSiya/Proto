@@ -16,6 +16,7 @@ namespace WebApplication4.Controllers
     {
         private FarmDbContext db = new FarmDbContext();
 
+        //GET: Resources/ActionPage
         public ActionResult ActionPage()
         {
             InventoryIndexViewModel viewModel = new InventoryIndexViewModel();
@@ -45,8 +46,8 @@ namespace WebApplication4.Controllers
 
             //group search results into types and count how many items in each type
             viewModel.InvTypesWithCount = from matchingInventories in inventories
-                                          where
-                                          matchingInventories.InvTypeID != null
+                                          //where
+                                          //matchingInventories.InvTypeID != null
                                           group matchingInventories by
                                           matchingInventories.InventoryType.InvTypeDescr into
                                           InvTypeGroup
