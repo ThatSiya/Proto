@@ -27,5 +27,11 @@ namespace WebApplication4.Models
         [RegularExpression("[0-9]+", ErrorMessage = "Service Mileage must be numeric")]
         [Range(minimum: 1, maximum: 99999999, ErrorMessage = "Service Mileage cannot be negative or zero")]
         public int VehicleService_Mileage { get; set; }
+
+        [Required(ErrorMessage = "Service Unit cannot be blank")]
+        [Display(Name = "Service Record Unit")]
+        [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
+        [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Description must be alphabetic")]
+        public string VehicleServiceRecordUnit { get; set; }
     }
 }

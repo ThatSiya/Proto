@@ -16,7 +16,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Title cannot be blank")]
         [Display(Name = "Title")]
-        [StringLength(maximumLength: 4, ErrorMessage = "Max 4 characters reached")]
+        [StringLength(maximumLength: 8, ErrorMessage = "Max 8 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Title must be alphabetic")]
         public string TitleDescr { get; set; }
     }

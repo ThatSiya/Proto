@@ -1,32 +1,61 @@
-﻿
+﻿@model WebApplication4.ViewModels.InventoryIndexViewModel
+
 @{
     ViewBag.Title = "ActionPage";
 }
+<style>
+    .btn {
+        margin-top: 10px !important;
+        font-weight: 600;
+    }
 
-<ol class="breadcrumb">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Resources</a></li>
-    <li class="active">Action Page</li>
-</ol>
+    .card {
+        text-align: center;
+        background-color: #99cfec;
+        padding: 20px;
+        max-width: 300px;
+        min-width: 300px;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
 
+    #cardRight {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+</style>
+<p style="text-align: center"><span class="glyphicon glyphicon-th-large" style="font-size: 3em"></span></p>
+<hr id="greenHR" />
+<hr id="blueHR" style="margin-bottom: 10px; padding-bottom: 0" />
 <div class="row">
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="..." alt="...">
-            <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Manager your inventory with View, Edit and Delete options</p>
-                <p><a href="#" class="btn btn-primary" role="button">Manage Inventory</a></p>
+    <div class="col-xs-12 col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="http://www.placehold.it/200/200" alt="Inventories">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
             </div>
+            @using (Html.BeginForm("Index", "Inventory", FormMethod.Get))
+            {
+                <div class="card-body">
+                    <button type="button" class="btn btn-success btn-lg">
+                        <span class="glyphicon glyphicon-new-window"></span> Manage Inventory
+                    </button>
+                </div>
+            }
         </div>
     </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="..." alt="...">
-            <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Manage Types</a></p>
+    <div class="col-xs-12 col-sm-6">
+        <div class="card" style="width: 18rem;" id="cardRight">
+            <img class="card-img-top" src="http://www.placehold.it/200/200" alt="Inventory Types">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-success btn-lg">
+                    <span class="glyphicon glyphicon-new-window"></span> Manage Inventory Types
+                </button>
             </div>
         </div>
     </div>

@@ -18,7 +18,8 @@ namespace WebApplication4.Controllers
 
         public ActionResult ActionPage()
         {
-            return View();
+            InventoryIndexViewModel viewModel = new InventoryIndexViewModel();
+            return View(viewModel);
         }
         // GET: Inventory
         public ActionResult Index(string inventorytype,string search, int? page)

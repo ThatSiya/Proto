@@ -14,7 +14,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Field Stage cannot be blank")]
         [Display(Name = "Field Stage")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 20, ErrorMessage = "Max 20 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Field Stage description must be alphabetic")]
         public string FieldStageDescr { get; set; }
     }

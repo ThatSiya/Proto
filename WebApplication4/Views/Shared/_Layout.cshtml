@@ -24,7 +24,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @*Display admin link only to the users in the Admin role*@
-@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+@*@if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
@@ -39,18 +39,20 @@
                             <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
-}
+}*@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+                            <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
+                            <li>@Html.ActionLink("Reports", "Index", "Report")</li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Farm <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Employees", "Index", "FarmWorker")</li>
-                            <li>@Html.ActionLink("Inventory", "Index", "Inventory")</li>
-                            <li>@Html.ActionLink("Vehicle", "Index", "Vehicle")</li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li>@Html.ActionLink("Farms", "Index", "Farm")</li> @*link to actionPage*@
+                            <li>@Html.ActionLink("Crops", "Index", "Crop")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -61,7 +63,7 @@
                             <li>@Html.ActionLink("Vehicle", "Index", "Vehicle")</li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Procurement</li>
-                            <li><a href="#">Suppliers</a></li>
+                            <li>@Html.ActionLink("Suppliers", "Index","Supplier")</li>
                         </ul>
                     </li>
                 </ul>

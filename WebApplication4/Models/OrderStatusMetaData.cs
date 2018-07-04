@@ -15,7 +15,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Status cannot be blank")]
         [Display(Name = "Status")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 20, ErrorMessage = "Max 20 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Status must be alphabetic")]
         public string OrderStatusDescr { get; set; }
 

@@ -24,6 +24,7 @@ namespace WebApplication4.Models
     
         public int FarmWorkerTypeID { get; set; }
         public string FarmWorkerTypeDescr { get; set; }
+        public string FarmWorkerTypeNotes { get; set; }
         public string FarmWorkerTypeActiveStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

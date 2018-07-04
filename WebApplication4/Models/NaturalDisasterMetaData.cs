@@ -15,13 +15,13 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Natural Disaster cannot be blank")]
         [Display(Name = "Natural Disaster")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Natural Disaster description must be alphabetic")]
         public string NatDisasterDescr { get; set; }
 
         [Required(ErrorMessage = "Natural Disaster Precaution cannot be blank")]
         [Display(Name = "Natural Disaster Precaution")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
         public string NatDisasterPrecautions { get; set; }
 
         [Required(ErrorMessage = "Natural Disaster Potential Effect cannot be blank")]

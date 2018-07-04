@@ -13,7 +13,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Country cannot be blank")]
         [Display(Name = "Country")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 25, ErrorMessage = "Max 25 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Country must be alphabetic")]
         public string CountryDescr { get; set; }
     }

@@ -21,6 +21,7 @@ namespace WebApplication4.Models
         {
             this.AttendenceSheets = new HashSet<AttendenceSheet>();
             this.Audits = new HashSet<Audit>();
+            this.Logs = new HashSet<Log>();
             this.Orders = new HashSet<Order>();
         }
     
@@ -38,6 +39,8 @@ namespace WebApplication4.Models
         public virtual ICollection<AttendenceSheet> AttendenceSheets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Audit> Audits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Log> Logs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
         public virtual UserAccessLevel UserAccessLevel { get; set; }

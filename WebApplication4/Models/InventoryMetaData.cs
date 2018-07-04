@@ -15,7 +15,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Description cannot be blank")]
         [Display(Name = "Description")]
-        [StringLength(maximumLength:100, ErrorMessage ="Max 100 characters reached")]
+        [StringLength(maximumLength:35, ErrorMessage ="Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage ="Description must be made up of letters and numbers only")]
         public string InvDescr { get; set; }
 
@@ -31,14 +31,15 @@ namespace WebApplication4.Models
         [DataType(DataType.Date)]
         public System.DateTime InvDatePurchased { get; set; }
 
-        [Required(ErrorMessage = "Item code cannot be blank")]
-        [Display(Name = "Item Code")]
-        [RegularExpression("[0-9]+", ErrorMessage ="Item code must be numeric")]
+        [Required(ErrorMessage = "Inventory Code cannot be blank")]
+        [Display(Name = "Inventory Code")]
+        [StringLength(maximumLength: 10, ErrorMessage = "Max 10 characters reached")]
+        [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Inventory Code must be made up of letters and numbers only")]
         public string InvCode { get; set; }
 
         [Required(ErrorMessage = "Unit cannot be blank")]
         [Display(Name = "Unit")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Unit must be alphabetic")]
         public string InvSIUnit { get; set; }
 

@@ -80,7 +80,11 @@
           <ScalarProperty Name="CustomerContactNum" ColumnName="CustomerContactNum" />
           <ScalarProperty Name="ContactPersonalEmailAddress" ColumnName="ContactPersonalEmailAddress" />
           <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-          <ScalarProperty Name="CompanyPhysAddress" ColumnName="CompanyPhysAddress" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Surburb" ColumnName="Surburb" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
           <ScalarProperty Name="CompanyTelNum" ColumnName="CompanyTelNum" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -101,6 +105,7 @@
           <ScalarProperty Name="FarmWorkerFName" ColumnName="FarmWorkerFName" />
           <ScalarProperty Name="FarmWorkerLName" ColumnName="FarmWorkerLName" />
           <ScalarProperty Name="FarmWorkerContactNum" ColumnName="FarmWorkerContactNum" />
+          <ScalarProperty Name="FarmWorkerImg" ColumnName="FarmWorkerImg" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Surburb" ColumnName="Surburb" />
           <ScalarProperty Name="City" ColumnName="City" />
@@ -120,6 +125,7 @@
         <MappingFragment StoreEntitySet="FarmWorkerType">
           <ScalarProperty Name="FarmWorkerTypeID" ColumnName="FarmWorkerTypeID" />
           <ScalarProperty Name="FarmWorkerTypeDescr" ColumnName="FarmWorkerTypeDescr" />
+          <ScalarProperty Name="FarmWorkerTypeNotes" ColumnName="FarmWorkerTypeNotes" />
           <ScalarProperty Name="FarmWorkerTypeActiveStatus" ColumnName="FarmWorkerTypeActiveStatus" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -233,7 +239,7 @@
           <ScalarProperty Name="LogID" ColumnName="LogID" />
           <ScalarProperty Name="LogInTimeStamp" ColumnName="LogInTimeStamp" />
           <ScalarProperty Name="LogOutTimeStamp" ColumnName="LogOutTimeStamp" />
-          <ScalarProperty Name="UserAccessLevelID" ColumnName="UserAccessLevelID" />
+          <ScalarProperty Name="User" ColumnName="User" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -326,6 +332,7 @@
           <ScalarProperty Name="SaleQty" ColumnName="SaleQty" />
           <ScalarProperty Name="SaleAmnt" ColumnName="SaleAmnt" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="PurchaseAgreement" ColumnName="PurchaseAgreement" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -462,6 +469,7 @@
           <ScalarProperty Name="VehicleService_Date" ColumnName="VehicleService_Date" />
           <ScalarProperty Name="VehicleService_Cost" ColumnName="VehicleService_Cost" />
           <ScalarProperty Name="VehicleService_Mileage" ColumnName="VehicleService_Mileage" />
+          <ScalarProperty Name="VehicleServiceRecordUnit" ColumnName="VehicleServiceRecordUnit" />
           <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
         </MappingFragment>
       </EntityTypeMapping>

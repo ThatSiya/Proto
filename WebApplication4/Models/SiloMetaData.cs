@@ -15,7 +15,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Silo cannot be blank")]
         [Display(Name = "Silo")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 20, ErrorMessage = "Max 20 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Silo description must be alphabetic")]
         public string SiloDescr { get; set; }
 
@@ -28,6 +28,12 @@ namespace WebApplication4.Models
         [Display(Name = "Silo Rental Fee (P/A)")]
         [RegularExpression(@"^[1-9]\d{0,2}(\.\d{3})*(,\d+)?$", ErrorMessage = "Silo Rental Fee (P/A) must be entered in decimal form")]
         public Nullable<decimal> SiloRentalFeePA { get; set; }
+
+        [Required(ErrorMessage = "Silo Status cannot be blank")]
+        [Display(Name = "Silo Status")]
+        [StringLength(maximumLength: 20, ErrorMessage = "Max 20 characters reached")]
+        [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Silo Status description must be alphabetic")]
+        public string SiloStatus { get; set; }
 
     }
 }

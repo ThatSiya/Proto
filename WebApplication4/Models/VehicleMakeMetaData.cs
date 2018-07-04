@@ -14,7 +14,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Vehicle Make cannot be blank")]
         [Display(Name = "Vehicle Make")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 30, ErrorMessage = "Max 30 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Vehicle Make description must be alphabetic")]
         public string VehMakeDescr { get; set; }
 

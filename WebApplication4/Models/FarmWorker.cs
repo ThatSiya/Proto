@@ -26,6 +26,7 @@ namespace WebApplication4.Models
         public string FarmWorkerFName { get; set; }
         public string FarmWorkerLName { get; set; }
         public string FarmWorkerContactNum { get; set; }
+        public string FarmWorkerImg { get; set; }
         public string Address { get; set; }
         public string Surburb { get; set; }
         public string City { get; set; }

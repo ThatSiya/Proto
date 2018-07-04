@@ -27,6 +27,7 @@ namespace WebApplication4.Models
         public decimal SaleQty { get; set; }
         public decimal SaleAmnt { get; set; }
         public int CustomerID { get; set; }
+        public string PurchaseAgreement { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

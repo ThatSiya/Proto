@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
+using WebApplication4.Models;
 using WebApplication4.ViewModels;
 using PagedList;
 
@@ -17,38 +18,41 @@ namespace WebApplication4.Controllers
         private FarmDbContext db = new FarmDbContext();
 
         // GET: Vehicle
-        public ActionResult Index(string vehicletype,string search, int? page)
+        public ActionResult Index(string vehicletype, string search, int? page)
         {
+            //instatiate new view model
             VehicleIndexViewModel viewModel = new VehicleIndexViewModel();
-            var vehicles = db.Vehicles.Include(v => v.VehicleType);
 
+            //select vehicles
+            var vehicles = db.Vehicles.Include(v => v.VehicleType).Include(v => v.VehicleMake);
+            //var farmWorkers = db.FarmWorkers.Include(f => f.FarmWorkerType).Include(f => f.Gender).Include(f => f.Title);
+
+            //do search and save search string in view model
             if (!String.IsNullOrEmpty(search))
             {
                 vehicles = vehicles.Where(v => v.VehName.Contains(search) ||
-                v.VehicleType.VehTypeDescr.Contains(search));
-                ViewBag.Search = search;
+                    v.VehModel.Contains(search) || v.VehicleType.VehTypeDescr.Contains(search));
+                viewModel.Search = search;
             }
+
+            //group search results into types and count how many workers in each type
             viewModel.VehTypesWithCount = from matchingVehicles in vehicles
-                                          where
-                                          matchingVehicles.VehTypeID != null
-                                          group matchingVehicles by
-                                          matchingVehicles.VehicleType.VehTypeDescr into
-                                          VehTypeGroup
-                                          select new VehicleTypesWithCount()
-                                          {
-                                              VehTypeDescr = VehTypeGroup.Key,
-                                              VehicleCount = VehTypeGroup.Count()
-                                          };
+                                             where
+                                             matchingVehicles.VehicleID != null
+                                             group matchingVehicles by
+                                             matchingVehicles.VehicleType.VehTypeDescr into
+                                             VehicleTypeGroup
+                                             select new VehicleTypesWithCount()
+                                             {
+                                                 VehTypeDescr = VehicleTypeGroup.Key,
+                                                 VehicleCount = VehicleTypeGroup.Count()
+                                             };
 
             if (!String.IsNullOrEmpty(vehicletype))
             {
-                vehicles = vehicles.Where(i => i.VehicleType.VehTypeDescr == vehicletype);
+                vehicles = vehicles.Where(v => v.VehicleType.VehTypeDescr == vehicletype);
                 viewModel.VehicleType = vehicletype;
             }
-            //ViewBag.InventoryType = new SelectList(inventorytypes);
-            //Search is stored in the ViewBag to allow it to be reused when a user clicks on the: inventory type filter
-
-            //viewModel.Inventories = inventories.OrderBy(c => c.InvDescr);
 
             //sort results
             vehicles = vehicles.OrderBy(i => i.VehName);

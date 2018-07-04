@@ -15,7 +15,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Gender cannot be blank")]
         [Display(Name = "Gender")]
-        [StringLength(maximumLength: 10, ErrorMessage = "Max 10 characters reached")]
+        [StringLength(maximumLength: 8, ErrorMessage = "Max 8 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Gender description must be alphabetic")]
         public string GenderDescr { get; set; }
 

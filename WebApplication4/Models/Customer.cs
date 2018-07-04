@@ -28,7 +28,11 @@ namespace WebApplication4.Models
         public string CustomerContactNum { get; set; }
         public string ContactPersonalEmailAddress { get; set; }
         public string CompanyName { get; set; }
-        public string CompanyPhysAddress { get; set; }
+        public string Address { get; set; }
+        public string Surburb { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string Province { get; set; }
         public string CompanyTelNum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

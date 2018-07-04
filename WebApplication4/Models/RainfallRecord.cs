@@ -18,7 +18,7 @@ namespace WebApplication4.Models
     {
         public int RainFallRecID { get; set; }
         public System.DateTime RecordDate { get; set; }
-        public decimal RecordMeasurement { get; set; }
+        public int RecordMeasurement { get; set; }
         public int LandID { get; set; }
     
         public virtual Land Land { get; set; }

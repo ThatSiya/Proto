@@ -1,0 +1,50 @@
+﻿@model WebApplication4.Models.NaturalDisaster
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NaturalDisaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NatDisasterDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NatDisasterDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NatDisasterPrecautions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NatDisasterPrecautions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NatDisasterPotentialEffects)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NatDisasterPotentialEffects)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NatDisasterSigns)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NatDisasterSigns)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NatDisasterID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

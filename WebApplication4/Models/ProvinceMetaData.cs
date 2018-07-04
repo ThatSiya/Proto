@@ -15,7 +15,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Province Description cannot be blank")]
         [Display(Name = "Province")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 36, ErrorMessage = "Max 36 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Province Description  must be alphabetic")]
         public string ProvinceDescr { get; set; }
     }

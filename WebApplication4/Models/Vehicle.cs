@@ -32,7 +32,7 @@ namespace WebApplication4.Models
         public string VehLicenseNum { get; set; }
         public Nullable<System.DateTime> VehExpDate { get; set; }
         public int VehCurrMileage { get; set; }
-        public string VehServiceInterval { get; set; }
+        public int VehServiceInterval { get; set; }
         public string VehServiceIntervalUnit { get; set; }
         public System.DateTime VehNextService { get; set; }
         public int FarmID { get; set; }

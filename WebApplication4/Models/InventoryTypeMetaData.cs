@@ -15,7 +15,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage ="Inventory type cannot be blank")]
         [Display(Name = "Inventory Type")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Inventory type description must be alphabetic")]
         public string InvTypeDescr { get; set; }
     }

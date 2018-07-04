@@ -14,7 +14,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Farm Name cannot be blank")]
         [Display(Name = "Farm Name")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Farm Name must be alphabetic")]
         //Regex should only include alphabetic numbers ? 
         public string FarmName { get; set; }
