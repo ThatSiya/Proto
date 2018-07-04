@@ -16,6 +16,11 @@ namespace WebApplication4.Controllers
     {
         private FarmDbContext db = new FarmDbContext();
 
+        public ActionResult ActionPage()
+        {
+            return View();
+        }
+
         // GET: FarmWorker
         public ActionResult Index(string farmworkertype, string search, int? page)
         {
