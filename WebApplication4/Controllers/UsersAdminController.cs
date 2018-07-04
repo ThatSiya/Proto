@@ -119,5 +119,10 @@ namespace WebApplication4.Controllers
                 return View();
             }
         }
+
+        public ActionResult ActionPage()
+        {
+            return View();
+        }
     }
 }

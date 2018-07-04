@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,4 +48,53 @@ namespace WebApplication4.ViewModels
             }
         }
     }
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using PagedList;
+using WebApplication4.Models;
+using System.Web.Mvc;
+
+namespace WebApplication4.ViewModels
+{
+    public class VehicleIndexViewModel
+    {
+
+        public IPagedList<Vehicle> Vehicles { get; set; } //IPageList
+        //public IQueryable<Vehicle> Vehicles { get; set; }
+        public string Search { get; set; }
+        public IEnumerable<VehicleTypesWithCount> VehTypesWithCount { get; set; }
+        public string VehicleType { get; set; }
+
+        public IEnumerable<SelectListItem> VehTypeFilterItems
+        {
+            get
+            {
+                var allInvTypes = VehTypesWithCount.Select(tc => new SelectListItem
+                {
+                    Value = tc.VehTypeDescr,
+                    Text = tc.VehDescrWithCount
+                });
+
+                return allInvTypes;
+            }
+        }
+    }
+    //Holds InvType name and number of items within that VehType
+    public class VehicleTypesWithCount
+    {
+        public int VehicleCount { get; set; }
+        public string VehTypeDescr { get; set; }
+        public string VehDescrWithCount
+        {
+
+            get
+            {
+                return VehTypeDescr + "(" + VehicleCount.ToString() + ")";
+            }
+        }
+    }
+>>>>>>> a76d0b45b0c9eee8408ff5a39f407312bf12f4b6
 }
