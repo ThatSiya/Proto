@@ -241,6 +241,7 @@
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Controllers\VehicleServiceController.cs" />
     <Compile Include="Controllers\VehicleTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -958,6 +959,11 @@
     <Content Include="Views\Silo\Details.cshtml" />
     <Content Include="Views\Silo\Edit.cshtml" />
     <Content Include="Views\Silo\Index.cshtml" />
+    <Content Include="Views\Vehicle\EditMileage.cshtml" />
+    <Content Include="Views\VehicleService\Details.cshtml" />
+    <Content Include="Views\VehicleService\Edit.cshtml" />
+    <Content Include="Views\VehicleService\Index.cshtml" />
+    <Content Include="Views\Vehicle\CreateVehicleService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

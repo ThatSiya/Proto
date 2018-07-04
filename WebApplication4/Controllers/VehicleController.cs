@@ -143,6 +143,95 @@ namespace WebApplication4.Controllers
             return View(vehicle);
         }
 
+        //Update Vehicle Mileage
+
+        // GET: Vehicle/EditMileage/5
+        public ActionResult EditMileage(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Vehicle vehicle = db.Vehicles.Find(id);
+            if (vehicle == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.FarmID = new SelectList(db.Farms, "FarmID", "FarmName", vehicle.FarmID);
+            ViewBag.VehMakeID = new SelectList(db.VehicleMakes, "VehMakeID", "VehMakeDescr", vehicle.VehMakeID);
+            ViewBag.VehTypeID = new SelectList(db.VehicleTypes, "VehTypeID", "VehTypeDescr", vehicle.VehTypeID);
+            return View(vehicle);
+        }
+
+        //Capture VehicleService
+        // GET: VehicleService/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    VehicleService vehicleService = db.VehicleServices.Find(id);
+        //    if (vehicleService == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(vehicleService);
+        //}
+
+        // GET: VehicleService/Create
+        public ActionResult CreateVehicleService(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Vehicle vehicle = db.Vehicles.Find(id);
+            if (vehicle == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehName", vehicle.VehicleID);
+            return View();
+        }
+
+        // POST: VehicleService/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateVehicleService([Bind(Include = "VehicleServiceID,VehicleService_Date,VehicleService_Cost,VehicleService_Mileage,VehicleServiceRecordUnit,VehicleID")] VehicleService vehicleService)
+        {
+            if (ModelState.IsValid)
+            {
+                db.VehicleServices.Add(vehicleService);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehName", vehicleService.VehicleID);
+            return View(vehicleService);
+        }
+
+        // POST: Vehicle/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMileage([Bind(Include = "VehicleID,VehName,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehServiceIntervalUnit,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(vehicle).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.FarmID = new SelectList(db.Farms, "FarmID", "FarmName", vehicle.FarmID);
+            ViewBag.VehMakeID = new SelectList(db.VehicleMakes, "VehMakeID", "VehMakeDescr", vehicle.VehMakeID);
+            ViewBag.VehTypeID = new SelectList(db.VehicleTypes, "VehTypeID", "VehTypeDescr", vehicle.VehTypeID);
+            return View(vehicle);
+        }
+
         // GET: Vehicle/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -155,6 +244,16 @@ namespace WebApplication4.Controllers
             {
                 return HttpNotFound();
             }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //VehicleService vehicleService = db.VehicleServices.Find(id);
+            //if (vehicleService == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(vehicleService);
             return View(vehicle);
         }
 

@@ -8,7 +8,7 @@
 <ol class="breadcrumb">
     <li><a href="#">Home</a></li>
     <li><a href="#">Resources</a></li>
-    <li class="active">Inventory</li>
+    <li class="active">Vehicles</li>
 </ol>
 
 <div class="well">
@@ -175,11 +175,19 @@
                 </a>
                 <a href="@Url.Action("Details", new { id = item.VehicleID })">
                     <i class="glyphicon glyphicon-zoom-in"></i>
-                    <span class="sr-only">Edit</span>
+                    <span class="sr-only">Details</span>
                 </a>
                 <a href="@Url.Action("Delete", new { id = item.VehicleID })">
                     <i class="glyphicon glyphicon-trash"></i>
-                    <span class="sr-only">Edit</span>
+                    <span class="sr-only">Delete</span>
+                </a>
+                <a href="@Url.Action("EditMileage", new { id = item.VehicleID })">
+                    <i class="glyphicon glyphicon-stats"></i>
+                    <span class="sr-only">EditMileage</span>
+                </a>
+                <a href="@Url.Action("CreateVehicleService", new { id = item.VehicleID })">
+                    <i class="glyphicon glyphicon-wrench"></i>
+                    <span class="sr-only">VehicleService</span>
                 </a>
             </td>
         </tr>

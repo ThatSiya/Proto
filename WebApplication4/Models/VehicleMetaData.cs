@@ -16,7 +16,7 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Year cannot be blank")]
         [Display(Name = "Year")]
         [RegularExpression("[0-9]+", ErrorMessage = "Year must be numeric")]
-        [Range(minimum: 4, maximum: 4, ErrorMessage = "Year has to be in the format 'YYYY'")]
+        //[Range(minimum: 4, maximum: 4, ErrorMessage = "Year has to be in the format 'YYYY'")]
         public string VehYear { get; set; }
 
         [Required(ErrorMessage = "Model cannot be blank")]

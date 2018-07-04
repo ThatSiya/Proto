@@ -15,6 +15,8 @@ namespace WebApplication4.ViewModels
         //public IQueryable<Vehicle> Vehicles { get; set; }
         public string Search { get; set; }
         public IEnumerable<VehicleTypesWithCount> VehTypesWithCount { get; set; }
+        public List<VehicleService> VehicleServices { get; set; }
+        public Vehicle Vehicle { get; set; }
         public string VehicleType { get; set; }
 
         public IEnumerable<SelectListItem> VehTypeFilterItems
