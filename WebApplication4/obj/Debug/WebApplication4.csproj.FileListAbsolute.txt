@@ -280,3 +280,4 @@ D:\Proto-GitHub-Repo\Proto\WebApplication4\obj\Debug\WebApplication4.Migrations.
 D:\Proto-GitHub-Repo\Proto\WebApplication4\obj\Debug\WebApplication4.csproj.GenerateResource.Cache
 D:\Proto-GitHub-Repo\Proto\WebApplication4\obj\Debug\WebApplication4.dll
 D:\Proto-GitHub-Repo\Proto\WebApplication4\obj\Debug\WebApplication4.pdb
+D:\Proto-GitHub-Repo\Proto\WebApplication4\bin\GitHub.dll

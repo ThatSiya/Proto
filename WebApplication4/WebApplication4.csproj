@@ -962,6 +962,7 @@
     <Content Include="Views\Silo\Details.cshtml" />
     <Content Include="Views\Silo\Edit.cshtml" />
     <Content Include="Views\Silo\Index.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
