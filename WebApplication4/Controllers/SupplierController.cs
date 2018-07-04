@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
+using WebApplication4.ViewModels;
+using PagedList;
 
 namespace WebApplication4.Controllers
 {
@@ -15,9 +17,25 @@ namespace WebApplication4.Controllers
         private FarmDbContext db = new FarmDbContext();
 
         // GET: Supplier
-        public ActionResult Index()
+        public ActionResult Index(string search, int? page)
         {
-            return View(db.Suppliers.ToList());
+            SupplierIndexViewModel viewModel = new SupplierIndexViewModel();
+            //select suppliers
+            var suppliers = db.Suppliers.Include(s => s.SupplierName);
+            if (!String.IsNullOrEmpty(search))
+            {
+                suppliers = suppliers.Where(s => s.SupplierName.Contains(search));
+                //ViewBag.Search = search; //store current search in ViewBag
+                viewModel.Search = search;
+            }
+            //sort results
+            suppliers = suppliers.OrderBy(s => s.SupplierName);
+
+            //Paging:
+            const int PageItems = 5;
+            int currentPage = (page ?? 1);
+            viewModel.Suppliers = suppliers.ToPagedList(currentPage, PageItems);
+            return View(viewModel);
         }
 
         // GET: Supplier/Details/5

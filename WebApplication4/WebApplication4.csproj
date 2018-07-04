@@ -465,6 +465,7 @@
     <Compile Include="ViewModels\FarmWorkerIndexViewModel.cs" />
     <Compile Include="ViewModels\InventoryIndexViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewModels\SupplierIndexViewModel.cs" />
     <Compile Include="ViewModels\VehicleIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

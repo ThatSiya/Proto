@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using PagedList;
 
 namespace WebApplication4.Models
 {
@@ -11,7 +12,6 @@ namespace WebApplication4.Models
 
         [Key]
         public int SupplierID { get; set; }
-
 
         [Required(ErrorMessage = "Supplier Name cannot be blank")]
         [Display(Name = "Supplier Name")]

@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
-using WebApplication4.Models;
 using WebApplication4.ViewModels;
 using PagedList;
 
@@ -37,8 +36,8 @@ namespace WebApplication4.Controllers
 
             //group search results into types and count how many workers in each type
             viewModel.VehTypesWithCount = from matchingVehicles in vehicles
-                                             where
-                                             matchingVehicles.VehicleID != null
+                                             //where
+                                             //matchingVehicles.VehicleID != null
                                              group matchingVehicles by
                                              matchingVehicles.VehicleType.VehTypeDescr into
                                              VehicleTypeGroup

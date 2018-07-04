@@ -36,8 +36,8 @@ namespace WebApplication4.Controllers
 
             //group search results into types and count how many workers in each type
             viewModel.WorkerTypesWithCount = from matchingFarmWorkers in farmWorkers
-                                             where
-                                             matchingFarmWorkers.FarmWorkerTypeID != null
+                                             //where
+                                             //matchingFarmWorkers.FarmWorkerTypeID != null
                                              group matchingFarmWorkers by
                                              matchingFarmWorkers.FarmWorkerType.FarmWorkerTypeDescr into
                                              FarmWorkerTypeGroup

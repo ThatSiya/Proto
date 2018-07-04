@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebApplication4.Models.Supplier>
+﻿@model WebApplication4.ViewModels.SupplierIndexViewModel
+@using PagedList.Mvc @*PageList Library*@
+
 
 @{
     ViewBag.Title = "Index";
@@ -43,74 +45,102 @@
 
 <table class="table table-condensed table-striped">
     <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Surburb)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Province)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierEmailAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierPhoneNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierCellNum)
-        </th>
-        <th>
-            Actions
-        </th>
-    </tr>
-</thead>
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surburb)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Province)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierEmailAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierPhoneNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierCellNum)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SupplierID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SupplierID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SupplierID })
-        </td>
-    </tr>
-}
+        <tr>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Suppliers.First().SupplierName)</span>
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surburb)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Province)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupplierEmailAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupplierPhoneNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupplierCellNum)
+                </th>*@
+            <th>
+                <span style="color:green;">Actions</span>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Suppliers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surburb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Province)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierEmailAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierPhoneNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierCellNum)
+                </td>*@
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.SupplierID })">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+                <a href="@Url.Action("Details", new { id = item.SupplierID })">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.SupplierID })">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You searched for '" + Model.Search + "' found ")@Model.Suppliers.TotalItemCount suppliers
+</p>
+
+@*Generate paging links*@
+<div>
+    @*wrap in div for presentation purpose*@
+    Page @(Model.Suppliers.PageCount < Model.Suppliers.PageNumber ? 0 : @*evaluate whether or not there are any pages to display*@
+    Model.Suppliers.PageNumber) of @Model.Suppliers.PageCount @*Display Page x of y*@
+    @Html.PagedListPager(Model.Suppliers, page => Url.Action("Index",@*Takes list of suppliers and produces a hyperlink to each page*@
+    new
+    {
+        //farmworkertype = @Model.InventoryType,
+        Search = @Model.Search,
+        page
+    }))
+</div>
