@@ -638,6 +638,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Farm Worker - Circle.png" />
+    <Content Include="Images\Farm Worker - Round Corner.png" />
+    <Content Include="Images\Farm Worker - Square.jpg" />
+    <Content Include="Images\Farm Worker - Transparent.png" />
     <Content Include="Models\FarmDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FarmDbModel.edmx</DependentUpon>
@@ -963,6 +967,10 @@
     <Content Include="Views\Silo\Edit.cshtml" />
     <Content Include="Views\Silo\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\FarmWorker\ActionPage.cshtml" />
+    <Content Include="Views\Vehicle\ActionPage.cshtml" />
+    <Content Include="Views\UsersAdmin\ActionPage.cshtml" />
+    <Content Include="Views\Supplier\ActionPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

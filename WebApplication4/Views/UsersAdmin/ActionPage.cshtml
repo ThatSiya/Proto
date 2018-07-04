@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Inventory - Action Page";
+﻿
+@{
+    ViewBag.Title = "Users - Action Page";
 }
 <style>
     .btn {
@@ -15,12 +16,13 @@
         min-width: 300px;
         margin: 0 auto;
         margin-top: 10px;
-        border-radius: 5%;
     }
 
     #cardRight {
         margin: 0 auto;
         margin-top: 10px;
+    }
+
     }
 </style>
 <p style="text-align: center"><span class="glyphicon glyphicon-th-large" style="font-size: 3em"></span></p>
@@ -29,33 +31,36 @@
 <div class="row">
     <div class="col-xs-12 col-sm-6">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="http://www.placehold.it/200/200" alt="Inventories">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"></p>
-            </div>
-            @using (Html.BeginForm("Index", "Inventory", FormMethod.Get))
-            {
-                <div class="card-body">
-                    <button type="button" class="btn btn-success btn-lg">
-                        <span class="glyphicon glyphicon-new-window"></span> Manage Inventory
-                    </button>
-                </div>
-            }
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-        <div class="card" style="width: 18rem;" id="cardRight">
-            <img class="card-img-top" src="http://www.placehold.it/200/200" alt="Inventory Types">
+            <img class="card-img-top" src="http://www.placehold.it/200/200" alt="Users">
             <div class="card-body">
                 <h5 class="card-title"></h5>
                 <p class="card-text"></p>
             </div>
             <div class="card-body">
                 <button type="button" class="btn btn-success btn-lg">
-                    <span class="glyphicon glyphicon-new-window"></span> Manage Inventory Types
+                    <span class="glyphicon glyphicon-new-window"></span> Manage Users
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="card" style="width: 18rem;" id="cardRight">
+            <img class="card-img-top" src="http://www.placehold.it/200/200" alt="User Access Levels">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-success btn-lg">
+                    <span class="glyphicon glyphicon-new-window"></span> Manage User Access Levels
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+

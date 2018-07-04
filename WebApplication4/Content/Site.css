@@ -22,3 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#greenHR {
+  margin-top: 20px!important;
+  margin-bottom: 2px;
+  border: 0!important;
+  border-top: 5px solid #28b62c!important;
+}
+
+#blueHR {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 5px solid #0288d1;
+}
