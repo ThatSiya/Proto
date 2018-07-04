@@ -1,111 +1,206 @@
-﻿@model IEnumerable<WebApplication4.Models.Vehicle>
+﻿@model WebApplication4.ViewModels.VehicleIndexViewModel
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Resources</a></li>
+    <li class="active">Inventory</li>
+</ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.VehYear)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehModel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehEngineNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehVinNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehRegNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehLicenseNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehExpDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehCurrMileage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehServiceInterval)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehNextService)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Farm.FarmName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehicleMake.VehMakeDescr)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VehicleType.VehTypeDescr)
-        </th>
-        <th></th>
-    </tr>
+<div class="well">
+    <div class="row">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehYear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehModel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehEngineNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehVinNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehRegNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehLicenseNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehExpDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehCurrMileage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehServiceInterval)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehNextService)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Farm.FarmName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleMake.VehMakeDescr)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleType.VehTypeDescr)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VehicleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VehicleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VehicleID })
-        </td>
-    </tr>
-}
+        <div class="col-xs-6 col-md-2">
+            @using (Html.BeginForm("Create", "Vehicle", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-success" type="submit">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Add Vehicle
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-xs-6 col-md-2">
+            @using (Html.BeginForm("Index", "VehicleType", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            Manage Types
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-xs-6 col-md-4">
+            @using (Html.BeginForm("Index", "Vehicle", FormMethod.Get))
+            {
+                <div class="input-group">
+                    @Html.Label("Filter by type:")
+                    <span>@Html.DropDownListFor(vm => vm.VehicleType, Model.VehTypeFilterItems, "All")</span>
+                    <button class="btn btn-info" type="submit">
+                        <span class="glyphicon glyphicon-filter"></span>
+                    </button>
+                </div>
+            }
+        </div>
+        <div class="col-xs-6 col-md-4">
+            @using (Html.BeginForm("Index", "Vehicle", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <span>@Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Enter search keyword or phrase" })</span>
+                    <div class="input-group-btn">
+                        <button class="btn btn-info" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<table class="table table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Vehicles.First().VehName)</span>
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehYear)
+                </th>*@
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Vehicles.First().VehModel)</span>
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehEngineNum)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehVinNum)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehRegNum)
+                </th>*@
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Vehicles.First().VehLicenseNum)</span>
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehExpDate)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehCurrMileage)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehServiceInterval)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehServiceIntervalUnit)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Vehicles.First().VehNextService)
+                </th>*@
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Vehicles.First().Farm.FarmName)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Vehicles.First().VehicleMake.VehMakeDescr)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Vehicles.First().VehicleType.VehTypeDescr)</span>
+            </th>
+            <th>
+                <span style="color:green;">Actions</span>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Vehicles)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehYear)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.VehModel)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehEngineNum)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehVinNum)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehRegNum)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.VehLicenseNum)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehExpDate)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehCurrMileage)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehServiceInterval)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehServiceIntervalUnit)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.VehNextService)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Farm.FarmName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleMake.VehMakeDescr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleType.VehTypeDescr)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.VehicleID })">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+                <a href="@Url.Action("Details", new { id = item.VehicleID })">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.VehicleID })">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You searched for '" + Model.Search + "' found ")@Model.Vehicles.TotalItemCount vehicles
+</p>
+
+@*Generate paging links*@
+<div>
+    @*wrap in div for presentation purpose*@
+    Page @(Model.Vehicles.PageCount < Model.Vehicles.PageNumber ? 0 : @*evaluate whether or not there are any pages to display*@
+    Model.Vehicles.PageNumber) of @Model.Vehicles.PageCount @*Display Page x of y*@
+    @Html.PagedListPager(Model.Vehicles, page => Url.Action("Index",@*Takes list of inventories and produces a hyperlink to each page*@
+    new
+    {
+        vehicletype = @Model.VehicleType,
+        Search = @Model.Search,
+        page
+    }))
+</div>

@@ -14,9 +14,14 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Vehicle type cannot be blank")]
         [Display(Name = "Vehicle Type")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 30, ErrorMessage = "Max 30 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Vehicle type description must be alphabetic")]
         public string VehTypeDescr { get; set; }
+
+        [Required(ErrorMessage = "Vehicle type image must be selected")]
+        [Display(Name = "Vehicle Type Image")]
+        [StringLength(maximumLength: 255, ErrorMessage = "Max 255 characters reached")]
+        public string VehTypeImg { get; set; }
 
     }
 }

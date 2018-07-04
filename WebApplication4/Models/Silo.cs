@@ -26,6 +26,7 @@ namespace WebApplication4.Models
         public string SiloDescr { get; set; }
         public Nullable<decimal> SiloCapacity { get; set; }
         public Nullable<decimal> SiloRentalFeePA { get; set; }
+        public string SiloStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SiloHarvest> SiloHarvests { get; set; }

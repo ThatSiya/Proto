@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(CropTypeMetaData))]
-
     public partial class CropType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +24,7 @@ namespace WebApplication4.Models
     
         public int CropTypeID { get; set; }
         public string CropTypeDescr { get; set; }
-        public string MaturityDays { get; set; }
+        public Nullable<int> MaturityDays { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plantation> Plantations { get; set; }

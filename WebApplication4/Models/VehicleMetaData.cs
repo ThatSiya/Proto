@@ -16,35 +16,42 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Year cannot be blank")]
         [Display(Name = "Year")]
         [RegularExpression("[0-9]+", ErrorMessage = "Year must be numeric")]
+        [Range(minimum: 4, maximum: 4, ErrorMessage = "Year has to be in the format 'YYYY'")]
         public string VehYear { get; set; }
 
         [Required(ErrorMessage = "Model cannot be blank")]
         [Display(Name = "Model")]
-        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        [StringLength(maximumLength: 30, ErrorMessage = "Max 30 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Model must be made up of letters and numbers only")]
         public string VehModel { get; set; }
 
+        [Required(ErrorMessage = "Vehicle name cannot be blank")]
+        [Display(Name = "Vehicle Name")]
+        [StringLength(maximumLength: 30, ErrorMessage = "Max 30 characters reached")]
+        [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Model must be made up of letters and numbers only")]
+        public string VehName { get; set; }
+
         [Required(ErrorMessage = "Engine Number cannot be blank")]
         [Display(Name = "Engine Number")]
-        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Engine Number must be made up of letters and numbers only")]
         public string VehEngineNum { get; set; }
 
         [Required(ErrorMessage = "VIN Number cannot be blank")]
         [Display(Name = "VIN Number")]
-        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        [StringLength(maximumLength: 17, ErrorMessage = "Max 17 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "VIN Number must be made up of letters and numbers only")]
         public string VehVinNum { get; set; }
 
         [Required(ErrorMessage = "Registration Number cannot be blank")]
         [Display(Name = "Registration Number")]
-        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        [StringLength(maximumLength: 12, ErrorMessage = "Max 12 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Registration Number must be made up of letters and numbers only")]
         public string VehRegNum { get; set; }
 
         [Required(ErrorMessage = "License Number cannot be blank")]
         [Display(Name = "License Number")]
-        [StringLength(maximumLength: 100, ErrorMessage = "Max 100 characters reached")]
+        [StringLength(maximumLength: 15, ErrorMessage = "Max 15 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "License Number must be made up of letters and numbers only")]
         public string VehLicenseNum { get; set; }
 
@@ -61,10 +68,16 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Service Interval cannot be blank")]
         [Display(Name = "Service Interval")]
-        [RegularExpression("[0-9]+", ErrorMessage = "Service Interval must be numeric")]
-        public string VehServiceInterval { get; set; }
+        [RegularExpression("[0-9]+", ErrorMessage = "Interval must be numeric")]
+        [Range(minimum: 1, maximum: 99999999, ErrorMessage = "Interval cannot be negative or zero")]
+        public int VehServiceInterval { get; set; }
 
-        //vehicle next service should be an int , it referes to the mileage for next service
+        [Required(ErrorMessage = "Interval Unit cannot be blank")]
+        [Display(Name = "Service Interval Unit")]
+        [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
+        [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Description must be alphabetic")]
+        public string VehServiceIntervalUnit { get; set; }
+        
         [Display(Name = "Next Service")]
         //TODO: Validate future date selection
         [DataType(DataType.Date)]

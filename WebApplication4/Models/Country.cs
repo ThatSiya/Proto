@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(CountryMetaData))]
-
     public partial class Country
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

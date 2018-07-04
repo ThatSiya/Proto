@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(FieldTreatmentMetaData))]
-
     public partial class FieldTreatment
     {
         public int FieldID { get; set; }

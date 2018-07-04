@@ -24,8 +24,8 @@ namespace WebApplication4.Models
         public Nullable<decimal> RefugeSeedAmntUsed { get; set; }
 
         [Required(ErrorMessage = "Unit cannot be blank")]
-        [Display(Name = "Unit")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [Display(Name = "Seed Unit")]
+        [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Unit must be alphabetic")]
         public string RefugeSeedUnit { get; set; }
 
@@ -41,7 +41,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Yield Unit cannot be blank")]
         [Display(Name = "Yield Unit")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Yield Unit must be alphabetic")]
         public string ExpectedYieldUnit { get; set; }
 
@@ -50,8 +50,8 @@ namespace WebApplication4.Models
         [DataType(DataType.Date)]
         public System.DateTime DateHarvested { get; set; }
 
-        [Display(Name = "Status")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [Display(Name = "Plantation Status")]
+        [StringLength(maximumLength: 20, ErrorMessage = "Max 20 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Status must be alphabetic")]
         public string PlantationStatus { get; set; }
     }

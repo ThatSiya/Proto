@@ -14,14 +14,13 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(LogMetaData))]
-
     public partial class Log
     {
         public int LogID { get; set; }
         public System.DateTime LogInTimeStamp { get; set; }
         public System.DateTime LogOutTimeStamp { get; set; }
-        public int UserAccessLevelID { get; set; }
+        public int User { get; set; }
     
-        public virtual UserAccessLevel UserAccessLevel { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

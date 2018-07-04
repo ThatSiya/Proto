@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MetaDataLib">
+      <HintPath>..\..\..\..\..\..\source\repos\MetaDataLib\MetaDataLib\bin\Debug\netstandard2.0\MetaDataLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -218,16 +222,26 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BiologicalDisasterController.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CropCycleController.cs" />
+    <Compile Include="Controllers\CropTypeController.cs" />
+    <Compile Include="Controllers\FarmController.cs" />
     <Compile Include="Controllers\FarmWorkerController.cs" />
     <Compile Include="Controllers\FarmWorkerTypeController.cs" />
+    <Compile Include="Controllers\FieldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\InventoryTypeController.cs" />
+    <Compile Include="Controllers\LandController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NaturalDisasterController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\SiloController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Controllers\VehicleTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,21 +249,21 @@
     <Compile Include="Migrations\201805302300583_InitialCreate.Designer.cs">
       <DependentUpon>201805302300583_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805310032271_FirstName.cs" />
-    <Compile Include="Migrations\201805310032271_FirstName.Designer.cs">
-      <DependentUpon>201805310032271_FirstName.cs</DependentUpon>
+    <Compile Include="Migrations\201807031105151_EFModelUpdate2.cs" />
+    <Compile Include="Migrations\201807031105151_EFModelUpdate2.Designer.cs">
+      <DependentUpon>201807031105151_EFModelUpdate2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806010906152_User.cs" />
-    <Compile Include="Migrations\201806010906152_User.Designer.cs">
-      <DependentUpon>201806010906152_User.cs</DependentUpon>
+    <Compile Include="Migrations\201807031109132_User2.cs" />
+    <Compile Include="Migrations\201807031109132_User2.Designer.cs">
+      <DependentUpon>201807031109132_User2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806011005368_FirstName1.cs" />
-    <Compile Include="Migrations\201806011005368_FirstName1.Designer.cs">
-      <DependentUpon>201806011005368_FirstName1.cs</DependentUpon>
+    <Compile Include="Migrations\201807031131098_user.cs" />
+    <Compile Include="Migrations\201807031131098_user.Designer.cs">
+      <DependentUpon>201807031131098_user.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806011007543_User1.cs" />
-    <Compile Include="Migrations\201806011007543_User1.Designer.cs">
-      <DependentUpon>201806011007543_User1.cs</DependentUpon>
+    <Compile Include="Migrations\201807031134098_FirstName.cs" />
+    <Compile Include="Migrations\201807031134098_FirstName.Designer.cs">
+      <DependentUpon>201807031134098_FirstName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -422,7 +436,9 @@
       <DependentUpon>FarmDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitMetaData.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\User.cs">
+      <DependentUpon>FarmDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserAccessLevel.cs">
       <DependentUpon>FarmDbModel.tt</DependentUpon>
     </Compile>
@@ -449,6 +465,7 @@
     <Compile Include="ViewModels\FarmWorkerIndexViewModel.cs" />
     <Compile Include="ViewModels\InventoryIndexViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewModels\VehicleIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -463,6 +480,113 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -521,6 +645,8 @@
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -537,6 +663,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
     <EntityDeploy Include="Models\FarmDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FarmDbModel.Designer.cs</LastGenOutput>
@@ -545,6 +673,70 @@
       <DependentUpon>FarmDbModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -676,11 +868,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Vehicle\Create.cshtml" />
-    <Content Include="Views\Vehicle\Delete.cshtml" />
-    <Content Include="Views\Vehicle\Details.cshtml" />
-    <Content Include="Views\Vehicle\Edit.cshtml" />
-    <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Inventory\Create.cshtml" />
     <Content Include="Views\Inventory\Delete.cshtml" />
     <Content Include="Views\Inventory\Details.cshtml" />
@@ -691,16 +878,6 @@
     <Content Include="Views\InventoryType\Details.cshtml" />
     <Content Include="Views\InventoryType\Edit.cshtml" />
     <Content Include="Views\InventoryType\Index.cshtml" />
-    <Content Include="Views\Customer\Create.cshtml" />
-    <Content Include="Views\Customer\Delete.cshtml" />
-    <Content Include="Views\Customer\Details.cshtml" />
-    <Content Include="Views\Customer\Edit.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\BiologicalDisaster\Create.cshtml" />
-    <Content Include="Views\BiologicalDisaster\Delete.cshtml" />
-    <Content Include="Views\BiologicalDisaster\Details.cshtml" />
-    <Content Include="Views\BiologicalDisaster\Edit.cshtml" />
-    <Content Include="Views\BiologicalDisaster\Index.cshtml" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
     <Content Include="Views\RolesAdmin\Details.cshtml" />
     <Content Include="Views\RolesAdmin\Create.cshtml" />
@@ -719,9 +896,71 @@
     <Content Include="Views\FarmWorkerType\Details.cshtml" />
     <Content Include="Views\FarmWorkerType\Edit.cshtml" />
     <Content Include="Views\FarmWorkerType\Index.cshtml" />
+    <Content Include="Views\Inventory\ActionPage.cshtml" />
+    <Content Include="Views\Vehicle\Create.cshtml" />
+    <Content Include="Views\Vehicle\Delete.cshtml" />
+    <Content Include="Views\Vehicle\Details.cshtml" />
+    <Content Include="Views\Vehicle\Edit.cshtml" />
+    <Content Include="Views\Vehicle\Index.cshtml" />
+    <Content Include="Views\BiologicalDisaster\Create.cshtml" />
+    <Content Include="Views\BiologicalDisaster\Delete.cshtml" />
+    <Content Include="Views\BiologicalDisaster\Details.cshtml" />
+    <Content Include="Views\BiologicalDisaster\Edit.cshtml" />
+    <Content Include="Views\BiologicalDisaster\Index.cshtml" />
+    <Content Include="Views\CropCycle\Create.cshtml" />
+    <Content Include="Views\CropCycle\Delete.cshtml" />
+    <Content Include="Views\CropCycle\Details.cshtml" />
+    <Content Include="Views\CropCycle\Edit.cshtml" />
+    <Content Include="Views\CropCycle\Index.cshtml" />
+    <Content Include="Views\CropType\Create.cshtml" />
+    <Content Include="Views\CropType\Delete.cshtml" />
+    <Content Include="Views\CropType\Details.cshtml" />
+    <Content Include="Views\CropType\Edit.cshtml" />
+    <Content Include="Views\CropType\Index.cshtml" />
+    <Content Include="Views\Supplier\Create.cshtml" />
+    <Content Include="Views\Supplier\Delete.cshtml" />
+    <Content Include="Views\Supplier\Details.cshtml" />
+    <Content Include="Views\Supplier\Edit.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\VehicleType\Create.cshtml" />
+    <Content Include="Views\VehicleType\Delete.cshtml" />
+    <Content Include="Views\VehicleType\Details.cshtml" />
+    <Content Include="Views\VehicleType\Edit.cshtml" />
+    <Content Include="Views\VehicleType\Index.cshtml" />
+    <Content Include="Views\NaturalDisaster\Create.cshtml" />
+    <Content Include="Views\NaturalDisaster\Delete.cshtml" />
+    <Content Include="Views\NaturalDisaster\Details.cshtml" />
+    <Content Include="Views\NaturalDisaster\Edit.cshtml" />
+    <Content Include="Views\NaturalDisaster\Index.cshtml" />
+    <Content Include="Views\Farm\Create.cshtml" />
+    <Content Include="Views\Farm\Delete.cshtml" />
+    <Content Include="Views\Farm\Details.cshtml" />
+    <Content Include="Views\Farm\Edit.cshtml" />
+    <Content Include="Views\Farm\Index.cshtml" />
+    <Content Include="Views\Land\Create.cshtml" />
+    <Content Include="Views\Land\Delete.cshtml" />
+    <Content Include="Views\Land\Details.cshtml" />
+    <Content Include="Views\Land\Edit.cshtml" />
+    <Content Include="Views\Land\Index.cshtml" />
+    <Content Include="Views\Field\Create.cshtml" />
+    <Content Include="Views\Field\Delete.cshtml" />
+    <Content Include="Views\Field\Details.cshtml" />
+    <Content Include="Views\Field\Edit.cshtml" />
+    <Content Include="Views\Field\Index.cshtml" />
+    <Content Include="Views\Silo\Create.cshtml" />
+    <Content Include="Views\Silo\Delete.cshtml" />
+    <Content Include="Views\Silo\Details.cshtml" />
+    <Content Include="Views\Silo\Edit.cshtml" />
+    <Content Include="Views\Silo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -734,17 +973,17 @@
     <EmbeddedResource Include="Migrations\201805302300583_InitialCreate.resx">
       <DependentUpon>201805302300583_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805310032271_FirstName.resx">
-      <DependentUpon>201805310032271_FirstName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807031105151_EFModelUpdate2.resx">
+      <DependentUpon>201807031105151_EFModelUpdate2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806010906152_User.resx">
-      <DependentUpon>201806010906152_User.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807031109132_User2.resx">
+      <DependentUpon>201807031109132_User2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806011005368_FirstName1.resx">
-      <DependentUpon>201806011005368_FirstName1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807031131098_user.resx">
+      <DependentUpon>201807031131098_user.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806011007543_User1.resx">
-      <DependentUpon>201806011007543_User1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807031134098_FirstName.resx">
+      <DependentUpon>201807031134098_FirstName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

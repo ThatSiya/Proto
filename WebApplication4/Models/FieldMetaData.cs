@@ -13,7 +13,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Field Name cannot be blank")]
         [Display(Name = "Field Name")]
-        [StringLength(maximumLength: 20, ErrorMessage = "Max 20 characters reached")]
+        [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Field Name must be made up of letters and numbers only")]
         public string FieldName { get; set; }
 

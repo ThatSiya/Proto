@@ -20,6 +20,7 @@ namespace WebApplication4.Models
         public System.DateTime VehicleService_Date { get; set; }
         public Nullable<decimal> VehicleService_Cost { get; set; }
         public int VehicleService_Mileage { get; set; }
+        public string VehicleServiceRecordUnit { get; set; }
         public int VehicleID { get; set; }
     
         public virtual Vehicle Vehicle { get; set; }

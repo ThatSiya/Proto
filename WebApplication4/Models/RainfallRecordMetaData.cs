@@ -21,7 +21,8 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Record measurement cannot be blank")]
         [Display(Name = "Measurement")]
-        [RegularExpression(@"^[1-9]\d{0,2}(\.\d{3})*(,\d+)?$", ErrorMessage = "Measurement must be entered in decimal form")]
-        public decimal RecordMeasurement { get; set; }
+        [RegularExpression("[0-9]+", ErrorMessage = "Measurement must be numeric")]
+        [Range(minimum: 0, maximum: 999999, ErrorMessage = "Measurement cannot be negative")]
+        public int RecordMeasurement { get; set; }
     }
 }

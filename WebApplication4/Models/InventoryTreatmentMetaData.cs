@@ -21,7 +21,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Unit cannot be blank")]
         [Display(Name = "Unit")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Unit must be alphabetic")]
         public string TreatmentUnit { get; set; }
 

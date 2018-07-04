@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(FieldNaturalDisasterMetaData))]
-
     public partial class FieldNaturalDisaster
     {
         public int FieldID { get; set; }

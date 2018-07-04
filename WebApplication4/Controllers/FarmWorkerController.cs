@@ -91,7 +91,7 @@ namespace WebApplication4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FarmWorkerNum,FarmWorkerFName,FarmWorkerLName,FarmWorkerContactNum,FarmWorkerPhysicalAddress,ContractStartDate,ContractEndDate,FarmWorkerIDNum,TitleID,GenderID,FarmWorkerTypeID")] FarmWorker farmWorker)
+        public ActionResult Create([Bind(Include = "FarmWorkerNum,FarmWorkerFName,FarmWorkerLName,FarmWorkerContactNum,Address,Surburb,City,Province,Country,ContractStartDate,ContractEndDate,FarmWorkerIDNum,TitleID,GenderID,FarmWorkerTypeID")] FarmWorker farmWorker)
         {
             if (ModelState.IsValid)
             {
@@ -129,7 +129,7 @@ namespace WebApplication4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FarmWorkerNum,FarmWorkerFName,FarmWorkerLName,FarmWorkerContactNum,FarmWorkerPhysicalAddress,ContractStartDate,ContractEndDate,FarmWorkerIDNum,TitleID,GenderID,FarmWorkerTypeID")] FarmWorker farmWorker)
+        public ActionResult Edit([Bind(Include = "FarmWorkerNum,FarmWorkerFName,FarmWorkerLName,FarmWorkerContactNum,Address,Surburb,City,Province,Country,ContractStartDate,ContractEndDate,FarmWorkerIDNum,TitleID,GenderID,FarmWorkerTypeID")] FarmWorker farmWorker)
         {
             if (ModelState.IsValid)
             {

@@ -28,5 +28,11 @@ namespace WebApplication4.Models
         [Display(Name = "Sale Amount")]
         [RegularExpression(@"^[1-9]\d{0,2}(\.\d{3})*(,\d+)?$", ErrorMessage = "Total Amount must be entered in decimal form")]
         public decimal SaleAmnt { get; set; }
+
+        [Required(ErrorMessage = "Purchase Agreement cannot be blank. Provide N/A if not applicable")]
+        [Display(Name = "Purchase Agreement")]
+        [StringLength(maximumLength: 255, ErrorMessage = "Max 255 characters reached")]
+        [DataType(DataType.MultilineText)]
+        public string PurchaseAgreement { get; set; }
     }
 }

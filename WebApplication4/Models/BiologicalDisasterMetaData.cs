@@ -13,13 +13,13 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Biological Disaster cannot be blank")]
         [Display(Name = "Biological Disaster")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Biological Disaster must be alphabetic")]
         public string BioDisasterDescr { get; set; }
 
         [Required(ErrorMessage = "Biological Disaster Notes cannot be blank")]
         [Display(Name = "Biological Disaster Notes")]
-        [StringLength(maximumLength: 255, ErrorMessage = "Max 255 characters reached")]
+        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
         [DataType(DataType.MultilineText)]
         public string BioDisasterNotes { get; set; }
     }

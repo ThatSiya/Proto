@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
+using WebApplication4.Models;
+using WebApplication4.ViewModels;
+using PagedList;
 
 namespace WebApplication4.Controllers
 {
@@ -15,10 +18,49 @@ namespace WebApplication4.Controllers
         private FarmDbContext db = new FarmDbContext();
 
         // GET: Vehicle
-        public ActionResult Index()
+        public ActionResult Index(string vehicletype, string search, int? page)
         {
-            var vehicles = db.Vehicles.Include(v => v.Farm).Include(v => v.VehicleMake).Include(v => v.VehicleType);
-            return View(vehicles.ToList());
+            //instatiate new view model
+            VehicleIndexViewModel viewModel = new VehicleIndexViewModel();
+
+            //select vehicles
+            var vehicles = db.Vehicles.Include(v => v.VehicleType).Include(v => v.VehicleMake);
+            //var farmWorkers = db.FarmWorkers.Include(f => f.FarmWorkerType).Include(f => f.Gender).Include(f => f.Title);
+
+            //do search and save search string in view model
+            if (!String.IsNullOrEmpty(search))
+            {
+                vehicles = vehicles.Where(v => v.VehName.Contains(search) ||
+                    v.VehModel.Contains(search) || v.VehicleType.VehTypeDescr.Contains(search));
+                viewModel.Search = search;
+            }
+
+            //group search results into types and count how many workers in each type
+            viewModel.VehTypesWithCount = from matchingVehicles in vehicles
+                                             where
+                                             matchingVehicles.VehicleID != null
+                                             group matchingVehicles by
+                                             matchingVehicles.VehicleType.VehTypeDescr into
+                                             VehicleTypeGroup
+                                             select new VehicleTypesWithCount()
+                                             {
+                                                 VehTypeDescr = VehicleTypeGroup.Key,
+                                                 VehicleCount = VehicleTypeGroup.Count()
+                                             };
+
+            if (!String.IsNullOrEmpty(vehicletype))
+            {
+                vehicles = vehicles.Where(v => v.VehicleType.VehTypeDescr == vehicletype);
+                viewModel.VehicleType = vehicletype;
+            }
+
+            //sort results
+            vehicles = vehicles.OrderBy(i => i.VehName);
+            //Paging:
+            const int PageItems = 5;
+            int currentPage = (page ?? 1);
+            viewModel.Vehicles = vehicles.ToPagedList(currentPage, PageItems);
+            return View(viewModel);
         }
 
         // GET: Vehicle/Details/5
@@ -50,7 +92,7 @@ namespace WebApplication4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VehicleID,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,RegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "VehicleID,VehName,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehServiceIntervalUnit,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +130,7 @@ namespace WebApplication4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VehicleID,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,RegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "VehicleID,VehName,VehYear,VehModel,VehEngineNum,VehVinNum,VehRegNum,VehLicenseNum,VehExpDate,VehCurrMileage,VehServiceInterval,VehServiceIntervalUnit,VehNextService,FarmID,VehTypeID,VehMakeID")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {

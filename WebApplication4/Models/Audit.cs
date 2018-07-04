@@ -14,7 +14,6 @@ namespace WebApplication4.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(AuditMetaData))]
-
     public partial class Audit
     {
         public int AuditID { get; set; }

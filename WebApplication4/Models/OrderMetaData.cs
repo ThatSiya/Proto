@@ -29,7 +29,7 @@ namespace WebApplication4.Models
 
         [Required(ErrorMessage = "Item cannot be blank")]
         [Display(Name = "Item Name")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Item Name must be made up of letters and numbers only")]
         public string OrderItem { get; set; }
 
