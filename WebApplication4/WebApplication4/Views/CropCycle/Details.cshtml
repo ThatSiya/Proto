@@ -1,0 +1,42 @@
+﻿@model WebApplication4.Models.CropCycle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CropCycle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CropCycleStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropCycleStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CropCycleEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropCycleEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CropCycleDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropCycleDescr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CropCycleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

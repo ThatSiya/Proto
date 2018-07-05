@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication4.Models.FarmWorkerType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmWorkerTypeDescr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmWorkerTypeNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FarmWorkerTypeActiveStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmWorkerTypeDescr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmWorkerTypeNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FarmWorkerTypeActiveStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FarmWorkerTypeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FarmWorkerTypeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FarmWorkerTypeID })
+        </td>
+    </tr>
+}
+
+</table>
