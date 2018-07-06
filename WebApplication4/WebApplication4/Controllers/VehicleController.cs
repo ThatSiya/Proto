@@ -54,14 +54,19 @@ namespace WebApplication4.Controllers
             }
 
             //sort results
-            vehicles = vehicles.OrderBy(i => i.VehName);
+            vehicles = vehicles.OrderBy(i => i.VehicleID);
             //Paging:
             const int PageItems = 5;
             int currentPage = (page ?? 1);
             viewModel.Vehicles = vehicles.ToPagedList(currentPage, PageItems);
             return View(viewModel);
         }
-
+        //Return VehicleServices for the selected vehicle
+        public ActionResult ServiceIndex(int? id)
+        {
+            var vehicleServices = db.VehicleServices.Include(v => v.Vehicle).Where(v=>v.VehicleID == id);
+            return View(vehicleServices);
+        }
         // GET: Vehicle/Details/5
         public ActionResult Details(int? id)
         {
@@ -163,21 +168,38 @@ namespace WebApplication4.Controllers
             return View(vehicle);
         }
 
-        //Capture VehicleService
-        // GET: VehicleService/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    VehicleService vehicleService = db.VehicleServices.Find(id);
-        //    if (vehicleService == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(vehicleService);
-        //}
+        // GET: VehicleService/Edit/5
+        public ActionResult EditService(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            VehicleService vehicleService = db.VehicleServices.Find(id);
+            if (vehicleService == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehName", vehicleService.VehicleID);
+            return View(vehicleService);
+        }
+
+        // POST: VehicleService/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditService([Bind(Include = "VehicleServiceID,VehicleService_Date,VehicleService_Cost,VehicleService_Mileage,VehicleServiceRecordUnit,VehicleID")] VehicleService vehicleService)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(vehicleService).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehName", vehicleService.VehicleID);
+            return View(vehicleService);
+        }
 
         // GET: VehicleService/Create
         public ActionResult CreateVehicleService(int? id)

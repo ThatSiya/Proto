@@ -4,66 +4,87 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Admin</a></li>
+    <li class="active">Customers</li>
+</ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerFName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerLName)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CustomerContactNum)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.ContactPersonalEmailAddress)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CompanyPhysAddress)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.CompanyTelNum)
-        </th>*@
-        <th></th>
-    </tr>
+<div class="well">
+    <div class="row">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerFName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerLName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CustomerContactNum)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.ContactPersonalEmailAddress)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.CompanyName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CompanyPhysAddress)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CompanyTelNum)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
-        </td>
-    </tr>
-}
+        <div class="col-xs-6 col-md-2">
+            @using (Html.BeginForm("Create", "Customer", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-success" type="submit">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Add Customer
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-xs-6 col-md-4">
+            @using (Html.BeginForm("Index", "Customer", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <span>@Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Enter search keyword or phrase" })</span>
+                    <div class="input-group-btn">
+                        <button class="btn btn-info" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.CustomerFName)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.CustomerLName)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.CompanyName)</span>
+            </th>
+            <th>
+                <span style="color:green;">Actions</span>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerFName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerLName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.CustomerID})" data-toggle="tooltip" title="Edit">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+                <a href="@Url.Action("Details", new { id = item.CustomerID })" data-toggle="tooltip" title="Details">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                    <span class="sr-only">Details</span>
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.CustomerID })" data-toggle="tooltip" title="Delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span class="sr-only">Details</span>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>

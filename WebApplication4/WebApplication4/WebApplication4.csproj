@@ -225,6 +225,7 @@
     <Compile Include="Controllers\FarmWorkerController.cs" />
     <Compile Include="Controllers\FarmWorkerTypeController.cs" />
     <Compile Include="Controllers\FieldController.cs" />
+    <Compile Include="Controllers\HarvestSaleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\InventoryTypeController.cs" />
@@ -238,7 +239,6 @@
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
-    <Compile Include="Controllers\VehicleServiceController.cs" />
     <Compile Include="Controllers\VehicleTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -468,6 +468,8 @@
     <Compile Include="ViewModels\InventoryIndexViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\SupplierIndexViewModel.cs" />
+    <Compile Include="ViewModels\VehicleCreateViewModel.cs" />
+    <Compile Include="ViewModels\VehicleDetailsViewModel.cs" />
     <Compile Include="ViewModels\VehicleIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -774,16 +776,6 @@
     <Content Include="Views\Field\Details.cshtml" />
     <Content Include="Views\Field\Edit.cshtml" />
     <Content Include="Views\Field\Index.cshtml" />
-    <Content Include="Views\Order\Create.cshtml" />
-    <Content Include="Views\Order\Delete.cshtml" />
-    <Content Include="Views\Order\Details.cshtml" />
-    <Content Include="Views\Order\Edit.cshtml" />
-    <Content Include="Views\Order\Index.cshtml" />
-    <Content Include="Views\NaturalDisaster\Create.cshtml" />
-    <Content Include="Views\NaturalDisaster\Delete.cshtml" />
-    <Content Include="Views\NaturalDisaster\Details.cshtml" />
-    <Content Include="Views\NaturalDisaster\Edit.cshtml" />
-    <Content Include="Views\NaturalDisaster\Index.cshtml" />
     <Content Include="Views\Silo\Create.cshtml" />
     <Content Include="Views\Silo\Delete.cshtml" />
     <Content Include="Views\Silo\Details.cshtml" />
@@ -794,9 +786,12 @@
     <Content Include="Views\VehicleType\Details.cshtml" />
     <Content Include="Views\VehicleType\Edit.cshtml" />
     <Content Include="Views\VehicleType\Index.cshtml" />
-    <Content Include="Views\VehicleService\Details.cshtml" />
-    <Content Include="Views\VehicleService\Edit.cshtml" />
-    <Content Include="Views\VehicleService\Index.cshtml" />
+    <Content Include="Views\Vehicle\EditService.cshtml" />
+    <Content Include="Views\Vehicle\ServiceIndex.cshtml" />
+    <Content Include="Views\Silo\CreateHarvestSale.cshtml" />
+    <Content Include="Views\Supplier\PlaceOrder.cshtml" />
+    <Content Include="Views\Supplier\SupplierOrder.cshtml" />
+    <Content Include="Views\Supplier\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

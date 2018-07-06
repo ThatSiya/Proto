@@ -86,7 +86,58 @@ namespace WebApplication4.Controllers
 
             return View(supplier);
         }
+        // GET: Order/Create
+        public ActionResult PlaceOrder()
+        {
+            ViewBag.FarmID = new SelectList(db.Farms, "FarmID", "FarmName");
+            ViewBag.OrderStatusID = new SelectList(db.OrderStatus, "OrderStatusID", "OrderStatusDescr");
+            ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierName");
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
+            return View();
+        }
 
+        // POST: Order/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PlaceOrder([Bind(Include = "OrderNum,OrderDate,OrderItemPrice,SupplierID,UserID,FarmID,OrderStatusID,OrderItem")] Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Orders.Add(order);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+                //TODO: Send Email to Supplier
+            }
+
+            ViewBag.FarmID = new SelectList(db.Farms, "FarmID", "FarmName", order.FarmID);
+            ViewBag.OrderStatusID = new SelectList(db.OrderStatus, "OrderStatusID", "OrderStatusDescr", order.OrderStatusID);
+            ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierName", order.SupplierID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", order.UserID);
+            return View(order);
+        }
+        // GET: Order
+        public ActionResult SupplierOrder()
+        {
+            var orders = db.Orders.Include(o => o.Farm).Include(o => o.OrderStatu).Include(o => o.Supplier).Include(o => o.User);
+            return View(orders.ToList());
+        }
+        // GET: Order/Details/5
+        public ActionResult OrderDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
         // GET: Supplier/Edit/5
         public ActionResult Edit(int? id)
         {

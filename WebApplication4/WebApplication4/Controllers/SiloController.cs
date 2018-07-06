@@ -58,6 +58,30 @@ namespace WebApplication4.Controllers
             return View(silo);
         }
 
+        // GET: HarvestSale/Create
+        public ActionResult CreateHarvestSale()
+        {
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName");
+            return View();
+        }
+
+        // POST: HarvestSale/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateHarvestSale([Bind(Include = "SaleID,SaleDate,SaleQty,SaleAmnt,CustomerID,PurchaseAgreement")] Sale sale)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Sales.Add(sale);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName", sale.CustomerID);
+            return View(sale);
+        }
         // GET: Silo/Edit/5
         public ActionResult Edit(int? id)
         {

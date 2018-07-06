@@ -27,6 +27,19 @@
                 </div>
             }
         </div>
+        <div class="col-xs-6 col-md-2">
+            @using (Html.BeginForm("SupplierOrder", "Supplier", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            View Orders
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
         <div class="col-xs-6 col-md-4">
             @using (Html.BeginForm("Index", "Supplier", FormMethod.Get, new { @class = "form-inline" }))
             {
