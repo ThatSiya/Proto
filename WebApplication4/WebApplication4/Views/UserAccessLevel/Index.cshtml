@@ -1,0 +1,76 @@
+﻿@model WebApplication4.ViewModels.UserAccessLevelIndexViewModel
+@using PagedList.Mvc @*PageList Library*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Users</a></li>
+    <li class="active">Manage User Access Levels</li>
+</ol>
+@using (Html.BeginForm("Create", "UserAccessLevel", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="input-group">
+        <div class="input-group-btn">
+            <button class="btn btn-success" type="submit">
+                <span class="glyphicon glyphicon-lock"></span>
+                Add User Access Role
+            </button>
+        </div>
+    </div>
+}
+<table class="table table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.UserAccessLevels.First().UserAccessLevelDescr)</span>
+            </th>
+            <th>
+                <span style="color:green;">Actions</span>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model.UserAccessLevels)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAccessLevelDescr)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.UserAccessLevelID})" data-toggle="tooltip" title="Edit">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+                <a href="@Url.Action("Details", new { id = item.UserAccessLevelID })" data-toggle="tooltip" title="Details">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                    <span class="sr-only">Details</span>
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.UserAccessLevelID })" data-toggle="tooltip" title="Delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span class="sr-only">Details</span>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You search for " + Model.Search + " found ")@Model.UserAccessLevels.TotalItemCount access roles
+</p>
+
+@*Generate paging links*@
+<div>
+    @*wrap in div for presentation purpose*@
+    Page @(Model.UserAccessLevels.PageCount < Model.UserAccessLevels.PageNumber ? 0 : @*evaluate whether or not there are any pages to display*@
+    Model.UserAccessLevels.PageNumber) of @Model.UserAccessLevels.PageCount @*Display Page x of y*@
+    @Html.PagedListPager(Model.UserAccessLevels, page => Url.Action("Index",@*Takes list of inventories and produces a hyperlink to each page*@
+    new
+    {
+        Search = @Model.Search,
+        page
+    }))
+</div>
