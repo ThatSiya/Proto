@@ -1,0 +1,111 @@
+﻿@model WebApplication4.ViewModels.UserIndexViewModel
+@using PagedList.Mvc @*PageList Library*@
+
+@{
+    ViewBag.Title = "View User";
+}
+
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Admin</a></li>
+    <li class="active">Users</li>
+    <li class="active">Manage Users</li>
+</ol>
+
+<div class="well">
+    <div class="row">
+
+        <div class="col-xs-6 col-md-2">
+            @using (Html.BeginForm("Create", "User", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-success" type="submit">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Register User
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-xs-6 col-md-4">
+            @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <span>@Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Enter search keyword or phrase" })</span>
+                    <div class="input-group-btn">
+                        <button class="btn btn-info" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<table class="table table-condensed table-striped">
+   <thead>
+     <tr>
+        <th>
+            <span style="color:green;">@Html.DisplayNameFor(model => model.Users.First().UserFName)</span>
+        </th>
+        <th>
+            <span style="color:green;">@Html.DisplayNameFor(model => model.Users.First().UserLName)</span>
+        </th>
+        <th>
+            <span style="color:green;">@Html.DisplayNameFor(model => model.Users.First().UserAccessLevel.UserAccessLevelDescr)</span>
+        </th>
+        <th>
+            <span style="color:green;">Actions</span>
+        </th>
+    </tr>
+       </thead>
+
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAccessLevel.UserAccessLevelDescr)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.UserID})" data-toggle="tooltip" title="Edit">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+                <a href="@Url.Action("Details", new { id = item.UserID })" data-toggle="tooltip" title="Details">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                    <span class="sr-only">Details</span>
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.UserID })" data-toggle="tooltip" title="Delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span class="sr-only">Details</span>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You search for " + Model.Search + " found ")@Model.Users.TotalItemCount users
+</p>
+
+@*Generate paging links*@
+<div>
+    @*wrap in div for presentation purpose*@
+    Page @(Model.Users.PageCount < Model.Users.PageNumber ? 0 : @*evaluate whether or not there are any pages to display*@
+    Model.Users.PageNumber) of @Model.Users.PageCount @*Display Page x of y*@
+    @Html.PagedListPager(Model.Users, page => Url.Action("Index",@*Takes list of users and produces a hyperlink to each page*@
+    new
+    {
+        Search = @Model.Search,
+        page
+    }))
+</div>

@@ -30,6 +30,7 @@ namespace WebApplication4.Models
         public int FarmID { get; set; }
         public int OrderStatusID { get; set; }
         public string OrderItem { get; set; }
+        public Nullable<int> OrderQty { get; set; }
     
         public virtual Farm Farm { get; set; }
         public virtual OrderStatu OrderStatu { get; set; }

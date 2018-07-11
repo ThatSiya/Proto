@@ -251,6 +251,7 @@
           <Property Name="FarmID" Type="int" Nullable="false" />
           <Property Name="OrderStatusID" Type="int" Nullable="false" />
           <Property Name="OrderItem" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="OrderQty" Type="int" />
         </EntityType>
         <EntityType Name="OrderLine">
           <Key>
@@ -1498,6 +1499,7 @@
           <Property Name="FarmID" Type="Int32" Nullable="false" />
           <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
           <Property Name="OrderItem" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderQty" Type="Int32" />
           <NavigationProperty Name="Farm" Relationship="Self.FK__Order__FarmID__5CD6CB2B" FromRole="Order" ToRole="Farm" />
           <NavigationProperty Name="OrderStatu" Relationship="Self.FK__Order__OrderStat__5DCAEF64" FromRole="Order" ToRole="OrderStatus" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__Order__SupplierI__5AEE82B9" FromRole="Order" ToRole="Supplier" />
@@ -2759,6 +2761,7 @@
                 <ScalarProperty Name="FarmID" ColumnName="FarmID" />
                 <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
                 <ScalarProperty Name="OrderItem" ColumnName="OrderItem" />
+                <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

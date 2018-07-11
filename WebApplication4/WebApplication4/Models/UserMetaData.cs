@@ -19,11 +19,11 @@ namespace WebApplication4.Models
         [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         public string UserEmailAddress { get; set; }
 
-        [Required(ErrorMessage = "Password cannot be blank")]
-        [Display(Name = "Password")]
-        [StringLength(maximumLength: 30, ErrorMessage = "Max 30 characters reached")]
-        //instantiate minimum length for password ? 
-        public string UserPassword { get; set; }
+        //[Required(ErrorMessage = "Password cannot be blank")]
+        //[Display(Name = "Password")]
+        //[StringLength(maximumLength: 30, ErrorMessage = "Max 30 characters reached")]
+        ////instantiate minimum length for password ? 
+        //public string UserPassword { get; set; }
 
         [Required(ErrorMessage = "Contact Number cannot be blank")]
         [Display(Name = "Contact Number")]

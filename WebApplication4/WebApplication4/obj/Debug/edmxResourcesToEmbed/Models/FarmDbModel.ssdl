@@ -246,6 +246,7 @@
     <Property Name="FarmID" Type="int" Nullable="false" />
     <Property Name="OrderStatusID" Type="int" Nullable="false" />
     <Property Name="OrderItem" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="OrderQty" Type="int" />
   </EntityType>
   <EntityType Name="OrderLine">
     <Key>

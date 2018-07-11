@@ -266,6 +266,7 @@
           <ScalarProperty Name="FarmID" ColumnName="FarmID" />
           <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
           <ScalarProperty Name="OrderItem" ColumnName="OrderItem" />
+          <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

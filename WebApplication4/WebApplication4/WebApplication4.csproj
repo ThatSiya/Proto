@@ -239,6 +239,7 @@
     <Compile Include="Controllers\SiloController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\TreatPlantationController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Controllers\VehicleServiceController.cs" />
@@ -474,6 +475,7 @@
     <Compile Include="ViewModels\PlantationViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\SupplierIndexViewModel.cs" />
+    <Compile Include="ViewModels\UserIndexViewModel.cs" />
     <Compile Include="ViewModels\VehicleIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -802,6 +804,11 @@
     <Content Include="Views\Supplier\PlaceOrder.cshtml" />
     <Content Include="Views\Vehicle\ServiceIndex.cshtml" />
     <Content Include="Views\Vehicle\EditService.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
