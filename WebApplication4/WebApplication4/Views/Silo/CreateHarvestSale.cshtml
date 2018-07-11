@@ -1,15 +1,15 @@
 ﻿@model WebApplication4.Models.Sale
 
 @{
-    ViewBag.Title = "Capture Harvest Sale";
+    ViewBag.Title = "CreateHarvestSale";
 }
 
-<h2>Capture Harvest Sale</h2>
+<h2>CreateHarvestSale</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Sale</h4>
         <hr />

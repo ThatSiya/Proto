@@ -1,45 +1,76 @@
-﻿@model IEnumerable<WebApplication4.Models.CropCycle>
+﻿@model WebApplication4.ViewModels.CropCycleIndexViewModel
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Resources</a></li>
+    <li><a href="#">Crops</a></li>
+    <li class="active">Manage Crop Cycles</li>
+</ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CropCycleStartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CropCycleEndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CropCycleDescr)
-        </th>
-        <th></th>
-    </tr>
+<div>
+    @using (Html.BeginForm("Create", "CropCycle", FormMethod.Get, new { @class = "form-inline" }))
+            {
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button class="btn btn-success" type="submit">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Add Crop Cycle
+                </button>
+            </div>
+        </div>
+    }
+</div>
+<br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CropCycleStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CropCycleEndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CropCycleDescr)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CropCycleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CropCycleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CropCycleID })
-        </td>
-    </tr>
-}
+<table class="table table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.CropCycles.First().CropCycleStartDate)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.CropCycles.First().CropCycleEndDate)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.CropCycles.First().CropCycleDescr)</span>
+            </th>
+            <th>
+                <span style="color:green;">Actions</span>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model.CropCycles)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropCycleStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropCycleEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropCycleDescr)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.CropCycleID})" data-toggle="tooltip" title="Edit">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="sr-only">Edit</span>
+                </a>
+                <a href="@Url.Action("Details", new { id = item.CropCycleID })" data-toggle="tooltip" title="Details">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                    <span class="sr-only">Details</span>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(ViewBag.Search) ? "Showing all " : "You search for " + ViewBag.Search + " found ")@Model.CropCycles.TotalItemCount crop cycles
+</p>

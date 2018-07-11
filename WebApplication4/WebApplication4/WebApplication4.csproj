@@ -215,7 +215,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Bootstrap Html Helpers\DatePickerFor.cs" />
     <Compile Include="Bootstrap Html Helpers\HelperMethods.cs" />
-    <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BiologicalDisasterController.cs" />
@@ -229,7 +228,6 @@
     <Compile Include="Controllers\HarvestSaleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
-    <Compile Include="Controllers\InventoryTreatmentController.cs" />
     <Compile Include="Controllers\InventoryTypeController.cs" />
     <Compile Include="Controllers\LandController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -240,8 +238,10 @@
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\SiloController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\TreatPlantationController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Controllers\VehicleServiceController.cs" />
     <Compile Include="Controllers\VehicleTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -269,14 +269,6 @@
     <Compile Include="Migrations\201807042356055_FirstName2.cs" />
     <Compile Include="Migrations\201807042356055_FirstName2.Designer.cs">
       <DependentUpon>201807042356055_FirstName2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807101112349_FirstName3.cs" />
-    <Compile Include="Migrations\201807101112349_FirstName3.Designer.cs">
-      <DependentUpon>201807101112349_FirstName3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807101113259_User2.cs" />
-    <Compile Include="Migrations\201807101113259_User2.Designer.cs">
-      <DependentUpon>201807101113259_User2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -473,78 +465,76 @@
       <DependentUpon>FarmDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VehicleTypeMetaData.cs" />
-    <Compile Include="Models\WorkerImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\FarmTreeView.cs" />
+    <Compile Include="ViewModels\CropCycleIndexViewModel.cs" />
+    <Compile Include="ViewModels\CustomerIndexViewModel.cs" />
     <Compile Include="ViewModels\FarmWorkerIndexViewModel.cs" />
     <Compile Include="ViewModels\InventoryIndexViewModel.cs" />
+    <Compile Include="ViewModels\PlantationViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\SupplierIndexViewModel.cs" />
-    <Compile Include="ViewModels\VehicleCreateViewModel.cs" />
-    <Compile Include="ViewModels\VehicleDetailsViewModel.cs" />
     <Compile Include="ViewModels\VehicleIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\Content\bootstrap-datepicker.css" />
-    <Content Include="fonts\Content\bootstrap-datepicker.min.css" />
-    <Content Include="fonts\Content\bootstrap-datepicker.standalone.css" />
-    <Content Include="fonts\Content\bootstrap-datepicker.standalone.min.css" />
-    <Content Include="fonts\Content\bootstrap-datepicker3.css" />
-    <Content Include="fonts\Content\bootstrap-datepicker3.min.css" />
-    <Content Include="fonts\Content\bootstrap-datepicker3.standalone.css" />
-    <Content Include="fonts\Content\bootstrap-datepicker3.standalone.min.css" />
-    <Content Include="fonts\Content\bootstrap-theme.css" />
-    <Content Include="fonts\Content\bootstrap-theme.min.css" />
-    <Content Include="fonts\Content\bootstrap.css" />
-    <Content Include="fonts\Content\bootstrap.min.css" />
-    <Content Include="fonts\Content\PagedList.css" />
-    <Content Include="fonts\Content\themes\base\accordion.css" />
-    <Content Include="fonts\Content\themes\base\all.css" />
-    <Content Include="fonts\Content\themes\base\autocomplete.css" />
-    <Content Include="fonts\Content\themes\base\base.css" />
-    <Content Include="fonts\Content\themes\base\button.css" />
-    <Content Include="fonts\Content\themes\base\core.css" />
-    <Content Include="fonts\Content\themes\base\datepicker.css" />
-    <Content Include="fonts\Content\themes\base\dialog.css" />
-    <Content Include="fonts\Content\themes\base\draggable.css" />
-    <Content Include="fonts\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_444444_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_555555_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_777620_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_777777_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="fonts\Content\themes\base\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="fonts\Content\themes\base\jquery-ui.css" />
-    <Content Include="fonts\Content\themes\base\jquery-ui.min.css" />
-    <Content Include="fonts\Content\themes\base\menu.css" />
-    <Content Include="fonts\Content\themes\base\progressbar.css" />
-    <Content Include="fonts\Content\themes\base\resizable.css" />
-    <Content Include="fonts\Content\themes\base\selectable.css" />
-    <Content Include="fonts\Content\themes\base\selectmenu.css" />
-    <Content Include="fonts\Content\themes\base\slider.css" />
-    <Content Include="fonts\Content\themes\base\sortable.css" />
-    <Content Include="fonts\Content\themes\base\spinner.css" />
-    <Content Include="fonts\Content\themes\base\tabs.css" />
-    <Content Include="fonts\Content\themes\base\theme.css" />
-    <Content Include="fonts\Content\themes\base\tooltip.css" />
-    <Content Include="fonts\Content\tree.css" />
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
+    <Content Include="Content\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\Content\Site.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Images\Farm Worker - Circle.png" />
     <Content Include="Images\Farm Worker - Round Corner.png" />
     <Content Include="Images\Farm Worker - Square.jpg" />
@@ -565,15 +555,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="fonts\Content\bootstrap-datepicker3.standalone.css.map" />
-    <Content Include="fonts\Content\bootstrap-datepicker3.css.map" />
-    <Content Include="fonts\Content\bootstrap-datepicker.standalone.css.map" />
-    <Content Include="fonts\Content\bootstrap-datepicker.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker.css.map" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\Content\bootstrap.css.map" />
-    <Content Include="fonts\Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\FarmDbModel.edmx">
@@ -678,7 +668,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\tree.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -801,23 +790,21 @@
     <Content Include="Views\VehicleType\Details.cshtml" />
     <Content Include="Views\VehicleType\Edit.cshtml" />
     <Content Include="Views\VehicleType\Index.cshtml" />
-    <Content Include="Views\Vehicle\EditService.cshtml" />
-    <Content Include="Views\Vehicle\ServiceIndex.cshtml" />
+    <Content Include="Views\TreatPlantation\Create.cshtml" />
     <Content Include="Views\Silo\CreateHarvestSale.cshtml" />
-    <Content Include="Views\Supplier\PlaceOrder.cshtml" />
-    <Content Include="Views\Supplier\SupplierOrder.cshtml" />
-    <Content Include="Views\Supplier\OrderDetails.cshtml" />
     <Content Include="Views\Plantation\Create.cshtml" />
     <Content Include="Views\Plantation\Delete.cshtml" />
     <Content Include="Views\Plantation\Details.cshtml" />
     <Content Include="Views\Plantation\Edit.cshtml" />
     <Content Include="Views\Plantation\Index.cshtml" />
-    <Content Include="Views\InventoryTreatment\Create.cshtml" />
-    <Content Include="Views\Farm\FarmTree.cshtml" />
+    <Content Include="Views\Supplier\SupplierOrder.cshtml" />
+    <Content Include="Views\Supplier\OrderDetails.cshtml" />
+    <Content Include="Views\Supplier\PlaceOrder.cshtml" />
+    <Content Include="Views\Vehicle\ServiceIndex.cshtml" />
+    <Content Include="Views\Vehicle\EditService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="fonts\Content\WorkerImages\Thumbnail\" />
     <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>
@@ -845,12 +832,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807042356055_FirstName2.resx">
       <DependentUpon>201807042356055_FirstName2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807101112349_FirstName3.resx">
-      <DependentUpon>201807101112349_FirstName3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807101113259_User2.resx">
-      <DependentUpon>201807101113259_User2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

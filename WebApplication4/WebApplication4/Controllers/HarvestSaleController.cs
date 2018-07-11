@@ -39,7 +39,7 @@ namespace WebApplication4.Controllers
         // GET: HarvestSale/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName");
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFName");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace WebApplication4.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName", sale.CustomerID);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFName", sale.CustomerID);
             return View(sale);
         }
 
@@ -73,7 +73,7 @@ namespace WebApplication4.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName", sale.CustomerID);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFName", sale.CustomerID);
             return View(sale);
         }
 
@@ -90,7 +90,7 @@ namespace WebApplication4.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName", sale.CustomerID);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFName", sale.CustomerID);
             return View(sale);
         }
 

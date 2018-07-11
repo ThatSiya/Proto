@@ -1,82 +1,69 @@
 ﻿@model IEnumerable<WebApplication4.Models.Order>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "SupplierOrder";
 }
 
-<ol class="breadcrumb">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Resources</a></li>
-    <li class="active">Supplier Orders</li>
-</ol>
+<h2>SupplierOrder</h2>
 
-<div class="well">
-    <div class="row">
-
-        <div class="col-xs-6 col-md-4">
-            @using (Html.BeginForm("PlaceOrder", "Supplier", FormMethod.Get, new { @class = "form-inline" }))
-            {
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button class="btn btn-success" type="submit">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>
-                            Place Supplier Order
-                        </button>
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="col-xs-6 col-md-4">
-            @using (Html.BeginForm("SupplierOrder", "Supplier", FormMethod.Get, new { @class = "form-inline" }))
-            {
-                <div class="input-group">
-                    <span>@Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Enter search keyword or phrase" })</span>
-                    <div class="input-group-btn">
-                        <button class="btn btn-info" type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-</div>
-<table class="table table-striped table-condensed">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
     <tr>
         <th>
-            <span style="color:green;">@Html.DisplayNameFor(model => model.OrderItem)</span>
+            @Html.DisplayNameFor(model => model.OrderDate)
         </th>
         <th>
-            <span style="color:green;">@Html.DisplayNameFor(model => model.OrderDate)</span>
+            @Html.DisplayNameFor(model => model.OrderItemPrice)
         </th>
         <th>
-            <span style="color:green;">@Html.DisplayNameFor(model => model.OrderStatu.OrderStatusDescr)</span>
+            @Html.DisplayNameFor(model => model.OrderItem)
         </th>
         <th>
-            Actions
+            @Html.DisplayNameFor(model => model.Farm.FarmName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatu.OrderStatusDescr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supplier.SupplierName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderItem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderStatu.OrderStatusDescr)
-            </td>
-            <td>
-                <a href="@Url.Action("OrderDetails", new { id = item.OrderNum })" data-toggle="tooltip" title="Details">
-                    <i class="glyphicon glyphicon-zoom-in"></i>
-                    <span class="sr-only">Details</span>
-                </a>
-                @*Insert Cancel and Receive Order func here using bootbox*@
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderItemPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderItem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farm.FarmName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatu.OrderStatusDescr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderNum }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderNum }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderNum })
+        </td>
+    </tr>
+}
 
 </table>

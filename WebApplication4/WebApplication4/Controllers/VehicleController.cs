@@ -36,16 +36,16 @@ namespace WebApplication4.Controllers
 
             //group search results into types and count how many workers in each type
             viewModel.VehTypesWithCount = from matchingVehicles in vehicles
-                                             //where
-                                             //matchingVehicles.VehicleID != null
-                                             group matchingVehicles by
-                                             matchingVehicles.VehicleType.VehTypeDescr into
-                                             VehicleTypeGroup
-                                             select new VehicleTypesWithCount()
-                                             {
-                                                 VehTypeDescr = VehicleTypeGroup.Key,
-                                                 VehicleCount = VehicleTypeGroup.Count()
-                                             };
+                                              //where
+                                              //matchingVehicles.VehicleID != null
+                                          group matchingVehicles by
+                                          matchingVehicles.VehicleType.VehTypeDescr into
+                                          VehicleTypeGroup
+                                          select new VehicleTypesWithCount()
+                                          {
+                                              VehTypeDescr = VehicleTypeGroup.Key,
+                                              VehicleCount = VehicleTypeGroup.Count()
+                                          };
 
             if (!String.IsNullOrEmpty(vehicletype))
             {
@@ -64,7 +64,7 @@ namespace WebApplication4.Controllers
         //Return VehicleServices for the selected vehicle
         public ActionResult ServiceIndex(int? id)
         {
-            var vehicleServices = db.VehicleServices.Include(v => v.Vehicle).Where(v=>v.VehicleID == id);
+            var vehicleServices = db.VehicleServices.Include(v => v.Vehicle).Where(v => v.VehicleID == id);
             return View(vehicleServices);
         }
         // GET: Vehicle/Details/5
@@ -204,7 +204,7 @@ namespace WebApplication4.Controllers
         // GET: VehicleService/Create
         public ActionResult CreateVehicleService(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

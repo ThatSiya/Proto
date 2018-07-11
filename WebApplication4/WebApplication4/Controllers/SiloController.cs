@@ -57,11 +57,10 @@ namespace WebApplication4.Controllers
 
             return View(silo);
         }
-
         // GET: HarvestSale/Create
         public ActionResult CreateHarvestSale()
         {
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName");
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFName");
             return View();
         }
 
@@ -79,9 +78,10 @@ namespace WebApplication4.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName", sale.CustomerID);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFName", sale.CustomerID);
             return View(sale);
         }
+
         // GET: Silo/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
+using WebApplication4.ViewModels;
+using PagedList;
 
 namespace WebApplication4.Controllers
 {
@@ -15,9 +17,23 @@ namespace WebApplication4.Controllers
         private FarmDbContext db = new FarmDbContext();
 
         // GET: CropCycle
-        public ActionResult Index()
+        public ActionResult Index(int? page, string search)
         {
-            return View(db.CropCycles.ToList());
+            CropCycleIndexViewModel viewModel = new CropCycleIndexViewModel();
+            var cropcycles = db.CropCycles.Include(c => c.Plantations);
+            if (!String.IsNullOrEmpty(search))
+            {
+                cropcycles = db.CropCycles.Where(c => c.CropCycleDescr.Contains(search));
+                //ViewBag.Search = search;
+                viewModel.Search = search;
+            }
+            //sort results
+            cropcycles = cropcycles.OrderBy(c => c.CropCycleDescr);
+            //Paging:
+            const int PageItems = 5;
+            int currentPage = (page ?? 1);
+            viewModel.CropCycles = cropcycles.ToPagedList(currentPage,PageItems);
+            return View(viewModel);
         }
 
         // GET: CropCycle/Details/5

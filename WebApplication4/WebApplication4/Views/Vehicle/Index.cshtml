@@ -186,17 +186,17 @@
                     <span class="sr-only">EditMileage</span>
                 </a>
                 @*@if (this.Model.VehicleServices.VehicleID != this.Model.Vehicle.VehicleID)*@
-                
-                    <a href="@Url.Action("CreateVehicleService", new { id = item.VehicleID })" data-toggle="tooltip" title="Capture Vehicle Service">
-                        <i class="glyphicon glyphicon-wrench"></i>
-                        <span class="sr-only">VehicleService</span>
-                    </a>
+
+                <a href="@Url.Action("CreateVehicleService", new { id = item.VehicleID })" data-toggle="tooltip" title="Capture Vehicle Service">
+                    <i class="glyphicon glyphicon-wrench"></i>
+                    <span class="sr-only">VehicleService</span>
+                </a>
                 <a href="@Url.Action("ServiceIndex", new { id = item.VehicleID })" data-toggle="tooltip" title="View Vehicle Services">
                     <i class="glyphicon glyphicon-eye-open"></i>
                     <span class="sr-only">VehicleService</span>
                 </a>
-                
-                
+
+
             </td>
         </tr>
     }

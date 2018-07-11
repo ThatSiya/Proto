@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
 using WebApplication4.ViewModels;
+using PagedList;
 
 namespace WebApplication4.Controllers
 {
@@ -16,16 +17,24 @@ namespace WebApplication4.Controllers
         private FarmDbContext db = new FarmDbContext();
 
         // GET: Customer
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, int? page)
         {
-            //var customers = db.Customers.Include
+            CustomerIndexViewModel viewModel = new CustomerIndexViewModel();
+            var customers = db.Customers.Include(c=>c.Sales);
             if (!String.IsNullOrEmpty(search))
             {
-                var customers = db.Customers.Where(c => c.CompanyName.Contains(search) ||
+                customers = db.Customers.Where(c => c.CompanyName.Contains(search) ||
                 c.CustomerFName.Contains(search) || c.CustomerLName.Contains(search));
-                ViewBag.Search = search;
+                //ViewBag.Search = search;
+                viewModel.Search = search;
             }
-            return View(db.Customers.OrderBy(c => c.CompanyName).ToList());
+            //sort results
+            customers = customers.OrderBy(i => i.CustomerFName);
+            //Paging:
+            const int PageItems = 5;
+            int currentPage = (page ?? 1);
+            viewModel.Customers = customers.ToPagedList(currentPage, PageItems);
+            return View(viewModel);
         }
 
         // GET: Customer/Details/5

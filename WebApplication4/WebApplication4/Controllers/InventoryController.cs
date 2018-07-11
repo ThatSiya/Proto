@@ -57,7 +57,6 @@ namespace WebApplication4.Controllers
                                               InventoryCount = InvTypeGroup.Count()
                                           };
 
-
             if (!String.IsNullOrEmpty(inventorytype))
             {
                 inventories = inventories.Where(i => i.InventoryType.InvTypeDescr == inventorytype);

@@ -1,10 +1,10 @@
 ﻿@model WebApplication4.Models.Order
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "OrderDetails";
 }
 
-<h2>Details</h2>
+<h2>OrderDetails</h2>
 
 <div>
     <h4>Order</h4>
@@ -69,5 +69,6 @@
     </dl>
 </div>
 <p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderNum }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

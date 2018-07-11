@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Linq;  
+using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
+using WebApplication4.ViewModels;
+using PagedList;
 
 namespace WebApplication4.Controllers
 {
@@ -15,10 +17,38 @@ namespace WebApplication4.Controllers
         private FarmDbContext db = new FarmDbContext();
 
         // GET: Plantation
-        public ActionResult Index()
+        public ActionResult Index(string search, int? page, string croptype)
         {
-            var plantations = db.Plantations.Include(p => p.CropCycle).Include(p => p.CropType).Include(p => p.Field).Include(p => p.FieldStage).Where(p => p.PlantationStatus.Equals("Planned"));
-            return View(plantations.ToList());
+            //instantiate new view model
+            PlantationViewModel viewModel = new PlantationViewModel();
+
+            //select plantations
+            var plantations = db.Plantations.Include(p => p.CropType).Include(p=>p.CropCycle);
+
+            //group search results into types and count how many items in each type
+            viewModel.cropTypesWithCount = from matchingPlantations in plantations
+                                          group matchingPlantations by
+                                          matchingPlantations.CropType.CropTypeDescr into
+                                          CropTypeGroup
+                                          select new CropTypesWithCount()
+                                          {
+                                              CropTypeDescr = CropTypeGroup.Key,
+                                              PlantationCount = CropTypeGroup.Count()
+                                          };
+
+            if (!String.IsNullOrEmpty(croptype))
+            {
+                plantations = plantations.Where(i => i.CropType.CropTypeDescr == croptype);
+                viewModel.CropType = croptype;
+            }
+
+            //sort results
+            plantations = plantations.OrderBy(i => i.PlantationID);
+            //Paging:
+            const int PageItems = 5;
+            int currentPage = (page ?? 1);
+            viewModel.Plantations = plantations.ToPagedList(currentPage, PageItems);
+            return View(viewModel);
         }
 
         // GET: Plantation/Details/5
@@ -39,7 +69,6 @@ namespace WebApplication4.Controllers
         // GET: Plantation/Create
         public ActionResult Create()
         {
-            // ViewBag.PlantationStatus = "Planned";
             ViewBag.CropCycleID = new SelectList(db.CropCycles, "CropCycleID", "CropCycleDescr");
             ViewBag.CropTypeID = new SelectList(db.CropTypes, "CropTypeID", "CropTypeDescr");
             ViewBag.FieldID = new SelectList(db.Fields, "FieldID", "FieldName");

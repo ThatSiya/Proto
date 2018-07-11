@@ -61,10 +61,9 @@ namespace WebApplication4.Controllers
             //sort results
             farmWorkers = farmWorkers.OrderBy(i => i.FarmWorkerLName);
             //Paging:
-            //const int PageItems = 5;
+            const int PageItems = 5;
             int currentPage = (page ?? 1);
-            //viewModel.FarmWorkers = farmWorkers.ToPagedList(currentPage, PageItems);
-            viewModel.FarmWorkers = farmWorkers.ToPagedList(currentPage, Constants.PagedItems);
+            viewModel.FarmWorkers = farmWorkers.ToPagedList(currentPage, PageItems);
             return View(viewModel);
         }
 
@@ -86,7 +85,7 @@ namespace WebApplication4.Controllers
         // GET: FarmWorker/Create
         public ActionResult Create()
         {
-            ViewBag.FarmID = new SelectList(db.Farms, "FarmID","FarmName");
+            ViewBag.FarmID = new SelectList(db.Farms, "FarmID", "FarmName");
             ViewBag.FarmWorkerTypeID = new SelectList(db.FarmWorkerTypes, "FarmWorkerTypeID", "FarmWorkerTypeDescr");
             ViewBag.GenderID = new SelectList(db.Genders, "GenderID", "GenderDescr");
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "TitleDescr");
@@ -106,7 +105,7 @@ namespace WebApplication4.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FarmID  = new SelectList(db.Farms, "FarmID", "FarmName", farmWorker.FarmID);
+            ViewBag.FarmID = new SelectList(db.Farms, "FarmID", "FarmName", farmWorker.FarmID);
             ViewBag.FarmWorkerTypeID = new SelectList(db.FarmWorkerTypes, "FarmWorkerTypeID", "FarmWorkerTypeDescr", farmWorker.FarmWorkerTypeID);
             ViewBag.GenderID = new SelectList(db.Genders, "GenderID", "GenderDescr", farmWorker.GenderID);
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "TitleDescr", farmWorker.TitleID);
@@ -125,6 +124,7 @@ namespace WebApplication4.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.FarmID = new SelectList(db.Farms, "FarmID", "FarmName", farmWorker.FarmID);
             ViewBag.FarmWorkerTypeID = new SelectList(db.FarmWorkerTypes, "FarmWorkerTypeID", "FarmWorkerTypeDescr", farmWorker.FarmWorkerTypeID);
             ViewBag.GenderID = new SelectList(db.Genders, "GenderID", "GenderDescr", farmWorker.GenderID);
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "TitleDescr", farmWorker.TitleID);
@@ -136,7 +136,7 @@ namespace WebApplication4.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FarmWorkerNum,FarmWorkerFName,FarmWorkerLName,FarmWorkerContactNum,Address,Surburb,City,Province,Country,ContractStartDate,ContractEndDate,FarmWorkerIDNum,TitleID,GenderID,FarmWorkerTypeID")] FarmWorker farmWorker)
+        public ActionResult Edit([Bind(Include = "FarmWorkerNum,FarmWorkerFName,FarmWorkerLName,FarmWorkerContactNum,Address,Surburb,City,Province,Country,ContractStartDate,ContractEndDate,FarmWorkerIDNum,TitleID,GenderID,FarmWorkerTypeID,FarmID")] FarmWorker farmWorker)
         {
             if (ModelState.IsValid)
             {
@@ -144,6 +144,7 @@ namespace WebApplication4.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.FarmID = new SelectList(db.Farms, "FarmID", "FarmName", farmWorker.FarmID);
             ViewBag.FarmWorkerTypeID = new SelectList(db.FarmWorkerTypes, "FarmWorkerTypeID", "FarmWorkerTypeDescr", farmWorker.FarmWorkerTypeID);
             ViewBag.GenderID = new SelectList(db.Genders, "GenderID", "GenderDescr", farmWorker.GenderID);
             ViewBag.TitleID = new SelectList(db.Titles, "TitleID", "TitleDescr", farmWorker.TitleID);

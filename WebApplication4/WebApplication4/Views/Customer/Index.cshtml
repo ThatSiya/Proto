@@ -1,7 +1,7 @@
-﻿@model IEnumerable<WebApplication4.Models.Customer>
-
+﻿@model WebApplication4.ViewModels.CustomerIndexViewModel
+@using PagedList.Mvc @*PageList Library*@
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customers";
 }
 
 <ol class="breadcrumb">
@@ -45,20 +45,20 @@
     <thead>
         <tr>
             <th>
-                <span style="color:green;">@Html.DisplayNameFor(model => model.CustomerFName)</span>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Customers.First().CustomerFName)</span>
             </th>
             <th>
-                <span style="color:green;">@Html.DisplayNameFor(model => model.CustomerLName)</span>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Customers.First().CustomerLName)</span>
             </th>
             <th>
-                <span style="color:green;">@Html.DisplayNameFor(model => model.CompanyName)</span>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Customers.First().CompanyName)</span>
             </th>
             <th>
                 <span style="color:green;">Actions</span>
             </th>
         </tr>
     </thead>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Customers)
     {
         <tr>
             <td>
@@ -85,6 +85,23 @@
                 </a>
             </td>
         </tr>
-    }   
+    }
 
 </table>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You search for " + Model.Search + " found ")@Model.Customers.TotalItemCount customers
+</p>
+
+@*Generate paging links*@
+<div>
+    @*wrap in div for presentation purpose*@
+    Page @(Model.Customers.PageCount < Model.Customers.PageNumber ? 0 : @*evaluate whether or not there are any pages to display*@
+    Model.Customers.PageNumber) of @Model.Customers.PageCount @*Display Page x of y*@
+    @Html.PagedListPager(Model.Customers, page => Url.Action("Index",@*Takes list of inventories and produces a hyperlink to each page*@
+    new
+    {
+        Search = @Model.Search,
+        page
+    }))
+</div>
