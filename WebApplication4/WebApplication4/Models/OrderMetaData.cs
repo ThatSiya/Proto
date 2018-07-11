@@ -25,13 +25,19 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Item Price cannot be blank")]
         [Display(Name = "Item Price")]
         [RegularExpression(@"^[0-9]*(?:\.[0-9]*)?$", ErrorMessage = "Invalid input format")]
-        public decimal OrderItemPrice { get; set; }
+        public double OrderItemPrice { get; set; }
 
         [Required(ErrorMessage = "Item cannot be blank")]
         [Display(Name = "Item Name")]
         [StringLength(maximumLength: 35, ErrorMessage = "Max 35 characters reached")]
         [RegularExpression(@"^[a-zA-Z0-9'-'\s]*$", ErrorMessage = "Item Name must be made up of letters and numbers only")]
         public string OrderItem { get; set; }
+
+        [Required(ErrorMessage = "Quantity cannot be blank")]
+        [Display(Name = "Order Quantity")]
+        [RegularExpression("[0-9]+", ErrorMessage = "Quantity must be numeric")]
+        [Range(minimum: 0, maximum: 999999, ErrorMessage = "Quantity cannot be negative")]
+        public Nullable<int> OrderQty { get; set; }
 
     }
 }

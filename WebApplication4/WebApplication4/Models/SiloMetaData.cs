@@ -22,12 +22,12 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Silo capacity cannot be blank")]
         [Display(Name = "Silo Capacity")]
         [RegularExpression(@"^[0-9]*(?:\.[0-9]*)?$", ErrorMessage = "Invalid input format")]
-        public Nullable<decimal> SiloCapacity { get; set; }
+        public Nullable<double> SiloCapacity { get; set; }
 
         [Required(ErrorMessage = "Silo Rental Fee cannot be blank")]
         [Display(Name = "Silo Rental Fee (P/A)")]
         [RegularExpression(@"^[0-9]*(?:\.[0-9]*)?$", ErrorMessage = "Invalid input format")]
-        public Nullable<decimal> SiloRentalFeePA { get; set; }
+        public Nullable<double> SiloRentalFeePA { get; set; }
 
         [Required(ErrorMessage = "Silo Status cannot be blank")]
         [Display(Name = "Silo Status")]

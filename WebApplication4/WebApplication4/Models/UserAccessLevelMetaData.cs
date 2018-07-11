@@ -13,8 +13,11 @@ namespace WebApplication4.Models
 
 
         [Display(Name = "Access Level")]
-        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
         public string UserAccessLevelDescr { get; set; }
 
+        [Display(Name = "Notes")]
+        [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
+        public string Notes { get; set; }
     }
 }

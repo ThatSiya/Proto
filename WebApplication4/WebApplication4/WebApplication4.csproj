@@ -248,29 +248,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805302300583_InitialCreate.cs" />
-    <Compile Include="Migrations\201805302300583_InitialCreate.Designer.cs">
-      <DependentUpon>201805302300583_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201807112333155_FirstName.cs" />
+    <Compile Include="Migrations\201807112333155_FirstName.Designer.cs">
+      <DependentUpon>201807112333155_FirstName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805310032271_FirstName.cs" />
-    <Compile Include="Migrations\201805310032271_FirstName.Designer.cs">
-      <DependentUpon>201805310032271_FirstName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806010906152_User.cs" />
-    <Compile Include="Migrations\201806010906152_User.Designer.cs">
-      <DependentUpon>201806010906152_User.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806011005368_FirstName1.cs" />
-    <Compile Include="Migrations\201806011005368_FirstName1.Designer.cs">
-      <DependentUpon>201806011005368_FirstName1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806011007543_User1.cs" />
-    <Compile Include="Migrations\201806011007543_User1.Designer.cs">
-      <DependentUpon>201806011007543_User1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807042356055_FirstName2.cs" />
-    <Compile Include="Migrations\201807042356055_FirstName2.Designer.cs">
-      <DependentUpon>201807042356055_FirstName2.cs</DependentUpon>
+    <Compile Include="Migrations\201807112333428_User.cs" />
+    <Compile Include="Migrations\201807112333428_User.Designer.cs">
+      <DependentUpon>201807112333428_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -829,23 +813,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805302300583_InitialCreate.resx">
-      <DependentUpon>201805302300583_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805302300583_InitialCreate.resx" />
+    <EmbeddedResource Include="Migrations\201807112333155_FirstName.resx">
+      <DependentUpon>201807112333155_FirstName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805310032271_FirstName.resx">
-      <DependentUpon>201805310032271_FirstName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806010906152_User.resx">
-      <DependentUpon>201806010906152_User.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806011005368_FirstName1.resx">
-      <DependentUpon>201806011005368_FirstName1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806011007543_User1.resx">
-      <DependentUpon>201806011007543_User1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807042356055_FirstName2.resx">
-      <DependentUpon>201807042356055_FirstName2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807112333428_User.resx">
+      <DependentUpon>201807112333428_User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

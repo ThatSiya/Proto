@@ -18,5 +18,6 @@ namespace WebApplication4.Models
     {
         public int UnitID { get; set; }
         public string UnitDescr { get; set; }
+        public string Abbr { get; set; }
     }
 }

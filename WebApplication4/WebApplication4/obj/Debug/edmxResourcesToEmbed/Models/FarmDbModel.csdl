@@ -452,6 +452,7 @@
     </Key>
     <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UnitDescr" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Abbr" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -478,6 +479,7 @@
     </Key>
     <Property Name="UserAccessLevelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserAccessLevelDescr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="Self.FK__User__UserAccess__3C69FB99" FromRole="UserAccessLevel" ToRole="User" />
   </EntityType>
   <EntityType Name="Vehicle">

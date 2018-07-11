@@ -382,6 +382,7 @@
           </Key>
           <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UnitDescr" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Abbr" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -403,6 +404,7 @@
           </Key>
           <Property Name="UserAccessLevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserAccessLevelDescr" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Vehicle">
           <Key>
@@ -1658,6 +1660,7 @@
           </Key>
           <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UnitDescr" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Abbr" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1684,6 +1687,7 @@
           </Key>
           <Property Name="UserAccessLevelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserAccessLevelDescr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK__User__UserAccess__3C69FB99" FromRole="UserAccessLevel" ToRole="User" />
         </EntityType>
         <EntityType Name="Vehicle">
@@ -2903,6 +2907,7 @@
               <MappingFragment StoreEntitySet="Unit">
                 <ScalarProperty Name="UnitID" ColumnName="UnitID" />
                 <ScalarProperty Name="UnitDescr" ColumnName="UnitDescr" />
+                <ScalarProperty Name="Abbr" ColumnName="Abbr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2926,6 +2931,7 @@
               <MappingFragment StoreEntitySet="UserAccessLevel">
                 <ScalarProperty Name="UserAccessLevelID" ColumnName="UserAccessLevelID" />
                 <ScalarProperty Name="UserAccessLevelDescr" ColumnName="UserAccessLevelDescr" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

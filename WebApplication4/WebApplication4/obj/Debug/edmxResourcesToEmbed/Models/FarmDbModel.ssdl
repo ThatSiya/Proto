@@ -377,6 +377,7 @@
     </Key>
     <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UnitDescr" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Abbr" Type="varchar" MaxLength="5" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -398,6 +399,7 @@
     </Key>
     <Property Name="UserAccessLevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserAccessLevelDescr" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Notes" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Vehicle">
     <Key>

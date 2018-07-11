@@ -16,5 +16,10 @@ namespace WebApplication4.Models
         [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
         [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Unit must be alphabetic")]
         public string UnitDescr { get; set; }
+
+        [Display(Name = "Abbreviation")]
+        [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
+        [RegularExpression(@"^[a-zA-Z'-'\s]*$", ErrorMessage = "Unit must be alphabetic")]
+        public string Abbr { get; set; }
     }
 }

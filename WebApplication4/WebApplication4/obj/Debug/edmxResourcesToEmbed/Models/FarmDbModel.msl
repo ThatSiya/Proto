@@ -408,6 +408,7 @@
         <MappingFragment StoreEntitySet="Unit">
           <ScalarProperty Name="UnitID" ColumnName="UnitID" />
           <ScalarProperty Name="UnitDescr" ColumnName="UnitDescr" />
+          <ScalarProperty Name="Abbr" ColumnName="Abbr" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -431,6 +432,7 @@
         <MappingFragment StoreEntitySet="UserAccessLevel">
           <ScalarProperty Name="UserAccessLevelID" ColumnName="UserAccessLevelID" />
           <ScalarProperty Name="UserAccessLevelDescr" ColumnName="UserAccessLevelDescr" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

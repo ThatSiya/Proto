@@ -27,7 +27,7 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Sale Amount cannot be blank")]
         [Display(Name = "Sale Amount")]
         [RegularExpression(@"^[0-9]*(?:\.[0-9]*)?$", ErrorMessage = "Invalid input format")]
-        public decimal SaleAmnt { get; set; }
+        public double SaleAmnt { get; set; }
 
         [Required(ErrorMessage = "Purchase Agreement cannot be blank. Provide N/A if not applicable")]
         [Display(Name = "Purchase Agreement")]

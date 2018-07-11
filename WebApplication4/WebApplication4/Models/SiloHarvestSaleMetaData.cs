@@ -16,12 +16,12 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Harvest Sale Total Amount cannot be blank")]
         [Display(Name = "Harvest Sale Total Amount")]
         [RegularExpression(@"^[0-9]*(?:\.[0-9]*)?$", ErrorMessage = "Invalid input format")]
-        public decimal SiloHarvestSaleTotalAmnt { get; set; }
+        public double SiloHarvestSaleTotalAmnt { get; set; }
 
         [Required(ErrorMessage = "Harvest Sale Total Quantity cannot be blank")]
         [Display(Name = "Harvest Sale Total Quantity")]
         [RegularExpression(@"^[0-9]*(?:\.[0-9]*)?$", ErrorMessage = "Invalid input format")]
         [Range(minimum: 1, maximum: 999999, ErrorMessage = "Quantity cannot be negative or zero")]
-        public decimal SiloHarvestSaleTotalQty { get; set; }
+        public double SiloHarvestSaleTotalQty { get; set; }
     }
 }

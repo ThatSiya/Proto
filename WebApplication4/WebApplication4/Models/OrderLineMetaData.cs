@@ -17,7 +17,7 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Total Amount cannot be blank")]
         [Display(Name = "Total Amount")]
         [RegularExpression(@"^[0-9]*(?:\.[0-9]*)?$", ErrorMessage = "Invalid input format")]
-        public decimal OrderLineTotalAmount { get; set; }
+        public double OrderLineTotalAmount { get; set; }
 
         [Required(ErrorMessage = "Quantity cannot be blank")]
         [Display(Name = "Quantity")]

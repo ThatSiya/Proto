@@ -25,6 +25,6 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Harvest Tonnes Stored cannot be blank")]
         [Display(Name = "Harvest Tonnes Stored")]
         [RegularExpression(@"^[0-9]*(?:\.[0-9]*)?$", ErrorMessage = "Invalid input format")]
-        public decimal SiloHarvestTonnesStored { get; set; }
+        public double SiloHarvestTonnesStored { get; set; }
     }
 }

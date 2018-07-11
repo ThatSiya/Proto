@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3fc908d74dd44064b6660a60de346c87" Name="Diagram1">
+      <Diagram DiagramId="b8c41d3d80ff46c487587a352b9a83fa" Name="Diagram1">
         <EntityTypeShape EntityType="FarmDbModel.AttendenceSheet" Width="1.5" PointX="12.75" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmDbModel.Audit" Width="1.5" PointX="12.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmDbModel.AuditType" Width="1.5" PointX="10.5" PointY="43.375" IsExpanded="true" />
