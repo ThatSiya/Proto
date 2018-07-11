@@ -19,6 +19,7 @@ namespace WebApplication4.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Farm()
         {
+            this.FarmWorkers = new HashSet<FarmWorker>();
             this.Lands = new HashSet<Land>();
             this.Orders = new HashSet<Order>();
             this.Vehicles = new HashSet<Vehicle>();
@@ -29,6 +30,8 @@ namespace WebApplication4.Models
         public int ProvinceID { get; set; }
     
         public virtual Province Province { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FarmWorker> FarmWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Land> Lands { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

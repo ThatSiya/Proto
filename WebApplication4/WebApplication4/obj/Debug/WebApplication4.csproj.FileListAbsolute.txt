@@ -279,3 +279,5 @@ C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebAp
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\WebApplication4\obj\Debug\WebApplication4.csproj.GenerateResource.Cache
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\WebApplication4\obj\Debug\WebApplication4.dll
 C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\WebApplication4\obj\Debug\WebApplication4.pdb
+C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\WebApplication4\obj\Debug\WebApplication4.Migrations.FirstName3.resources
+C:\Users\Bonga\Documents\Visual Studio 2015\Projects\WebApplication4\Proto\WebApplication4\WebApplication4\obj\Debug\WebApplication4.Migrations.User2.resources

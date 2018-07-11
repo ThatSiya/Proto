@@ -113,6 +113,7 @@
           <Property Name="TitleID" Type="int" Nullable="false" />
           <Property Name="GenderID" Type="int" Nullable="false" />
           <Property Name="FarmWorkerTypeID" Type="int" Nullable="false" />
+          <Property Name="FarmID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FarmWorkerType">
           <Key>
@@ -449,7 +450,7 @@
           <Property Name="VehTypeDescr" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="VehTypeImg" Type="varchar" MaxLength="255" />
         </EntityType>
-        <Association Name="FK__Attendenc__FarmW__46E78A0C">
+        <Association Name="FK__Attendenc__FarmW__47DBAE45">
           <End Role="FarmWorker" Type="Self.FarmWorker" Multiplicity="1" />
           <End Role="AttendenceSheet" Type="Self.AttendenceSheet" Multiplicity="*" />
           <ReferentialConstraint>
@@ -461,7 +462,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Attendenc__UserI__47DBAE45">
+        <Association Name="FK__Attendenc__UserI__48CFD27E">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="AttendenceSheet" Type="Self.AttendenceSheet" Multiplicity="*" />
           <ReferentialConstraint>
@@ -473,7 +474,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Audit__AuditType__412EB0B6">
+        <Association Name="FK__Audit__AuditType__4222D4EF">
           <End Role="AuditType" Type="Self.AuditType" Multiplicity="1" />
           <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -485,7 +486,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Audit__UserID__403A8C7D">
+        <Association Name="FK__Audit__UserID__412EB0B6">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -506,6 +507,18 @@
             </Principal>
             <Dependent Role="Farm">
               <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FarmWorke__FarmI__37A5467C">
+          <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+          <End Role="FarmWorker" Type="Self.FarmWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm">
+              <PropertyRef Name="FarmID" />
+            </Principal>
+            <Dependent Role="FarmWorker">
+              <PropertyRef Name="FarmID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -617,7 +630,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FieldTrea__Field__6A30C649">
+        <Association Name="FK__FieldTrea__Field__6B24EA82">
           <End Role="Field" Type="Self.Field" Multiplicity="1" />
           <End Role="FieldTreatment" Type="Self.FieldTreatment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -629,7 +642,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FieldTrea__Treat__6B24EA82">
+        <Association Name="FK__FieldTrea__Treat__6C190EBB">
           <End Role="Treatment" Type="Self.Treatment" Multiplicity="1" />
           <End Role="FieldTreatment" Type="Self.FieldTreatment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -641,7 +654,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__Inven__6754599E">
+        <Association Name="FK__Inventory__Inven__68487DD7">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
           <End Role="InventoryTreatment" Type="Self.InventoryTreatment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -653,7 +666,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__InvTy__619B8048">
+        <Association Name="FK__Inventory__InvTy__628FA481">
           <End Role="InventoryType" Type="Self.InventoryType" Multiplicity="1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -665,7 +678,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__Treat__66603565">
+        <Association Name="FK__Inventory__Treat__6754599E">
           <End Role="Treatment" Type="Self.Treatment" Multiplicity="1" />
           <End Role="InventoryTreatment" Type="Self.InventoryTreatment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -689,7 +702,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Log__User__440B1D61">
+        <Association Name="FK__Log__User__44FF419A">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Log" Type="Self.Log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -701,7 +714,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__FarmID__5BE2A6F2">
+        <Association Name="FK__Order__FarmID__5CD6CB2B">
           <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -713,7 +726,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__OrderStat__5CD6CB2B">
+        <Association Name="FK__Order__OrderStat__5DCAEF64">
           <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -725,7 +738,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__SupplierI__59FA5E80">
+        <Association Name="FK__Order__SupplierI__5AEE82B9">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -737,7 +750,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__UserID__5AEE82B9">
+        <Association Name="FK__Order__UserID__5BE2A6F2">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -749,7 +762,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Inven__6EF57B66">
+        <Association Name="FK__OrderLine__Inven__6FE99F9F">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -761,7 +774,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Order__6E01572D">
+        <Association Name="FK__OrderLine__Order__6EF57B66">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -773,7 +786,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Plantatio__CropC__797309D9">
+        <Association Name="FK__Plantatio__CropC__7A672E12">
           <End Role="CropCycle" Type="Self.CropCycle" Multiplicity="1" />
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -785,7 +798,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Plantatio__CropT__787EE5A0">
+        <Association Name="FK__Plantatio__CropT__797309D9">
           <End Role="CropType" Type="Self.CropType" Multiplicity="1" />
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -797,7 +810,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Plantatio__Field__778AC167">
+        <Association Name="FK__Plantatio__Field__787EE5A0">
           <End Role="Field" Type="Self.Field" Multiplicity="1" />
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -809,7 +822,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Plantatio__Field__7A672E12">
+        <Association Name="FK__Plantatio__Field__7B5B524B">
           <End Role="FieldStage" Type="Self.FieldStage" Multiplicity="1" />
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -845,7 +858,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sale__CustomerID__04E4BC85">
+        <Association Name="FK__Sale__CustomerID__05D8E0BE">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
           <ReferentialConstraint>
@@ -857,7 +870,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SiloHarve__Plant__00200768">
+        <Association Name="FK__SiloHarve__Plant__01142BA1">
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="1" />
           <End Role="SiloHarvest" Type="Self.SiloHarvest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -869,7 +882,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SiloHarve__SaleI__08B54D69">
+        <Association Name="FK__SiloHarve__SaleI__09A971A2">
           <End Role="Sale" Type="Self.Sale" Multiplicity="1" />
           <End Role="SiloHarvestSale" Type="Self.SiloHarvestSale" Multiplicity="*" />
           <ReferentialConstraint>
@@ -881,7 +894,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SiloHarve__SiloH__07C12930">
+        <Association Name="FK__SiloHarve__SiloH__08B54D69">
           <End Role="SiloHarvest" Type="Self.SiloHarvest" Multiplicity="1" />
           <End Role="SiloHarvestSale" Type="Self.SiloHarvestSale" Multiplicity="*" />
           <ReferentialConstraint>
@@ -893,7 +906,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SiloHarve__SiloI__7F2BE32F">
+        <Association Name="FK__SiloHarve__SiloI__00200768">
           <End Role="Silo" Type="Self.Silo" Multiplicity="1" />
           <End Role="SiloHarvest" Type="Self.SiloHarvest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -905,7 +918,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User__UserAccess__3B75D760">
+        <Association Name="FK__User__UserAccess__3C69FB99">
           <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -917,7 +930,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehicle__FarmID__4E88ABD4">
+        <Association Name="FK__Vehicle__FarmID__4F7CD00D">
           <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -929,7 +942,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehicle__VehMake__5070F446">
+        <Association Name="FK__Vehicle__VehMake__5165187F">
           <End Role="VehicleMake" Type="Self.VehicleMake" Multiplicity="1" />
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -941,7 +954,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehicle__VehType__4F7CD00D">
+        <Association Name="FK__Vehicle__VehType__5070F446">
           <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="1" />
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -953,7 +966,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VehicleSe__Vehic__534D60F1">
+        <Association Name="FK__VehicleSe__Vehic__5441852A">
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
           <End Role="VehicleService" Type="Self.VehicleService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1010,25 +1023,29 @@
           <EntitySet Name="VehicleMake" EntityType="Self.VehicleMake" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VehicleService" EntityType="Self.VehicleService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Attendenc__FarmW__46E78A0C" Association="Self.FK__Attendenc__FarmW__46E78A0C">
+          <AssociationSet Name="FK__Attendenc__FarmW__47DBAE45" Association="Self.FK__Attendenc__FarmW__47DBAE45">
             <End Role="FarmWorker" EntitySet="FarmWorker" />
             <End Role="AttendenceSheet" EntitySet="AttendenceSheet" />
           </AssociationSet>
-          <AssociationSet Name="FK__Attendenc__UserI__47DBAE45" Association="Self.FK__Attendenc__UserI__47DBAE45">
+          <AssociationSet Name="FK__Attendenc__UserI__48CFD27E" Association="Self.FK__Attendenc__UserI__48CFD27E">
             <End Role="User" EntitySet="User" />
             <End Role="AttendenceSheet" EntitySet="AttendenceSheet" />
           </AssociationSet>
-          <AssociationSet Name="FK__Audit__AuditType__412EB0B6" Association="Self.FK__Audit__AuditType__412EB0B6">
+          <AssociationSet Name="FK__Audit__AuditType__4222D4EF" Association="Self.FK__Audit__AuditType__4222D4EF">
             <End Role="AuditType" EntitySet="AuditType" />
             <End Role="Audit" EntitySet="Audit" />
           </AssociationSet>
-          <AssociationSet Name="FK__Audit__UserID__403A8C7D" Association="Self.FK__Audit__UserID__403A8C7D">
+          <AssociationSet Name="FK__Audit__UserID__412EB0B6" Association="Self.FK__Audit__UserID__412EB0B6">
             <End Role="User" EntitySet="User" />
             <End Role="Audit" EntitySet="Audit" />
           </AssociationSet>
           <AssociationSet Name="FK__Farm__ProvinceID__15502E78" Association="Self.FK__Farm__ProvinceID__15502E78">
             <End Role="Province" EntitySet="Province" />
             <End Role="Farm" EntitySet="Farm" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FarmWorke__FarmI__37A5467C" Association="Self.FK__FarmWorke__FarmI__37A5467C">
+            <End Role="Farm" EntitySet="Farm" />
+            <End Role="FarmWorker" EntitySet="FarmWorker" />
           </AssociationSet>
           <AssociationSet Name="FK__FarmWorke__FarmW__36B12243" Association="Self.FK__FarmWorke__FarmW__36B12243">
             <End Role="FarmWorkerType" EntitySet="FarmWorkerType" />
@@ -1066,23 +1083,23 @@
             <End Role="NaturalDisaster" EntitySet="NaturalDisaster" />
             <End Role="FieldNaturalDisaster" EntitySet="FieldNaturalDisaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__FieldTrea__Field__6A30C649" Association="Self.FK__FieldTrea__Field__6A30C649">
+          <AssociationSet Name="FK__FieldTrea__Field__6B24EA82" Association="Self.FK__FieldTrea__Field__6B24EA82">
             <End Role="Field" EntitySet="Field" />
             <End Role="FieldTreatment" EntitySet="FieldTreatment" />
           </AssociationSet>
-          <AssociationSet Name="FK__FieldTrea__Treat__6B24EA82" Association="Self.FK__FieldTrea__Treat__6B24EA82">
+          <AssociationSet Name="FK__FieldTrea__Treat__6C190EBB" Association="Self.FK__FieldTrea__Treat__6C190EBB">
             <End Role="Treatment" EntitySet="Treatment" />
             <End Role="FieldTreatment" EntitySet="FieldTreatment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__Inven__6754599E" Association="Self.FK__Inventory__Inven__6754599E">
+          <AssociationSet Name="FK__Inventory__Inven__68487DD7" Association="Self.FK__Inventory__Inven__68487DD7">
             <End Role="Inventory" EntitySet="Inventory" />
             <End Role="InventoryTreatment" EntitySet="InventoryTreatment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__InvTy__619B8048" Association="Self.FK__Inventory__InvTy__619B8048">
+          <AssociationSet Name="FK__Inventory__InvTy__628FA481" Association="Self.FK__Inventory__InvTy__628FA481">
             <End Role="InventoryType" EntitySet="InventoryType" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__Treat__66603565" Association="Self.FK__Inventory__Treat__66603565">
+          <AssociationSet Name="FK__Inventory__Treat__6754599E" Association="Self.FK__Inventory__Treat__6754599E">
             <End Role="Treatment" EntitySet="Treatment" />
             <End Role="InventoryTreatment" EntitySet="InventoryTreatment" />
           </AssociationSet>
@@ -1090,47 +1107,47 @@
             <End Role="Farm" EntitySet="Farm" />
             <End Role="Land" EntitySet="Land" />
           </AssociationSet>
-          <AssociationSet Name="FK__Log__User__440B1D61" Association="Self.FK__Log__User__440B1D61">
+          <AssociationSet Name="FK__Log__User__44FF419A" Association="Self.FK__Log__User__44FF419A">
             <End Role="User" EntitySet="User" />
             <End Role="Log" EntitySet="Log" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__FarmID__5BE2A6F2" Association="Self.FK__Order__FarmID__5BE2A6F2">
+          <AssociationSet Name="FK__Order__FarmID__5CD6CB2B" Association="Self.FK__Order__FarmID__5CD6CB2B">
             <End Role="Farm" EntitySet="Farm" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__OrderStat__5CD6CB2B" Association="Self.FK__Order__OrderStat__5CD6CB2B">
+          <AssociationSet Name="FK__Order__OrderStat__5DCAEF64" Association="Self.FK__Order__OrderStat__5DCAEF64">
             <End Role="OrderStatus" EntitySet="OrderStatus" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__SupplierI__59FA5E80" Association="Self.FK__Order__SupplierI__59FA5E80">
+          <AssociationSet Name="FK__Order__SupplierI__5AEE82B9" Association="Self.FK__Order__SupplierI__5AEE82B9">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__UserID__5AEE82B9" Association="Self.FK__Order__UserID__5AEE82B9">
+          <AssociationSet Name="FK__Order__UserID__5BE2A6F2" Association="Self.FK__Order__UserID__5BE2A6F2">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Inven__6EF57B66" Association="Self.FK__OrderLine__Inven__6EF57B66">
+          <AssociationSet Name="FK__OrderLine__Inven__6FE99F9F" Association="Self.FK__OrderLine__Inven__6FE99F9F">
             <End Role="Inventory" EntitySet="Inventory" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Order__6E01572D" Association="Self.FK__OrderLine__Order__6E01572D">
+          <AssociationSet Name="FK__OrderLine__Order__6EF57B66" Association="Self.FK__OrderLine__Order__6EF57B66">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__Plantatio__CropC__797309D9" Association="Self.FK__Plantatio__CropC__797309D9">
+          <AssociationSet Name="FK__Plantatio__CropC__7A672E12" Association="Self.FK__Plantatio__CropC__7A672E12">
             <End Role="CropCycle" EntitySet="CropCycle" />
             <End Role="Plantation" EntitySet="Plantation" />
           </AssociationSet>
-          <AssociationSet Name="FK__Plantatio__CropT__787EE5A0" Association="Self.FK__Plantatio__CropT__787EE5A0">
+          <AssociationSet Name="FK__Plantatio__CropT__797309D9" Association="Self.FK__Plantatio__CropT__797309D9">
             <End Role="CropType" EntitySet="CropType" />
             <End Role="Plantation" EntitySet="Plantation" />
           </AssociationSet>
-          <AssociationSet Name="FK__Plantatio__Field__778AC167" Association="Self.FK__Plantatio__Field__778AC167">
+          <AssociationSet Name="FK__Plantatio__Field__787EE5A0" Association="Self.FK__Plantatio__Field__787EE5A0">
             <End Role="Field" EntitySet="Field" />
             <End Role="Plantation" EntitySet="Plantation" />
           </AssociationSet>
-          <AssociationSet Name="FK__Plantatio__Field__7A672E12" Association="Self.FK__Plantatio__Field__7A672E12">
+          <AssociationSet Name="FK__Plantatio__Field__7B5B524B" Association="Self.FK__Plantatio__Field__7B5B524B">
             <End Role="FieldStage" EntitySet="FieldStage" />
             <End Role="Plantation" EntitySet="Plantation" />
           </AssociationSet>
@@ -1142,43 +1159,43 @@
             <End Role="Land" EntitySet="Land" />
             <End Role="RainfallRecord" EntitySet="RainfallRecord" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sale__CustomerID__04E4BC85" Association="Self.FK__Sale__CustomerID__04E4BC85">
+          <AssociationSet Name="FK__Sale__CustomerID__05D8E0BE" Association="Self.FK__Sale__CustomerID__05D8E0BE">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
-          <AssociationSet Name="FK__SiloHarve__Plant__00200768" Association="Self.FK__SiloHarve__Plant__00200768">
+          <AssociationSet Name="FK__SiloHarve__Plant__01142BA1" Association="Self.FK__SiloHarve__Plant__01142BA1">
             <End Role="Plantation" EntitySet="Plantation" />
             <End Role="SiloHarvest" EntitySet="SiloHarvest" />
           </AssociationSet>
-          <AssociationSet Name="FK__SiloHarve__SaleI__08B54D69" Association="Self.FK__SiloHarve__SaleI__08B54D69">
+          <AssociationSet Name="FK__SiloHarve__SaleI__09A971A2" Association="Self.FK__SiloHarve__SaleI__09A971A2">
             <End Role="Sale" EntitySet="Sale" />
             <End Role="SiloHarvestSale" EntitySet="SiloHarvestSale" />
           </AssociationSet>
-          <AssociationSet Name="FK__SiloHarve__SiloH__07C12930" Association="Self.FK__SiloHarve__SiloH__07C12930">
+          <AssociationSet Name="FK__SiloHarve__SiloH__08B54D69" Association="Self.FK__SiloHarve__SiloH__08B54D69">
             <End Role="SiloHarvest" EntitySet="SiloHarvest" />
             <End Role="SiloHarvestSale" EntitySet="SiloHarvestSale" />
           </AssociationSet>
-          <AssociationSet Name="FK__SiloHarve__SiloI__7F2BE32F" Association="Self.FK__SiloHarve__SiloI__7F2BE32F">
+          <AssociationSet Name="FK__SiloHarve__SiloI__00200768" Association="Self.FK__SiloHarve__SiloI__00200768">
             <End Role="Silo" EntitySet="Silo" />
             <End Role="SiloHarvest" EntitySet="SiloHarvest" />
           </AssociationSet>
-          <AssociationSet Name="FK__User__UserAccess__3B75D760" Association="Self.FK__User__UserAccess__3B75D760">
+          <AssociationSet Name="FK__User__UserAccess__3C69FB99" Association="Self.FK__User__UserAccess__3C69FB99">
             <End Role="UserAccessLevel" EntitySet="UserAccessLevel" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehicle__FarmID__4E88ABD4" Association="Self.FK__Vehicle__FarmID__4E88ABD4">
+          <AssociationSet Name="FK__Vehicle__FarmID__4F7CD00D" Association="Self.FK__Vehicle__FarmID__4F7CD00D">
             <End Role="Farm" EntitySet="Farm" />
             <End Role="Vehicle" EntitySet="Vehicle" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehicle__VehMake__5070F446" Association="Self.FK__Vehicle__VehMake__5070F446">
+          <AssociationSet Name="FK__Vehicle__VehMake__5165187F" Association="Self.FK__Vehicle__VehMake__5165187F">
             <End Role="VehicleMake" EntitySet="VehicleMake" />
             <End Role="Vehicle" EntitySet="Vehicle" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehicle__VehType__4F7CD00D" Association="Self.FK__Vehicle__VehType__4F7CD00D">
+          <AssociationSet Name="FK__Vehicle__VehType__5070F446" Association="Self.FK__Vehicle__VehType__5070F446">
             <End Role="VehicleType" EntitySet="VehicleType" />
             <End Role="Vehicle" EntitySet="Vehicle" />
           </AssociationSet>
-          <AssociationSet Name="FK__VehicleSe__Vehic__534D60F1" Association="Self.FK__VehicleSe__Vehic__534D60F1">
+          <AssociationSet Name="FK__VehicleSe__Vehic__5441852A" Association="Self.FK__VehicleSe__Vehic__5441852A">
             <End Role="Vehicle" EntitySet="Vehicle" />
             <End Role="VehicleService" EntitySet="VehicleService" />
           </AssociationSet>
@@ -1197,8 +1214,8 @@
           <Property Name="ClockOutTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FarmWorkerNum" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FarmWorker" Relationship="Self.FK__Attendenc__FarmW__46E78A0C" FromRole="AttendenceSheet" ToRole="FarmWorker" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Attendenc__UserI__47DBAE45" FromRole="AttendenceSheet" ToRole="User" />
+          <NavigationProperty Name="FarmWorker" Relationship="Self.FK__Attendenc__FarmW__47DBAE45" FromRole="AttendenceSheet" ToRole="FarmWorker" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Attendenc__UserI__48CFD27E" FromRole="AttendenceSheet" ToRole="User" />
         </EntityType>
         <EntityType Name="Audit">
           <Key>
@@ -1213,8 +1230,8 @@
           <Property Name="AuditRefAtrribute" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="AuditTypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AuditType" Relationship="Self.FK__Audit__AuditType__412EB0B6" FromRole="Audit" ToRole="AuditType" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Audit__UserID__403A8C7D" FromRole="Audit" ToRole="User" />
+          <NavigationProperty Name="AuditType" Relationship="Self.FK__Audit__AuditType__4222D4EF" FromRole="Audit" ToRole="AuditType" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Audit__UserID__412EB0B6" FromRole="Audit" ToRole="User" />
         </EntityType>
         <EntityType Name="AuditType">
           <Key>
@@ -1222,7 +1239,7 @@
           </Key>
           <Property Name="AuditTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AuditTypeDescr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Audits" Relationship="Self.FK__Audit__AuditType__412EB0B6" FromRole="AuditType" ToRole="Audit" />
+          <NavigationProperty Name="Audits" Relationship="Self.FK__Audit__AuditType__4222D4EF" FromRole="AuditType" ToRole="Audit" />
         </EntityType>
         <EntityType Name="BiologicalDisaster">
           <Key>
@@ -1249,7 +1266,7 @@
           <Property Name="CropCycleStartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CropCycleEndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CropCycleDescr" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Plantations" Relationship="Self.FK__Plantatio__CropC__797309D9" FromRole="CropCycle" ToRole="Plantation" />
+          <NavigationProperty Name="Plantations" Relationship="Self.FK__Plantatio__CropC__7A672E12" FromRole="CropCycle" ToRole="Plantation" />
         </EntityType>
         <EntityType Name="CropType">
           <Key>
@@ -1258,7 +1275,7 @@
           <Property Name="CropTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CropTypeDescr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MaturityDays" Type="Int32" />
-          <NavigationProperty Name="Plantations" Relationship="Self.FK__Plantatio__CropT__787EE5A0" FromRole="CropType" ToRole="Plantation" />
+          <NavigationProperty Name="Plantations" Relationship="Self.FK__Plantatio__CropT__797309D9" FromRole="CropType" ToRole="Plantation" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -1276,7 +1293,7 @@
           <Property Name="Country" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="Province" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Name="CompanyTelNum" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Sales" Relationship="Self.FK__Sale__CustomerID__04E4BC85" FromRole="Customer" ToRole="Sale" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK__Sale__CustomerID__05D8E0BE" FromRole="Customer" ToRole="Sale" />
         </EntityType>
         <EntityType Name="Farm">
           <Key>
@@ -1286,9 +1303,10 @@
           <Property Name="FarmName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProvinceID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Province" Relationship="Self.FK__Farm__ProvinceID__15502E78" FromRole="Farm" ToRole="Province" />
+          <NavigationProperty Name="FarmWorkers" Relationship="Self.FK__FarmWorke__FarmI__37A5467C" FromRole="Farm" ToRole="FarmWorker" />
           <NavigationProperty Name="Lands" Relationship="Self.FK__Land__FarmID__182C9B23" FromRole="Farm" ToRole="Land" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__FarmID__5BE2A6F2" FromRole="Farm" ToRole="Order" />
-          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__FarmID__4E88ABD4" FromRole="Farm" ToRole="Vehicle" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__FarmID__5CD6CB2B" FromRole="Farm" ToRole="Order" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__FarmID__4F7CD00D" FromRole="Farm" ToRole="Vehicle" />
         </EntityType>
         <EntityType Name="FarmWorker">
           <Key>
@@ -1310,7 +1328,9 @@
           <Property Name="TitleID" Type="Int32" Nullable="false" />
           <Property Name="GenderID" Type="Int32" Nullable="false" />
           <Property Name="FarmWorkerTypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AttendenceSheets" Relationship="Self.FK__Attendenc__FarmW__46E78A0C" FromRole="FarmWorker" ToRole="AttendenceSheet" />
+          <Property Name="FarmID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AttendenceSheets" Relationship="Self.FK__Attendenc__FarmW__47DBAE45" FromRole="FarmWorker" ToRole="AttendenceSheet" />
+          <NavigationProperty Name="Farm" Relationship="Self.FK__FarmWorke__FarmI__37A5467C" FromRole="FarmWorker" ToRole="Farm" />
           <NavigationProperty Name="FarmWorkerType" Relationship="Self.FK__FarmWorke__FarmW__36B12243" FromRole="FarmWorker" ToRole="FarmWorkerType" />
           <NavigationProperty Name="Gender" Relationship="Self.FK__FarmWorke__Gende__35BCFE0A" FromRole="FarmWorker" ToRole="Gender" />
           <NavigationProperty Name="Title" Relationship="Self.FK__FarmWorke__Title__34C8D9D1" FromRole="FarmWorker" ToRole="Title" />
@@ -1338,8 +1358,8 @@
           <NavigationProperty Name="Land" Relationship="Self.FK__Field__LandID__20C1E124" FromRole="Field" ToRole="Land" />
           <NavigationProperty Name="FieldBiologicalDisasters" Relationship="Self.FK__FieldBiol__Field__2B3F6F97" FromRole="Field" ToRole="FieldBiologicalDisaster" />
           <NavigationProperty Name="FieldNaturalDisasters" Relationship="Self.FK__FieldNatu__Field__25869641" FromRole="Field" ToRole="FieldNaturalDisaster" />
-          <NavigationProperty Name="FieldTreatments" Relationship="Self.FK__FieldTrea__Field__6A30C649" FromRole="Field" ToRole="FieldTreatment" />
-          <NavigationProperty Name="Plantations" Relationship="Self.FK__Plantatio__Field__778AC167" FromRole="Field" ToRole="Plantation" />
+          <NavigationProperty Name="FieldTreatments" Relationship="Self.FK__FieldTrea__Field__6B24EA82" FromRole="Field" ToRole="FieldTreatment" />
+          <NavigationProperty Name="Plantations" Relationship="Self.FK__Plantatio__Field__787EE5A0" FromRole="Field" ToRole="Plantation" />
         </EntityType>
         <EntityType Name="FieldBiologicalDisaster">
           <Key>
@@ -1369,7 +1389,7 @@
           </Key>
           <Property Name="FieldStageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FieldStageDescr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Plantations" Relationship="Self.FK__Plantatio__Field__7A672E12" FromRole="FieldStage" ToRole="Plantation" />
+          <NavigationProperty Name="Plantations" Relationship="Self.FK__Plantatio__Field__7B5B524B" FromRole="FieldStage" ToRole="Plantation" />
         </EntityType>
         <EntityType Name="FieldStatu">
           <Key>
@@ -1388,8 +1408,8 @@
           <Property Name="FieldID" Type="Int32" Nullable="false" />
           <Property Name="TreatmentID" Type="Int32" Nullable="false" />
           <Property Name="TreatmentDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Field" Relationship="Self.FK__FieldTrea__Field__6A30C649" FromRole="FieldTreatment" ToRole="Field" />
-          <NavigationProperty Name="Treatment" Relationship="Self.FK__FieldTrea__Treat__6B24EA82" FromRole="FieldTreatment" ToRole="Treatment" />
+          <NavigationProperty Name="Field" Relationship="Self.FK__FieldTrea__Field__6B24EA82" FromRole="FieldTreatment" ToRole="Field" />
+          <NavigationProperty Name="Treatment" Relationship="Self.FK__FieldTrea__Treat__6C190EBB" FromRole="FieldTreatment" ToRole="Treatment" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -1410,9 +1430,9 @@
           <Property Name="InvCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="InvSIUnit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="InvTypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="InventoryTreatments" Relationship="Self.FK__Inventory__Inven__6754599E" FromRole="Inventory" ToRole="InventoryTreatment" />
-          <NavigationProperty Name="InventoryType" Relationship="Self.FK__Inventory__InvTy__619B8048" FromRole="Inventory" ToRole="InventoryType" />
-          <NavigationProperty Name="OrderLines" Relationship="Self.FK__OrderLine__Inven__6EF57B66" FromRole="Inventory" ToRole="OrderLine" />
+          <NavigationProperty Name="InventoryTreatments" Relationship="Self.FK__Inventory__Inven__68487DD7" FromRole="Inventory" ToRole="InventoryTreatment" />
+          <NavigationProperty Name="InventoryType" Relationship="Self.FK__Inventory__InvTy__628FA481" FromRole="Inventory" ToRole="InventoryType" />
+          <NavigationProperty Name="OrderLines" Relationship="Self.FK__OrderLine__Inven__6FE99F9F" FromRole="Inventory" ToRole="OrderLine" />
         </EntityType>
         <EntityType Name="InventoryTreatment">
           <Key>
@@ -1423,8 +1443,8 @@
           <Property Name="InventoryID" Type="Int32" Nullable="false" />
           <Property Name="TreatmentQnty" Type="Int32" Nullable="false" />
           <Property Name="TreatmentUnit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Inventory" Relationship="Self.FK__Inventory__Inven__6754599E" FromRole="InventoryTreatment" ToRole="Inventory" />
-          <NavigationProperty Name="Treatment" Relationship="Self.FK__Inventory__Treat__66603565" FromRole="InventoryTreatment" ToRole="Treatment" />
+          <NavigationProperty Name="Inventory" Relationship="Self.FK__Inventory__Inven__68487DD7" FromRole="InventoryTreatment" ToRole="Inventory" />
+          <NavigationProperty Name="Treatment" Relationship="Self.FK__Inventory__Treat__6754599E" FromRole="InventoryTreatment" ToRole="Treatment" />
         </EntityType>
         <EntityType Name="InventoryType">
           <Key>
@@ -1432,7 +1452,7 @@
           </Key>
           <Property Name="InvTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="InvTypeDescr" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__InvTy__619B8048" FromRole="InventoryType" ToRole="Inventory" />
+          <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__InvTy__628FA481" FromRole="InventoryType" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="Land">
           <Key>
@@ -1453,7 +1473,7 @@
           <Property Name="LogInTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LogOutTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="User" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User1" Relationship="Self.FK__Log__User__440B1D61" FromRole="Log" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Log__User__44FF419A" FromRole="Log" ToRole="User" />
         </EntityType>
         <EntityType Name="NaturalDisaster">
           <Key>
@@ -1478,11 +1498,11 @@
           <Property Name="FarmID" Type="Int32" Nullable="false" />
           <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
           <Property Name="OrderItem" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Farm" Relationship="Self.FK__Order__FarmID__5BE2A6F2" FromRole="Order" ToRole="Farm" />
-          <NavigationProperty Name="OrderStatu" Relationship="Self.FK__Order__OrderStat__5CD6CB2B" FromRole="Order" ToRole="OrderStatus" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK__Order__SupplierI__59FA5E80" FromRole="Order" ToRole="Supplier" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Order__UserID__5AEE82B9" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="OrderLines" Relationship="Self.FK__OrderLine__Order__6E01572D" FromRole="Order" ToRole="OrderLine" />
+          <NavigationProperty Name="Farm" Relationship="Self.FK__Order__FarmID__5CD6CB2B" FromRole="Order" ToRole="Farm" />
+          <NavigationProperty Name="OrderStatu" Relationship="Self.FK__Order__OrderStat__5DCAEF64" FromRole="Order" ToRole="OrderStatus" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__Order__SupplierI__5AEE82B9" FromRole="Order" ToRole="Supplier" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Order__UserID__5BE2A6F2" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="OrderLines" Relationship="Self.FK__OrderLine__Order__6EF57B66" FromRole="Order" ToRole="OrderLine" />
         </EntityType>
         <EntityType Name="OrderLine">
           <Key>
@@ -1493,8 +1513,8 @@
           <Property Name="InventoryID" Type="Int32" Nullable="false" />
           <Property Name="OrderLineTotalAmount" Type="Double" Nullable="false" />
           <Property Name="OrderLineTotalQuantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Inventory" Relationship="Self.FK__OrderLine__Inven__6EF57B66" FromRole="OrderLine" ToRole="Inventory" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__OrderLine__Order__6E01572D" FromRole="OrderLine" ToRole="Order" />
+          <NavigationProperty Name="Inventory" Relationship="Self.FK__OrderLine__Inven__6FE99F9F" FromRole="OrderLine" ToRole="Inventory" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__OrderLine__Order__6EF57B66" FromRole="OrderLine" ToRole="Order" />
         </EntityType>
         <EntityType Name="OrderStatu">
           <Key>
@@ -1502,7 +1522,7 @@
           </Key>
           <Property Name="OrderStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderStatusDescr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__OrderStat__5CD6CB2B" FromRole="OrderStatus" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__OrderStat__5DCAEF64" FromRole="OrderStatus" ToRole="Order" />
         </EntityType>
         <EntityType Name="Plantation">
           <Key>
@@ -1521,11 +1541,11 @@
           <Property Name="ExpectedYieldUnit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateHarvested" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PlantationStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CropCycle" Relationship="Self.FK__Plantatio__CropC__797309D9" FromRole="Plantation" ToRole="CropCycle" />
-          <NavigationProperty Name="CropType" Relationship="Self.FK__Plantatio__CropT__787EE5A0" FromRole="Plantation" ToRole="CropType" />
-          <NavigationProperty Name="Field" Relationship="Self.FK__Plantatio__Field__778AC167" FromRole="Plantation" ToRole="Field" />
-          <NavigationProperty Name="FieldStage" Relationship="Self.FK__Plantatio__Field__7A672E12" FromRole="Plantation" ToRole="FieldStage" />
-          <NavigationProperty Name="SiloHarvests" Relationship="Self.FK__SiloHarve__Plant__00200768" FromRole="Plantation" ToRole="SiloHarvest" />
+          <NavigationProperty Name="CropCycle" Relationship="Self.FK__Plantatio__CropC__7A672E12" FromRole="Plantation" ToRole="CropCycle" />
+          <NavigationProperty Name="CropType" Relationship="Self.FK__Plantatio__CropT__797309D9" FromRole="Plantation" ToRole="CropType" />
+          <NavigationProperty Name="Field" Relationship="Self.FK__Plantatio__Field__787EE5A0" FromRole="Plantation" ToRole="Field" />
+          <NavigationProperty Name="FieldStage" Relationship="Self.FK__Plantatio__Field__7B5B524B" FromRole="Plantation" ToRole="FieldStage" />
+          <NavigationProperty Name="SiloHarvests" Relationship="Self.FK__SiloHarve__Plant__01142BA1" FromRole="Plantation" ToRole="SiloHarvest" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -1557,8 +1577,8 @@
           <Property Name="SaleAmnt" Type="Double" Nullable="false" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="PurchaseAgreement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__Sale__CustomerID__04E4BC85" FromRole="Sale" ToRole="Customer" />
-          <NavigationProperty Name="SiloHarvestSales" Relationship="Self.FK__SiloHarve__SaleI__08B54D69" FromRole="Sale" ToRole="SiloHarvestSale" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Sale__CustomerID__05D8E0BE" FromRole="Sale" ToRole="Customer" />
+          <NavigationProperty Name="SiloHarvestSales" Relationship="Self.FK__SiloHarve__SaleI__09A971A2" FromRole="Sale" ToRole="SiloHarvestSale" />
         </EntityType>
         <EntityType Name="Silo">
           <Key>
@@ -1569,7 +1589,7 @@
           <Property Name="SiloCapacity" Type="Double" />
           <Property Name="SiloRentalFeePA" Type="Double" />
           <Property Name="SiloStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SiloHarvests" Relationship="Self.FK__SiloHarve__SiloI__7F2BE32F" FromRole="Silo" ToRole="SiloHarvest" />
+          <NavigationProperty Name="SiloHarvests" Relationship="Self.FK__SiloHarve__SiloI__00200768" FromRole="Silo" ToRole="SiloHarvest" />
         </EntityType>
         <EntityType Name="SiloHarvest">
           <Key>
@@ -1581,9 +1601,9 @@
           <Property Name="SiloHarvestTonnesStored" Type="Double" Nullable="false" />
           <Property Name="SiloID" Type="Int32" Nullable="false" />
           <Property Name="PlantationID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Plantation" Relationship="Self.FK__SiloHarve__Plant__00200768" FromRole="SiloHarvest" ToRole="Plantation" />
-          <NavigationProperty Name="Silo" Relationship="Self.FK__SiloHarve__SiloI__7F2BE32F" FromRole="SiloHarvest" ToRole="Silo" />
-          <NavigationProperty Name="SiloHarvestSales" Relationship="Self.FK__SiloHarve__SiloH__07C12930" FromRole="SiloHarvest" ToRole="SiloHarvestSale" />
+          <NavigationProperty Name="Plantation" Relationship="Self.FK__SiloHarve__Plant__01142BA1" FromRole="SiloHarvest" ToRole="Plantation" />
+          <NavigationProperty Name="Silo" Relationship="Self.FK__SiloHarve__SiloI__00200768" FromRole="SiloHarvest" ToRole="Silo" />
+          <NavigationProperty Name="SiloHarvestSales" Relationship="Self.FK__SiloHarve__SiloH__08B54D69" FromRole="SiloHarvest" ToRole="SiloHarvestSale" />
         </EntityType>
         <EntityType Name="SiloHarvestSale">
           <Key>
@@ -1594,8 +1614,8 @@
           <Property Name="SaleID" Type="Int32" Nullable="false" />
           <Property Name="SiloHarvestSaleTotalAmnt" Type="Double" Nullable="false" />
           <Property Name="SiloHarvestSaleTotalQty" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Sale" Relationship="Self.FK__SiloHarve__SaleI__08B54D69" FromRole="SiloHarvestSale" ToRole="Sale" />
-          <NavigationProperty Name="SiloHarvest" Relationship="Self.FK__SiloHarve__SiloH__07C12930" FromRole="SiloHarvestSale" ToRole="SiloHarvest" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK__SiloHarve__SaleI__09A971A2" FromRole="SiloHarvestSale" ToRole="Sale" />
+          <NavigationProperty Name="SiloHarvest" Relationship="Self.FK__SiloHarve__SiloH__08B54D69" FromRole="SiloHarvestSale" ToRole="SiloHarvest" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -1611,7 +1631,7 @@
           <Property Name="SupplierEmailAddress" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="SupplierPhoneNum" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="SupplierCellNum" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__SupplierI__59FA5E80" FromRole="Supplier" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__SupplierI__5AEE82B9" FromRole="Supplier" ToRole="Order" />
         </EntityType>
         <EntityType Name="Title">
           <Key>
@@ -1627,8 +1647,8 @@
           </Key>
           <Property Name="TreatmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TreatmentDescr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="FieldTreatments" Relationship="Self.FK__FieldTrea__Treat__6B24EA82" FromRole="Treatment" ToRole="FieldTreatment" />
-          <NavigationProperty Name="InventoryTreatments" Relationship="Self.FK__Inventory__Treat__66603565" FromRole="Treatment" ToRole="InventoryTreatment" />
+          <NavigationProperty Name="FieldTreatments" Relationship="Self.FK__FieldTrea__Treat__6C190EBB" FromRole="Treatment" ToRole="FieldTreatment" />
+          <NavigationProperty Name="InventoryTreatments" Relationship="Self.FK__Inventory__Treat__6754599E" FromRole="Treatment" ToRole="InventoryTreatment" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -1650,11 +1670,11 @@
           <Property Name="UserLName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserIDNum" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
           <Property Name="UserAccessLevelID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AttendenceSheets" Relationship="Self.FK__Attendenc__UserI__47DBAE45" FromRole="User" ToRole="AttendenceSheet" />
-          <NavigationProperty Name="Audits" Relationship="Self.FK__Audit__UserID__403A8C7D" FromRole="User" ToRole="Audit" />
-          <NavigationProperty Name="Logs" Relationship="Self.FK__Log__User__440B1D61" FromRole="User" ToRole="Log" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__UserID__5AEE82B9" FromRole="User" ToRole="Order" />
-          <NavigationProperty Name="UserAccessLevel" Relationship="Self.FK__User__UserAccess__3B75D760" FromRole="User" ToRole="UserAccessLevel" />
+          <NavigationProperty Name="AttendenceSheets" Relationship="Self.FK__Attendenc__UserI__48CFD27E" FromRole="User" ToRole="AttendenceSheet" />
+          <NavigationProperty Name="Audits" Relationship="Self.FK__Audit__UserID__412EB0B6" FromRole="User" ToRole="Audit" />
+          <NavigationProperty Name="Logs" Relationship="Self.FK__Log__User__44FF419A" FromRole="User" ToRole="Log" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__UserID__5BE2A6F2" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="UserAccessLevel" Relationship="Self.FK__User__UserAccess__3C69FB99" FromRole="User" ToRole="UserAccessLevel" />
         </EntityType>
         <EntityType Name="UserAccessLevel">
           <Key>
@@ -1662,7 +1682,7 @@
           </Key>
           <Property Name="UserAccessLevelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserAccessLevelDescr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__User__UserAccess__3B75D760" FromRole="UserAccessLevel" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__User__UserAccess__3C69FB99" FromRole="UserAccessLevel" ToRole="User" />
         </EntityType>
         <EntityType Name="Vehicle">
           <Key>
@@ -1684,10 +1704,10 @@
           <Property Name="FarmID" Type="Int32" Nullable="false" />
           <Property Name="VehTypeID" Type="Int32" Nullable="false" />
           <Property Name="VehMakeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Farm" Relationship="Self.FK__Vehicle__FarmID__4E88ABD4" FromRole="Vehicle" ToRole="Farm" />
-          <NavigationProperty Name="VehicleMake" Relationship="Self.FK__Vehicle__VehMake__5070F446" FromRole="Vehicle" ToRole="VehicleMake" />
-          <NavigationProperty Name="VehicleType" Relationship="Self.FK__Vehicle__VehType__4F7CD00D" FromRole="Vehicle" ToRole="VehicleType" />
-          <NavigationProperty Name="VehicleServices" Relationship="Self.FK__VehicleSe__Vehic__534D60F1" FromRole="Vehicle" ToRole="VehicleService" />
+          <NavigationProperty Name="Farm" Relationship="Self.FK__Vehicle__FarmID__4F7CD00D" FromRole="Vehicle" ToRole="Farm" />
+          <NavigationProperty Name="VehicleMake" Relationship="Self.FK__Vehicle__VehMake__5165187F" FromRole="Vehicle" ToRole="VehicleMake" />
+          <NavigationProperty Name="VehicleType" Relationship="Self.FK__Vehicle__VehType__5070F446" FromRole="Vehicle" ToRole="VehicleType" />
+          <NavigationProperty Name="VehicleServices" Relationship="Self.FK__VehicleSe__Vehic__5441852A" FromRole="Vehicle" ToRole="VehicleService" />
         </EntityType>
         <EntityType Name="VehicleMake">
           <Key>
@@ -1695,7 +1715,7 @@
           </Key>
           <Property Name="VehMakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VehMakeDescr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__VehMake__5070F446" FromRole="VehicleMake" ToRole="Vehicle" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__VehMake__5165187F" FromRole="VehicleMake" ToRole="Vehicle" />
         </EntityType>
         <EntityType Name="VehicleService">
           <Key>
@@ -1707,7 +1727,7 @@
           <Property Name="VehicleService_Mileage" Type="Int32" Nullable="false" />
           <Property Name="VehicleServiceRecordUnit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="VehicleID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Vehicle" Relationship="Self.FK__VehicleSe__Vehic__534D60F1" FromRole="VehicleService" ToRole="Vehicle" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK__VehicleSe__Vehic__5441852A" FromRole="VehicleService" ToRole="Vehicle" />
         </EntityType>
         <EntityType Name="VehicleType">
           <Key>
@@ -1716,9 +1736,9 @@
           <Property Name="VehTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VehTypeDescr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="VehTypeImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__VehType__4F7CD00D" FromRole="VehicleType" ToRole="Vehicle" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__VehType__5070F446" FromRole="VehicleType" ToRole="Vehicle" />
         </EntityType>
-        <Association Name="FK__Attendenc__FarmW__46E78A0C">
+        <Association Name="FK__Attendenc__FarmW__47DBAE45">
           <End Role="FarmWorker" Type="Self.FarmWorker" Multiplicity="1" />
           <End Role="AttendenceSheet" Type="Self.AttendenceSheet" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1730,7 +1750,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Attendenc__UserI__47DBAE45">
+        <Association Name="FK__Attendenc__UserI__48CFD27E">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="AttendenceSheet" Type="Self.AttendenceSheet" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1742,7 +1762,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Audit__AuditType__412EB0B6">
+        <Association Name="FK__Audit__AuditType__4222D4EF">
           <End Role="AuditType" Type="Self.AuditType" Multiplicity="1" />
           <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1754,7 +1774,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Audit__UserID__403A8C7D">
+        <Association Name="FK__Audit__UserID__412EB0B6">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1790,7 +1810,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Plantatio__CropC__797309D9">
+        <Association Name="FK__Plantatio__CropC__7A672E12">
           <End Role="CropCycle" Type="Self.CropCycle" Multiplicity="1" />
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1802,7 +1822,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Plantatio__CropT__787EE5A0">
+        <Association Name="FK__Plantatio__CropT__797309D9">
           <End Role="CropType" Type="Self.CropType" Multiplicity="1" />
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1814,7 +1834,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sale__CustomerID__04E4BC85">
+        <Association Name="FK__Sale__CustomerID__05D8E0BE">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1838,6 +1858,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__FarmWorke__FarmI__37A5467C">
+          <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+          <End Role="FarmWorker" Type="Self.FarmWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm">
+              <PropertyRef Name="FarmID" />
+            </Principal>
+            <Dependent Role="FarmWorker">
+              <PropertyRef Name="FarmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Land__FarmID__182C9B23">
           <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
           <End Role="Land" Type="Self.Land" Multiplicity="*" />
@@ -1850,7 +1882,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__FarmID__5BE2A6F2">
+        <Association Name="FK__Order__FarmID__5CD6CB2B">
           <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1862,7 +1894,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehicle__FarmID__4E88ABD4">
+        <Association Name="FK__Vehicle__FarmID__4F7CD00D">
           <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1958,7 +1990,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FieldTrea__Field__6A30C649">
+        <Association Name="FK__FieldTrea__Field__6B24EA82">
           <End Role="Field" Type="Self.Field" Multiplicity="1" />
           <End Role="FieldTreatment" Type="Self.FieldTreatment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1970,7 +2002,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Plantatio__Field__778AC167">
+        <Association Name="FK__Plantatio__Field__787EE5A0">
           <End Role="Field" Type="Self.Field" Multiplicity="1" />
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1994,7 +2026,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Plantatio__Field__7A672E12">
+        <Association Name="FK__Plantatio__Field__7B5B524B">
           <End Role="FieldStage" Type="Self.FieldStage" Multiplicity="1" />
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2006,7 +2038,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FieldTrea__Treat__6B24EA82">
+        <Association Name="FK__FieldTrea__Treat__6C190EBB">
           <End Role="Treatment" Type="Self.Treatment" Multiplicity="1" />
           <End Role="FieldTreatment" Type="Self.FieldTreatment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2018,7 +2050,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__Inven__6754599E">
+        <Association Name="FK__Inventory__Inven__68487DD7">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
           <End Role="InventoryTreatment" Type="Self.InventoryTreatment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2030,7 +2062,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__InvTy__619B8048">
+        <Association Name="FK__Inventory__InvTy__628FA481">
           <End Role="InventoryType" Type="Self.InventoryType" Multiplicity="1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2042,7 +2074,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Inven__6EF57B66">
+        <Association Name="FK__OrderLine__Inven__6FE99F9F">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2054,7 +2086,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__Treat__66603565">
+        <Association Name="FK__Inventory__Treat__6754599E">
           <End Role="Treatment" Type="Self.Treatment" Multiplicity="1" />
           <End Role="InventoryTreatment" Type="Self.InventoryTreatment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2078,7 +2110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Log__User__440B1D61">
+        <Association Name="FK__Log__User__44FF419A">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Log" Type="Self.Log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2090,7 +2122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__OrderStat__5CD6CB2B">
+        <Association Name="FK__Order__OrderStat__5DCAEF64">
           <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2102,7 +2134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__SupplierI__59FA5E80">
+        <Association Name="FK__Order__SupplierI__5AEE82B9">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2114,7 +2146,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__UserID__5AEE82B9">
+        <Association Name="FK__Order__UserID__5BE2A6F2">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2126,7 +2158,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Order__6E01572D">
+        <Association Name="FK__OrderLine__Order__6EF57B66">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2138,7 +2170,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SiloHarve__Plant__00200768">
+        <Association Name="FK__SiloHarve__Plant__01142BA1">
           <End Role="Plantation" Type="Self.Plantation" Multiplicity="1" />
           <End Role="SiloHarvest" Type="Self.SiloHarvest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2150,7 +2182,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SiloHarve__SaleI__08B54D69">
+        <Association Name="FK__SiloHarve__SaleI__09A971A2">
           <End Role="Sale" Type="Self.Sale" Multiplicity="1" />
           <End Role="SiloHarvestSale" Type="Self.SiloHarvestSale" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2162,7 +2194,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SiloHarve__SiloI__7F2BE32F">
+        <Association Name="FK__SiloHarve__SiloI__00200768">
           <End Role="Silo" Type="Self.Silo" Multiplicity="1" />
           <End Role="SiloHarvest" Type="Self.SiloHarvest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2174,7 +2206,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SiloHarve__SiloH__07C12930">
+        <Association Name="FK__SiloHarve__SiloH__08B54D69">
           <End Role="SiloHarvest" Type="Self.SiloHarvest" Multiplicity="1" />
           <End Role="SiloHarvestSale" Type="Self.SiloHarvestSale" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2186,7 +2218,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User__UserAccess__3B75D760">
+        <Association Name="FK__User__UserAccess__3C69FB99">
           <End Role="UserAccessLevel" Type="Self.UserAccessLevel" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2198,7 +2230,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehicle__VehMake__5070F446">
+        <Association Name="FK__Vehicle__VehMake__5165187F">
           <End Role="VehicleMake" Type="Self.VehicleMake" Multiplicity="1" />
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2210,7 +2242,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehicle__VehType__4F7CD00D">
+        <Association Name="FK__Vehicle__VehType__5070F446">
           <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="1" />
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2222,7 +2254,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VehicleSe__Vehic__534D60F1">
+        <Association Name="FK__VehicleSe__Vehic__5441852A">
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
           <End Role="VehicleService" Type="Self.VehicleService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2279,19 +2311,19 @@
           <EntitySet Name="VehicleMakes" EntityType="Self.VehicleMake" />
           <EntitySet Name="VehicleServices" EntityType="Self.VehicleService" />
           <EntitySet Name="VehicleTypes" EntityType="Self.VehicleType" />
-          <AssociationSet Name="FK__Attendenc__FarmW__46E78A0C" Association="Self.FK__Attendenc__FarmW__46E78A0C">
+          <AssociationSet Name="FK__Attendenc__FarmW__47DBAE45" Association="Self.FK__Attendenc__FarmW__47DBAE45">
             <End Role="FarmWorker" EntitySet="FarmWorkers" />
             <End Role="AttendenceSheet" EntitySet="AttendenceSheets" />
           </AssociationSet>
-          <AssociationSet Name="FK__Attendenc__UserI__47DBAE45" Association="Self.FK__Attendenc__UserI__47DBAE45">
+          <AssociationSet Name="FK__Attendenc__UserI__48CFD27E" Association="Self.FK__Attendenc__UserI__48CFD27E">
             <End Role="User" EntitySet="Users" />
             <End Role="AttendenceSheet" EntitySet="AttendenceSheets" />
           </AssociationSet>
-          <AssociationSet Name="FK__Audit__AuditType__412EB0B6" Association="Self.FK__Audit__AuditType__412EB0B6">
+          <AssociationSet Name="FK__Audit__AuditType__4222D4EF" Association="Self.FK__Audit__AuditType__4222D4EF">
             <End Role="AuditType" EntitySet="AuditTypes" />
             <End Role="Audit" EntitySet="Audits" />
           </AssociationSet>
-          <AssociationSet Name="FK__Audit__UserID__403A8C7D" Association="Self.FK__Audit__UserID__403A8C7D">
+          <AssociationSet Name="FK__Audit__UserID__412EB0B6" Association="Self.FK__Audit__UserID__412EB0B6">
             <End Role="User" EntitySet="Users" />
             <End Role="Audit" EntitySet="Audits" />
           </AssociationSet>
@@ -2303,15 +2335,15 @@
             <End Role="Country" EntitySet="Countries" />
             <End Role="Province" EntitySet="Provinces" />
           </AssociationSet>
-          <AssociationSet Name="FK__Plantatio__CropC__797309D9" Association="Self.FK__Plantatio__CropC__797309D9">
+          <AssociationSet Name="FK__Plantatio__CropC__7A672E12" Association="Self.FK__Plantatio__CropC__7A672E12">
             <End Role="CropCycle" EntitySet="CropCycles" />
             <End Role="Plantation" EntitySet="Plantations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Plantatio__CropT__787EE5A0" Association="Self.FK__Plantatio__CropT__787EE5A0">
+          <AssociationSet Name="FK__Plantatio__CropT__797309D9" Association="Self.FK__Plantatio__CropT__797309D9">
             <End Role="CropType" EntitySet="CropTypes" />
             <End Role="Plantation" EntitySet="Plantations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sale__CustomerID__04E4BC85" Association="Self.FK__Sale__CustomerID__04E4BC85">
+          <AssociationSet Name="FK__Sale__CustomerID__05D8E0BE" Association="Self.FK__Sale__CustomerID__05D8E0BE">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
@@ -2319,15 +2351,19 @@
             <End Role="Province" EntitySet="Provinces" />
             <End Role="Farm" EntitySet="Farms" />
           </AssociationSet>
+          <AssociationSet Name="FK__FarmWorke__FarmI__37A5467C" Association="Self.FK__FarmWorke__FarmI__37A5467C">
+            <End Role="Farm" EntitySet="Farms" />
+            <End Role="FarmWorker" EntitySet="FarmWorkers" />
+          </AssociationSet>
           <AssociationSet Name="FK__Land__FarmID__182C9B23" Association="Self.FK__Land__FarmID__182C9B23">
             <End Role="Farm" EntitySet="Farms" />
             <End Role="Land" EntitySet="Lands" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__FarmID__5BE2A6F2" Association="Self.FK__Order__FarmID__5BE2A6F2">
+          <AssociationSet Name="FK__Order__FarmID__5CD6CB2B" Association="Self.FK__Order__FarmID__5CD6CB2B">
             <End Role="Farm" EntitySet="Farms" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehicle__FarmID__4E88ABD4" Association="Self.FK__Vehicle__FarmID__4E88ABD4">
+          <AssociationSet Name="FK__Vehicle__FarmID__4F7CD00D" Association="Self.FK__Vehicle__FarmID__4F7CD00D">
             <End Role="Farm" EntitySet="Farms" />
             <End Role="Vehicle" EntitySet="Vehicles" />
           </AssociationSet>
@@ -2359,11 +2395,11 @@
             <End Role="Field" EntitySet="Fields" />
             <End Role="FieldNaturalDisaster" EntitySet="FieldNaturalDisasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__FieldTrea__Field__6A30C649" Association="Self.FK__FieldTrea__Field__6A30C649">
+          <AssociationSet Name="FK__FieldTrea__Field__6B24EA82" Association="Self.FK__FieldTrea__Field__6B24EA82">
             <End Role="Field" EntitySet="Fields" />
             <End Role="FieldTreatment" EntitySet="FieldTreatments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Plantatio__Field__778AC167" Association="Self.FK__Plantatio__Field__778AC167">
+          <AssociationSet Name="FK__Plantatio__Field__787EE5A0" Association="Self.FK__Plantatio__Field__787EE5A0">
             <End Role="Field" EntitySet="Fields" />
             <End Role="Plantation" EntitySet="Plantations" />
           </AssociationSet>
@@ -2371,27 +2407,27 @@
             <End Role="NaturalDisaster" EntitySet="NaturalDisasters" />
             <End Role="FieldNaturalDisaster" EntitySet="FieldNaturalDisasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__Plantatio__Field__7A672E12" Association="Self.FK__Plantatio__Field__7A672E12">
+          <AssociationSet Name="FK__Plantatio__Field__7B5B524B" Association="Self.FK__Plantatio__Field__7B5B524B">
             <End Role="FieldStage" EntitySet="FieldStages" />
             <End Role="Plantation" EntitySet="Plantations" />
           </AssociationSet>
-          <AssociationSet Name="FK__FieldTrea__Treat__6B24EA82" Association="Self.FK__FieldTrea__Treat__6B24EA82">
+          <AssociationSet Name="FK__FieldTrea__Treat__6C190EBB" Association="Self.FK__FieldTrea__Treat__6C190EBB">
             <End Role="Treatment" EntitySet="Treatments" />
             <End Role="FieldTreatment" EntitySet="FieldTreatments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__Inven__6754599E" Association="Self.FK__Inventory__Inven__6754599E">
+          <AssociationSet Name="FK__Inventory__Inven__68487DD7" Association="Self.FK__Inventory__Inven__68487DD7">
             <End Role="Inventory" EntitySet="Inventories" />
             <End Role="InventoryTreatment" EntitySet="InventoryTreatments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__InvTy__619B8048" Association="Self.FK__Inventory__InvTy__619B8048">
+          <AssociationSet Name="FK__Inventory__InvTy__628FA481" Association="Self.FK__Inventory__InvTy__628FA481">
             <End Role="InventoryType" EntitySet="InventoryTypes" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Inven__6EF57B66" Association="Self.FK__OrderLine__Inven__6EF57B66">
+          <AssociationSet Name="FK__OrderLine__Inven__6FE99F9F" Association="Self.FK__OrderLine__Inven__6FE99F9F">
             <End Role="Inventory" EntitySet="Inventories" />
             <End Role="OrderLine" EntitySet="OrderLines" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__Treat__66603565" Association="Self.FK__Inventory__Treat__66603565">
+          <AssociationSet Name="FK__Inventory__Treat__6754599E" Association="Self.FK__Inventory__Treat__6754599E">
             <End Role="Treatment" EntitySet="Treatments" />
             <End Role="InventoryTreatment" EntitySet="InventoryTreatments" />
           </AssociationSet>
@@ -2399,55 +2435,55 @@
             <End Role="Land" EntitySet="Lands" />
             <End Role="RainfallRecord" EntitySet="RainfallRecords" />
           </AssociationSet>
-          <AssociationSet Name="FK__Log__User__440B1D61" Association="Self.FK__Log__User__440B1D61">
+          <AssociationSet Name="FK__Log__User__44FF419A" Association="Self.FK__Log__User__44FF419A">
             <End Role="User" EntitySet="Users" />
             <End Role="Log" EntitySet="Logs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__OrderStat__5CD6CB2B" Association="Self.FK__Order__OrderStat__5CD6CB2B">
+          <AssociationSet Name="FK__Order__OrderStat__5DCAEF64" Association="Self.FK__Order__OrderStat__5DCAEF64">
             <End Role="OrderStatus" EntitySet="OrderStatus" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__SupplierI__59FA5E80" Association="Self.FK__Order__SupplierI__59FA5E80">
+          <AssociationSet Name="FK__Order__SupplierI__5AEE82B9" Association="Self.FK__Order__SupplierI__5AEE82B9">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__UserID__5AEE82B9" Association="Self.FK__Order__UserID__5AEE82B9">
+          <AssociationSet Name="FK__Order__UserID__5BE2A6F2" Association="Self.FK__Order__UserID__5BE2A6F2">
             <End Role="User" EntitySet="Users" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Order__6E01572D" Association="Self.FK__OrderLine__Order__6E01572D">
+          <AssociationSet Name="FK__OrderLine__Order__6EF57B66" Association="Self.FK__OrderLine__Order__6EF57B66">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderLine" EntitySet="OrderLines" />
           </AssociationSet>
-          <AssociationSet Name="FK__SiloHarve__Plant__00200768" Association="Self.FK__SiloHarve__Plant__00200768">
+          <AssociationSet Name="FK__SiloHarve__Plant__01142BA1" Association="Self.FK__SiloHarve__Plant__01142BA1">
             <End Role="Plantation" EntitySet="Plantations" />
             <End Role="SiloHarvest" EntitySet="SiloHarvests" />
           </AssociationSet>
-          <AssociationSet Name="FK__SiloHarve__SaleI__08B54D69" Association="Self.FK__SiloHarve__SaleI__08B54D69">
+          <AssociationSet Name="FK__SiloHarve__SaleI__09A971A2" Association="Self.FK__SiloHarve__SaleI__09A971A2">
             <End Role="Sale" EntitySet="Sales" />
             <End Role="SiloHarvestSale" EntitySet="SiloHarvestSales" />
           </AssociationSet>
-          <AssociationSet Name="FK__SiloHarve__SiloI__7F2BE32F" Association="Self.FK__SiloHarve__SiloI__7F2BE32F">
+          <AssociationSet Name="FK__SiloHarve__SiloI__00200768" Association="Self.FK__SiloHarve__SiloI__00200768">
             <End Role="Silo" EntitySet="Silos" />
             <End Role="SiloHarvest" EntitySet="SiloHarvests" />
           </AssociationSet>
-          <AssociationSet Name="FK__SiloHarve__SiloH__07C12930" Association="Self.FK__SiloHarve__SiloH__07C12930">
+          <AssociationSet Name="FK__SiloHarve__SiloH__08B54D69" Association="Self.FK__SiloHarve__SiloH__08B54D69">
             <End Role="SiloHarvest" EntitySet="SiloHarvests" />
             <End Role="SiloHarvestSale" EntitySet="SiloHarvestSales" />
           </AssociationSet>
-          <AssociationSet Name="FK__User__UserAccess__3B75D760" Association="Self.FK__User__UserAccess__3B75D760">
+          <AssociationSet Name="FK__User__UserAccess__3C69FB99" Association="Self.FK__User__UserAccess__3C69FB99">
             <End Role="UserAccessLevel" EntitySet="UserAccessLevels" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehicle__VehMake__5070F446" Association="Self.FK__Vehicle__VehMake__5070F446">
+          <AssociationSet Name="FK__Vehicle__VehMake__5165187F" Association="Self.FK__Vehicle__VehMake__5165187F">
             <End Role="VehicleMake" EntitySet="VehicleMakes" />
             <End Role="Vehicle" EntitySet="Vehicles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehicle__VehType__4F7CD00D" Association="Self.FK__Vehicle__VehType__4F7CD00D">
+          <AssociationSet Name="FK__Vehicle__VehType__5070F446" Association="Self.FK__Vehicle__VehType__5070F446">
             <End Role="VehicleType" EntitySet="VehicleTypes" />
             <End Role="Vehicle" EntitySet="Vehicles" />
           </AssociationSet>
-          <AssociationSet Name="FK__VehicleSe__Vehic__534D60F1" Association="Self.FK__VehicleSe__Vehic__534D60F1">
+          <AssociationSet Name="FK__VehicleSe__Vehic__5441852A" Association="Self.FK__VehicleSe__Vehic__5441852A">
             <End Role="Vehicle" EntitySet="Vehicles" />
             <End Role="VehicleService" EntitySet="VehicleServices" />
           </AssociationSet>
@@ -2574,6 +2610,7 @@
                 <ScalarProperty Name="TitleID" ColumnName="TitleID" />
                 <ScalarProperty Name="GenderID" ColumnName="GenderID" />
                 <ScalarProperty Name="FarmWorkerTypeID" ColumnName="FarmWorkerTypeID" />
+                <ScalarProperty Name="FarmID" ColumnName="FarmID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
+using WebApplication4.ViewModels;
 
 namespace WebApplication4.Controllers
 {
@@ -14,6 +15,11 @@ namespace WebApplication4.Controllers
     {
         private FarmDbContext db = new FarmDbContext();
 
+        public ActionResult FarmTree()
+        {
+            FarmTreeView trViewModel = new FarmTreeView();
+            return View(trViewModel);
+        }
         // GET: Farm
         public ActionResult Index()
         {

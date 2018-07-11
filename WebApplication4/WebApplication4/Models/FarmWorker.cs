@@ -38,9 +38,11 @@ namespace WebApplication4.Models
         public int TitleID { get; set; }
         public int GenderID { get; set; }
         public int FarmWorkerTypeID { get; set; }
+        public int FarmID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AttendenceSheet> AttendenceSheets { get; set; }
+        public virtual Farm Farm { get; set; }
         public virtual FarmWorkerType FarmWorkerType { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual Title Title { get; set; }

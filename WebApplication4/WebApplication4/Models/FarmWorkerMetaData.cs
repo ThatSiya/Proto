@@ -78,5 +78,9 @@ namespace WebApplication4.Models
         [StringLength(maximumLength: 13, ErrorMessage = "Max 13 characters reached")]
         [RegularExpression("[0-9]+", ErrorMessage = "ID Number must be digits")]
         public string FarmWorkerIDNum { get; set; }
+
+        [Required(ErrorMessage = "Farm cannot be blank")]
+        [Display(Name = "Farm")]
+        public int FarmID { get; set; }
     }
 }

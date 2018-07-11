@@ -117,6 +117,7 @@
           <ScalarProperty Name="TitleID" ColumnName="TitleID" />
           <ScalarProperty Name="GenderID" ColumnName="GenderID" />
           <ScalarProperty Name="FarmWorkerTypeID" ColumnName="FarmWorkerTypeID" />
+          <ScalarProperty Name="FarmID" ColumnName="FarmID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
