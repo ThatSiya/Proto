@@ -12,11 +12,12 @@ namespace WebApplication4.Models
         public int UserAccessLevelID { get; set; }
 
 
-        [Display(Name = "Access Level")]
+        [Display(Name = "User Access Role")]
         [StringLength(maximumLength: 5, ErrorMessage = "Max 5 characters reached")]
         public string UserAccessLevelDescr { get; set; }
 
         [Display(Name = "Notes")]
+        [DataType(DataType.MultilineText)]
         [StringLength(maximumLength: 50, ErrorMessage = "Max 50 characters reached")]
         public string Notes { get; set; }
     }

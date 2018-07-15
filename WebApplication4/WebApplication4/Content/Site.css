@@ -3,7 +3,7 @@
     /*padding-bottom: 20px;*/
 }
 
-/* Set padding to keep content from hitting the edges */
+/*Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -22,3 +22,74 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#greenHR {
+  margin-top: 20px!important;
+  margin-bottom: 2px;
+  border: 0!important;
+  border-top: 5px solid #28b62c!important;
+}
+
+#blueHR {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 5px solid #0288d1;
+}
+
+#btnBack {
+    float: left;
+    margin-left: -5px;
+    margin-top: -34px
+}
+
+btnBack-Details {
+    float: left;
+}
+
+#btnSave {
+    float: right;
+    margin-right: 10px;
+}
+
+#detailsDL {
+    padding-top: 20px;
+}
+
+#addCustomerLabels {
+    font-size:1.2em;
+    font-weight: 600;
+    color: #28b62c;
+    margin-left: 20px;
+    text-decoration: underline;
+}
+
+th {
+    color:green;
+}
+
+#selfoto {
+      display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+    #Textbox
+    { 
+        border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
