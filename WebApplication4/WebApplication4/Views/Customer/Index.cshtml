@@ -114,40 +114,41 @@
 
                 //bootbox.alert("The order has successfully been placed");
 
-                bootbox.alert({
-                    size: "medium",
-                    title: "Unable to remove Farm",
-                    message: "Please first remove all Lands linked to the Farm",
-                    callback: function () { /* your callback code */ }
-                })
+                //bootbox.alert({
+                //    size: "medium",
+                //    title: "Unable to remove Farm",
+                //    message: "Please first remove all Lands linked to the Farm",
+                //    callback: function () { /* your callback code */ }
+                //})
 
-                //bootbox.confirm({
-                //    title:"Unable to Remove Farm",
-                //    message: "All Lands linked to the Farm along with Fields must first be removed",
-                //    buttons: {
-                //        confirm: {
-                //            label: 'Place Order',
-                //            className: 'btn-primary'
-                //        },
-                //        cancel: {
-                //            label: 'Cancel',
-                //            className: 'btn-default'
-                //        }
-                //    },
-                //    callback: function (result) {
-                //        // ...
-                //        if (result) {
-                //            $.ajax({
-                //                url: '/Customer/Delete/' + button.attr("data-customer-id"),
-                //                method: "DELETE",
-                //                success: function () {
-                //                    //console.log("Success");
-                //                    button.parents("tr").remove();
-                //                }
-                //            });
-                //        }
-                //    }
-                //});
+                bootbox.confirm({
+                    title:"Confirm Generate Report",
+                    closeButton: false,
+                    message: "Please confirm you want to generate a report",
+                    buttons: {
+                        confirm: {
+                            label: 'Confirm',
+                            className: 'btn-primary'
+                        },
+                        cancel: {
+                            label: 'Cancel',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        // ...
+                        if (result) {
+                            $.ajax({
+                                url: '/Customer/Delete/' + button.attr("data-customer-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    //console.log("Success");
+                                    button.parents("tr").remove();
+                                }
+                            });
+                        }
+                    }
+                });
 
             }); //endOnClick
         });

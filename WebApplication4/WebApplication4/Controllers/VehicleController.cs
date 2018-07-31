@@ -24,7 +24,6 @@ namespace WebApplication4.Controllers
 
             //select vehicles
             var vehicles = db.Vehicles.Include(v => v.VehicleType).Include(v => v.VehicleMake);
-            //var farmWorkers = db.FarmWorkers.Include(f => f.FarmWorkerType).Include(f => f.Gender).Include(f => f.Title);
 
             //do search and save search string in view model
             if (!String.IsNullOrEmpty(search))
