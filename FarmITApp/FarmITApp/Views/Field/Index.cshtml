@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FarmITApp.Models.Field>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldHectares)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldStatu.FieldStatDescr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Land.LandName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldHectares)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldStatu.FieldStatDescr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Land.LandName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FieldID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FieldID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FieldID })
+        </td>
+    </tr>
+}
+
+</table>

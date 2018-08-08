@@ -1,0 +1,50 @@
+﻿@model FarmITApp.Models.Field
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Field</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldHectares)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldHectares)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldStatu.FieldStatDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldStatu.FieldStatDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Land.LandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Land.LandName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FieldID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

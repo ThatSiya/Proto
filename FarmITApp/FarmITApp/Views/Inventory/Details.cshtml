@@ -1,0 +1,66 @@
+﻿@model FarmITApp.Models.Inventory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Inventory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InvDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvDatePurchased)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvDatePurchased)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryType.InvTypeDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryType.InvTypeDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit1.UnitDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit1.UnitDescr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InventoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

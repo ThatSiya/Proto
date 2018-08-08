@@ -1,0 +1,26 @@
+﻿@model FarmITApp.Models.InventoryType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InventoryType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InvTypeDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvTypeDescr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InvTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model FarmITApp.Models.VehicleService
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VehicleService</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleService_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleService_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleService_Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleService_Cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleServiceRecord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleServiceRecord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit.UnitDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit.UnitDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.VehName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.VehName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleServiceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

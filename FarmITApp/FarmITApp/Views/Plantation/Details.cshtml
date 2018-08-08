@@ -1,0 +1,114 @@
+﻿@model FarmITApp.Models.Plantation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Plantation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DatePlanted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatePlanted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RefugeSeedAmntUsed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RefugeSeedAmntUsed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RefugeAreaHectares)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RefugeAreaHectares)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedYieldQnty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedYieldQnty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateHarvested)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateHarvested)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantationStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CropCycle.CropCycleDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropCycle.CropCycleDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CropType.CropTypeDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropType.CropTypeDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Field.FieldName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Field.FieldName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldStage.FieldStageDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldStage.FieldStageDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit.UnitDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit.UnitDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit1.UnitDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit1.UnitDescr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlantationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

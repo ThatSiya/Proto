@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FarmITApp.Models.Silo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SiloDescr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiloCapacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiloRentalFeePA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiloStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unit.UnitDescr)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiloDescr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiloCapacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiloRentalFeePA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiloStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unit.UnitDescr)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SiloID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SiloID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SiloID })
+        </td>
+    </tr>
+}
+
+</table>

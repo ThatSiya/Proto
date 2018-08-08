@@ -1,0 +1,58 @@
+﻿@model FarmITApp.Models.Silo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Silo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiloDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiloDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiloCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiloCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiloRentalFeePA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiloRentalFeePA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiloStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiloStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit.UnitDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit.UnitDescr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SiloID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

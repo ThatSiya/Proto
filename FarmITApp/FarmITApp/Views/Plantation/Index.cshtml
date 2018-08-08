@@ -1,0 +1,86 @@
+﻿@model FarmITApp.ViewModels.PlantationViewModel
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+}
+
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Crops</a></li>
+    <li class="active">Manage Plantations</li>
+</ol>
+
+<table class="table table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Plantations.First().Field.FieldName)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Plantations.First().CropType.CropTypeDescr)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Plantations.First().CropCycle.CropCycleDescr)</span>
+            </th>
+            <th>
+                <span style="color:green;">@Html.DisplayNameFor(model => model.Plantations.First().PlantationStatus)</span>
+            </th>
+            <th>
+                <span style="color:green;">Actions</span>
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model.Plantations)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Field.FieldName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropType.CropTypeDescr)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CropCycle.CropCycleDescr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlantationStatus)
+            </td>
+
+            <td>
+                <a href="@Url.Action("Details", new { id = item.PlantationID })" data-toggle="tooltip" title="Details">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                    <span class="sr-only">Details</span>
+                </a>
+                <a href="@Url.Action("Create", "TreatPlantation")" data-toggle="tooltip" title="Edit">
+                    <i class="glyphicon glyphicon-screenshot"></i>
+                    <span class="sr-only">TreatPlantation</span>
+                </a>
+                <a href="@Url.Action("Create", "TreatPlantation")" data-toggle="tooltip" title="Edit">
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span class="sr-only">SetReadyForHarvest</span>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @*condition? first_expression : second_expression*@
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You searched for '" + Model.Search + "' found ")@Model.Plantations.TotalItemCount plantations
+</p>
+
+@*Generate paging links*@
+<div>
+    @*wrap in div for presentation purpose*@
+    Page @(Model.Plantations.PageCount < Model.Plantations.PageNumber ? 0 : @*evaluate whether or not there are any pages to display*@
+    Model.Plantations.PageNumber) of @Model.Plantations.PageCount @*Display Page x of y*@
+    @Html.PagedListPager(Model.Plantations, page => Url.Action("Index",@*Takes list of inventories and produces a hyperlink to each page*@
+    new
+    {
+        croptype = @Model.CropType,
+        Search = @Model.Search,
+        page
+    }))
+</div>
