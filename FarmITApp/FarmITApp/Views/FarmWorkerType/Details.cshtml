@@ -1,0 +1,42 @@
+﻿@model FarmITApp.Models.FarmWorkerType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FarmWorkerType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmWorkerTypeDescr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmWorkerTypeDescr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmWorkerTypeNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmWorkerTypeNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FarmWorkerTypeActiveStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FarmWorkerTypeActiveStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FarmWorkerTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

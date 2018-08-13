@@ -95,7 +95,28 @@
     }
 
 </table>
-@* TODO: JQuery-Bootbox Confirmation Dialog for Delete Action *@
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#customers .js-delete").on("click", function () {
+                var button = $(this);
+                bootbox.confirm("Please confirm you want to remove this item", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: '/Customer/Create/',
+                            method: "CREATE",
+                            type: "GET",
+                            success: function () {
+                                console.log("Success");
+                            }
+
+                        });
+                    }
+                });
+            });
+        })
+        </script>
+    }
 <p>
     @*condition? first_expression : second_expression*@
     @(String.IsNullOrWhiteSpace(Model.Search) ? "Showing all " : "You search for " + Model.Search + " found ")@Model.Customers.TotalItemCount customers

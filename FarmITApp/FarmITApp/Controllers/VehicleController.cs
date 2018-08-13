@@ -180,5 +180,39 @@ namespace FarmITApp.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult EditMileage(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Vehicle vehicle = db.Vehicles.Find(id);
+            if(vehicle == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Farm = new SelectList(db.Farms, "FarmID", "FarmName", vehicle.Farm);
+            ViewBag.UnitID = new SelectList(db.Units, "UnitID", "UnitDescr", vehicle.UnitID);
+            ViewBag.VehMakeID = new SelectList(db.VehicleMakes, "VehMakeID", "VehMakeDescr", vehicle.VehMakeID);
+            ViewBag.VehTypeID = new SelectList(db.VehicleTypes, "VehTypeID", "VehTypeDescr", vehicle.VehTypeID);
+            return View(vehicle);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMileage([Bind(Include = "VehCurrMileage,VehServiceInterval,UnitID")] Vehicle vehicle)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(vehicle).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            //ViewBag.Farm = new SelectList(db.Farms, "FarmID", "FarmName", vehicle.Farm);
+            ViewBag.UnitID = new SelectList(db.Units, "UnitID", "UnitDescr", vehicle.UnitID);
+            //ViewBag.VehMakeID = new SelectList(db.VehicleMakes, "VehMakeID", "VehMakeDescr", vehicle.VehMakeID);
+            //ViewBag.VehTypeID = new SelectList(db.VehicleTypes, "VehTypeID", "VehTypeDescr", vehicle.VehTypeID);
+            return View(vehicle);
+        }
     }
 }
